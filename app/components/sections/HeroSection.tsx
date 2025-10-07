@@ -10,6 +10,19 @@ export function HeroSection() {
   const [isAnimating, setIsAnimating] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const accumulatedDelta = useRef(0);
+  const [titleNumber, setTitleNumber] = useState(0);
+  const titles = ['connected', 'limitless', 'seamless', 'intelligent', 'dynamic'];
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -128,14 +141,31 @@ export function HeroSection() {
         }}
       >
         <h1
-          className="m-0 p-0 text-white text-center text-xl sm:text-3xl md:text-5xl lg:text-[80px] font-black"
+          className="m-0 p-0 text-white text-center text-xl sm:text-3xl md:text-5xl lg:text-[80px] font-black flex flex-col items-center"
           style={{
             fontFamily: 'Lato, sans-serif',
             lineHeight: '1.2',
             width: '100%'
           }}
         >
-          WELCOME TO THE SAMPLE MESSAGE!
+          <span>WELCOME TO</span>
+          <span className="relative w-full flex justify-center overflow-hidden" style={{ minHeight: '1.2em' }}>
+            {titles.map((title, index) => (
+              <motion.span
+                key={index}
+                className="absolute top-0 whitespace-nowrap"
+                initial={{ opacity: 0, y: -100 }}
+                transition={{ type: 'spring', stiffness: 50 }}
+                animate={
+                  titleNumber === index
+                    ? { y: 0, opacity: 1 }
+                    : { y: titleNumber > index ? -150 : 150, opacity: 0 }
+                }
+              >
+                {title.toUpperCase()} WORLD
+              </motion.span>
+            ))}
+          </span>
         </h1>
       </motion.div>
 
