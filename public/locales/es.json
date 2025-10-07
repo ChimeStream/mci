@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "welcome": "Bienvenida",
+    "about": "Acerca de",
+    "journey": "Trayectoria",
+    "services": "Servicios"
+  },
+  "hero": {
+    "title": "BIENVENIDO AL",
+    "subtitle": "¡MENSAJE DE EJEMPLO!"
+  },
+  "about": {
+    "title": "SOBRE NOSOTROS",
+    "description": "MCI, la mayor holding de economía digital de Irán, está a la vanguardia de la transformación inteligente en tecnología y comunicaciones. Con una visión de futuro, Hamrah Aval ha evolucionado más allá de un operador móvil para convertirse en la fuerza impulsora del ecosistema digital de Irán. A través de una diversa red de subsidiarias y servicios que abarcan telecomunicaciones, fintech, educación, entretenimiento y plataformas digitales, la empresa está dando forma a una vida digital más inteligente, más simple y más conectada para todos.",
+    "stat1": "El Primer Móvil",
+    "stat1sub": "Operador Desde 1993",
+    "stat2": "Sirviendo a más de 100 millones",
+    "stat2sub": "suscriptores",
+    "stat3": "Pionero en 4G, 5G y 5.5G",
+    "stat3sub": "redes",
+    "stat4": "Expandiéndose a servicios",
+    "stat4sub": "digitales, VOD, ciudades inteligentes, IoT e IA"
+  },
+  "vision": {
+    "title": "NUESTRA VISIÓN",
+    "description": "Proporcionar comunicaciones inclusivas y experiencias digitales superiores a través del desarrollo de soluciones inteligentes y asociaciones estratégicas, para crear un futuro mejor."
+  },
+  "mission": {
+    "title": "NUESTRA MISIÓN",
+    "description": "Pioneros en comunicaciones y más allá"
+  },
+  "immersive": {
+    "title": "INMERSIVO",
+    "description": "Nuestro camino futuro se basa en la base de una experiencia inmersiva, un viaje que disuelve las fronteras entre los mundos físico y digital, permitiendo la vida dentro de un ecosistema rico, inteligente e interconectado."
+  },
+  "journey": {
+    "title": "NUESTRO VIAJE"
+  },
+  "services": {
+    "title": "SERVICIOS CLAVE",
+    "5g": {
+      "title": "5.5G",
+      "subtitle": "Conectividad preparada para el futuro"
+    },
+    "fintech": {
+      "title": "Fintech",
+      "subtitle": "Soluciones de finanzas digitales seguras"
+    },
+    "platforms": {
+      "title": "Plataformas",
+      "subtitle": "Educación, entretenimiento, salud, comercio electrónico"
+    },
+    "kids": {
+      "title": "Niños y Adolescentes",
+      "subtitle": "Ecosistema seguro y empoderador"
+    },
+    "b2b": {
+      "title": "B2B y B2G",
+      "subtitle": "Habilitando empresas inteligentes y gobierno"
+    },
+    "sim": {
+      "title": "Tarjeta SIM",
+      "subtitle": "Comunicación flexible para todas las necesidades"
+    }
+  }
+}

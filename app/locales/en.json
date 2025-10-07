@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "welcome": "Welcome",
+    "about": "About",
+    "journey": "Journey",
+    "services": "Services"
+  },
+  "hero": {
+    "title": "WELCOME TO THE",
+    "subtitle": "SAMPLE MESSAGE!"
+  },
+  "about": {
+    "title": "ABOUT US",
+    "description": "MCI, the largest digital economy holding in Iran, stands at the forefront of intelligent transformation in technology and communications. With a forward-looking vision, Hamrah Aval has evolved beyond a mobile operator to become the driving force of Iran's digital ecosystem. Through a diverse network of subsidiaries and services spanning telecommunications, fintech, education, entertainment, and digital platforms, the company is shaping a smarter, simpler, and more connected digital life for everyone. In a world where humans and technology are more intertwined than ever, Hamrah Aval embraces the vision of Immersive Communication creating meaningful and human-centered connections through a shared journey, where no one is ever alone, and every individual becomes part of a collective and human experience.This approach elevates MCI beyond being a mere operator, transforming it into a platform for intelligent experiences—a place where education, entertainment, health, business, and communication all converge into one immersive journey.",
+    "stat1": "The First Mobile",
+    "stat1sub": "Operator Since 1993",
+    "stat2": "Serving over 100 million",
+    "stat2sub": "subscribers",
+    "stat3": "Pioneer in 4G , 5G & 5.5G",
+    "stat3sub": "networks",
+    "stat4": "Expanding into digital",
+    "stat4sub": "services, VOD, smart cities, IoT & AI"
+  },
+  "vision": {
+    "title": "OUR VISION",
+    "description": "Providing inclusive communications and superior digital experiences through the development of smart solutions and strategic partnerships, to create a better future."
+  },
+  "mission": {
+    "title": "OUR MISSION",
+    "description": "Pioneering communications and beyond"
+  },
+  "immersive": {
+    "title": "IMMERSIVE",
+    "description": "Our future path is built on the foundation of an immersive experience—a journey that dissolves the boundaries between the physical and digital worlds, enabling life within a rich, intelligent, and interconnected ecosystem.Immersion is being fully present in the moment, where customers don't just consume our services, they truly live. A shared journey, where no one is ever alone, and every individual becomes part of a collective and human experience.This approach elevates MCI beyond being a mere operator, transforming it into a platform for intelligent experiences—a place where education, entertainment, health, business, and communication all converge into one immersive journey."
+  },
+  "journey": {
+    "title": "OUR JOURNEY"
+  },
+  "services": {
+    "title": "KEY SERVICES",
+    "5g": {
+      "title": "5.5G",
+      "subtitle": "Future-ready connectivity"
+    },
+    "fintech": {
+      "title": "Fintech",
+      "subtitle": "Secure digital finance solutions"
+    },
+    "platforms": {
+      "title": "Platforms",
+      "subtitle": "Education, entertainment, health, e-commerce"
+    },
+    "kids": {
+      "title": "Kids & Teen",
+      "subtitle": "Safe and empowering ecosystem"
+    },
+    "b2b": {
+      "title": "B2B & B2G",
+      "subtitle": "Enabling smart enterprises and government"
+    },
+    "sim": {
+      "title": "SIM Card",
+      "subtitle": "Flexible communication for all needs"
+    }
+  }
+}
