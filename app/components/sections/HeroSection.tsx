@@ -15,25 +15,26 @@ export function HeroSection() {
   });
 
   // Background blur increases as you scroll
-  const backgroundBlur = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const backgroundBlur = useTransform(scrollYProgress, [0, 0.5, 1], [0, 10, 20]);
 
-  // Text opacity fades as you scroll
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
+  // Text opacity fades as you scroll (fade out earlier to make room for VR person)
+  const textOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
   // Logo moves up and fades as you scroll
-  const logoY = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
-  const logoOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+  const logoY = useTransform(scrollYProgress, [0, 0.15], [0, -100]);
+  const logoOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
-  // VR person slides UP from bottom as an overlay - comes on top
-  const vrPersonY = useTransform(scrollYProgress, [0, 1], [window.innerHeight, 0]);
-  const vrPersonOpacity = useTransform(scrollYProgress, [0, 0.2, 1], [0, 1, 1]);
-  const vrPersonScale = useTransform(scrollYProgress, [0.2, 0.6], [0.8, 1]);
+  // VR person slides UP from bottom slowly - should take ~2 full scrolls to fully appear
+  // Starts off-screen below, comes to center, stays for a while
+  const vrPersonY = useTransform(scrollYProgress, [0, 0.4, 0.7], [window.innerHeight, 0, -100]);
+  const vrPersonOpacity = useTransform(scrollYProgress, [0, 0.15, 0.4, 0.9], [0, 1, 1, 1]);
+  const vrPersonScale = useTransform(scrollYProgress, [0.15, 0.4], [0.85, 1]);
 
   return (
     <section
       ref={sectionRef}
       id="welcome"
-      className="relative w-full h-[200vh] overflow-hidden bg-[#0a1628]"
+      className="relative w-full h-[300vh] overflow-hidden bg-[#0a1628]"
     >
       {/* Background Image with scroll-based blur - STICKY so it stays in place */}
       <div className="sticky top-0 w-full h-screen overflow-hidden">
