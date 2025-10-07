@@ -120,21 +120,18 @@ export function HeroSection() {
         <MCILogo />
       </motion.div>
 
-      {/* Main Heading - Exact Figma CSS specifications - Blurs when VR person appears */}
+      {/* Main Heading - Responsive - Blurs when VR person appears */}
       <motion.div
-        className="absolute top-[416px] left-1/2 -translate-x-1/2 w-[728px] h-[192px] z-10 flex items-center justify-center"
+        className="absolute top-[50%] -translate-y-1/2 md:top-[416px] md:translate-y-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[728px] px-4 md:px-0 z-10 flex items-center justify-center"
         style={{
           filter: `blur(${textLogoBlur}px)`,
         }}
       >
         <h1
-          className="m-0 p-0 text-white text-center"
+          className="m-0 p-0 text-white text-center text-xl sm:text-3xl md:text-5xl lg:text-[80px] font-black"
           style={{
             fontFamily: 'Lato, sans-serif',
-            fontSize: '80px',
-            fontStyle: 'normal',
-            fontWeight: 900,
-            lineHeight: 'normal',
+            lineHeight: '1.2',
             width: '100%'
           }}
         >
@@ -151,13 +148,13 @@ export function HeroSection() {
           scale: vrPersonScale,
         }}
       >
-        <div className="relative">
+        <div className="relative w-full h-full flex items-center justify-center">
           <Image
             src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
             alt="Person wearing VR headset"
             width={600}
             height={800}
-            className="w-auto h-[80vh] max-h-[800px] object-contain"
+            className="w-auto h-[60vh] sm:h-[70vh] md:h-[80vh] max-h-[500px] sm:max-h-[600px] md:max-h-[800px] object-contain"
             priority
           />
 
