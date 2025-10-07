@@ -11,7 +11,7 @@ interface ParallaxOptions {
 export function useScrollParallax(
   options: ParallaxOptions = {}
 ): {
-  ref: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement | null>;
   y: MotionValue<number>;
   opacity: MotionValue<number>;
 } {

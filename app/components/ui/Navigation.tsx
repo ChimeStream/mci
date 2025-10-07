@@ -29,9 +29,12 @@ export function Navigation() {
     <>
       {/* Desktop Navigation - Matching Figma exactly with absolute positioning */}
       <div className="hidden md:block fixed left-1/2 -translate-x-1/2 z-40 w-[370px] h-[84px]" style={{ top: 'calc(100vh - 135px)' }}>
-        <div className="relative w-full h-full rounded-[42px] overflow-visible">
-          {/* Background with blur - matching Figma */}
-          <div className="absolute inset-0 backdrop-blur-[45px] bg-[rgba(84,84,84,0.1)] border border-white/40 rounded-[42px]" />
+        <div className="relative w-full h-full overflow-visible rounded-[42px] backdrop-blur-[60px] bg-white/[0.08] border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+          style={{
+            backdropFilter: 'blur(60px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+          }}
+        >
 
           {/* Navigation Items - Using exact Figma positions */}
           <a
@@ -69,7 +72,12 @@ export function Navigation() {
               className="relative w-full h-full"
               aria-label="Change language"
             >
-              <div className="absolute inset-0 backdrop-blur-[45px] bg-[rgba(84,84,84,0.1)] border border-white/40 rounded-full overflow-hidden hover:bg-white/[0.05] transition-all duration-200">
+              <div className="absolute inset-0 overflow-hidden hover:bg-white/[0.12] transition-all duration-200 rounded-full backdrop-blur-[60px] bg-white/[0.08] border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+                style={{
+                  backdropFilter: 'blur(60px) saturate(180%)',
+                  WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+                }}
+              >
                 <div className="w-full h-full flex items-center justify-center">
                   <Image
                     src="/a6418c247489ae4093402da9807b220411f0b962.png"
@@ -90,25 +98,32 @@ export function Navigation() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute bottom-full mb-2 right-0 w-[140px] backdrop-blur-[45px] bg-white/[0.08] border border-white/40 rounded-2xl overflow-hidden shadow-xl"
+                  className="absolute bottom-full mb-2 right-0 w-[140px] overflow-hidden shadow-xl"
                 >
-                  {Object.entries(languageLabels).map(([lang, label]) => (
-                    <button
-                      key={lang}
-                      onClick={() => {
-                        setLanguage(lang as Language);
-                        setIsLanguageDropdownOpen(false);
-                      }}
-                      className={`w-full px-4 py-3 font-inter text-[12px] text-left hover:bg-white/[0.15] transition-all duration-150 flex items-center gap-2 ${
-                        language === lang ? 'text-white font-bold bg-white/[0.1]' : 'text-white/75 font-normal'
-                      }`}
-                    >
-                      <span className="text-base">
-                        {lang === 'en' ? '🇬🇧' : lang === 'es' ? '🇪🇸' : lang === 'ru' ? '🇷🇺' : '🇸🇦'}
-                      </span>
-                      {label}
-                    </button>
-                  ))}
+                  <div className="w-full backdrop-blur-[60px] bg-white/[0.08] border border-white/30 rounded-2xl shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+                    style={{
+                      backdropFilter: 'blur(60px) saturate(180%)',
+                      WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+                    }}
+                  >
+                    {Object.entries(languageLabels).map(([lang, label]) => (
+                      <button
+                        key={lang}
+                        onClick={() => {
+                          setLanguage(lang as Language);
+                          setIsLanguageDropdownOpen(false);
+                        }}
+                        className={`w-full px-4 py-3 font-inter text-[12px] text-left hover:bg-white/[0.15] transition-all duration-150 flex items-center gap-2 ${
+                          language === lang ? 'text-white font-bold bg-white/[0.1]' : 'text-white/75 font-normal'
+                        }`}
+                      >
+                        <span className="text-base">
+                          {lang === 'en' ? '🇬🇧' : lang === 'es' ? '🇪🇸' : lang === 'ru' ? '🇷🇺' : '🇸🇦'}
+                        </span>
+                        {label}
+                      </button>
+                    ))}
+                  </div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -130,8 +145,12 @@ export function Navigation() {
       <div className="md:hidden fixed top-4 right-4 z-40">
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="w-12 h-12 flex items-center justify-center rounded-full backdrop-blur-[45px] bg-white/10 border border-white/40"
+          className="w-12 h-12 flex items-center justify-center rounded-full backdrop-blur-[60px] bg-white/10 border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
           aria-label="Toggle menu"
+          style={{
+            backdropFilter: 'blur(60px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+          }}
         >
           <svg
             width="24"
@@ -164,7 +183,11 @@ export function Navigation() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="absolute top-16 right-0 w-48 backdrop-blur-[45px] bg-white/15 border border-white/40 rounded-2xl p-4"
+              className="absolute top-16 right-0 w-48 backdrop-blur-[60px] bg-white/15 border border-white/30 rounded-2xl p-4 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+              style={{
+                backdropFilter: 'blur(60px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(60px) saturate(180%)',
+              }}
             >
               <div className="flex flex-col gap-4">
                 {navItems.map((item) => (
