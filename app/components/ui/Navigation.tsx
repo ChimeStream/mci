@@ -21,7 +21,7 @@ export function Navigation() {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
 
   // Sections with light backgrounds need dark text
-  const isLightBackground = activeSection === 'immersive';
+  const isLightBackground = activeSection === 'immersive' || activeSection === 'footer';
 
   const navItems = [
     { key: 'welcome', href: '#welcome', label: 'Welcome' },

@@ -10,6 +10,7 @@ import Image from 'next/image';
 export function Footer() {
   return (
     <footer
+      id="footer"
       className="relative w-full h-[323px] flex flex-col items-center justify-center bg-white"
       style={{
         fontFamily: 'Lato, sans-serif',
@@ -20,7 +21,8 @@ export function Footer() {
         <Image
           src="/6eac54c9da6549546babb7b1ad69a02d21e26c65.svg"
           alt="MCI"
-          fill
+          width={70}
+          height={28}
           className="object-contain"
         />
       </div>
