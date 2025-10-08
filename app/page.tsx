@@ -1,6 +1,7 @@
 'use client';
 
 import { Navigation } from '@/app/components/ui/Navigation';
+import { Footer } from '@/app/components/ui/Footer';
 import { HeroSection } from '@/app/components/sections/HeroSection';
 import { AboutSection } from '@/app/components/sections/AboutSection';
 import { VisionMissionSection } from '@/app/components/sections/VisionMissionSection';
@@ -21,6 +22,9 @@ export default function Home() {
       <ImmersiveSection />
       <JourneySection />
       <KeyServicesSection />
+
+      {/* Footer */}
+      <Footer />
     </main>
   );
 }

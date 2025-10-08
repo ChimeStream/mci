@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
+import { useActiveSection } from '@/app/hooks/useActiveSection';
 import { Language } from '@/app/utils/language-detector';
 import Image from 'next/image';
 
@@ -15,8 +16,12 @@ const languageLabels: Record<Language, string> = {
 
 export function Navigation() {
   const { t, language, setLanguage } = useLanguage();
+  const activeSection = useActiveSection();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+
+  // Sections with light backgrounds need dark text
+  const isLightBackground = activeSection === 'immersive';
 
   const navItems = [
     { key: 'welcome', href: '#welcome', label: 'Welcome' },
@@ -39,28 +44,44 @@ export function Navigation() {
           {/* Navigation Items - Using exact Figma positions */}
           <a
             href={navItems[0].href}
-            className="absolute left-[30px] top-[34px] font-inter font-bold text-[12px] leading-normal text-white transition-colors hover:text-white"
+            className={`absolute left-[30px] top-[34px] font-inter font-bold text-[12px] leading-normal transition-colors ${
+              isLightBackground
+                ? 'text-[#051C3D] hover:text-[#051C3D]'
+                : 'text-white hover:text-white'
+            }`}
           >
             {t.nav?.[navItems[0].key] || navItems[0].label}
           </a>
 
           <a
             href={navItems[1].href}
-            className="absolute left-[106px] top-[34px] font-inter font-normal text-[12px] leading-normal text-white/75 transition-colors hover:text-white"
+            className={`absolute left-[106px] top-[34px] font-inter font-normal text-[12px] leading-normal transition-colors ${
+              isLightBackground
+                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
+                : 'text-white/75 hover:text-white'
+            }`}
           >
             {t.nav?.[navItems[1].key] || navItems[1].label}
           </a>
 
           <a
             href={navItems[2].href}
-            className="absolute left-[164px] top-[34px] font-inter font-normal text-[12px] leading-normal text-white/75 transition-colors hover:text-white"
+            className={`absolute left-[164px] top-[34px] font-inter font-normal text-[12px] leading-normal transition-colors ${
+              isLightBackground
+                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
+                : 'text-white/75 hover:text-white'
+            }`}
           >
             {t.nav?.[navItems[2].key] || navItems[2].label}
           </a>
 
           <a
             href={navItems[3].href}
-            className="absolute left-[232px] top-[34px] font-inter font-normal text-[12px] leading-normal text-white/75 transition-colors hover:text-white"
+            className={`absolute left-[232px] top-[34px] font-inter font-normal text-[12px] leading-normal transition-colors ${
+              isLightBackground
+                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
+                : 'text-white/75 hover:text-white'
+            }`}
           >
             {t.nav?.[navItems[3].key] || navItems[3].label}
           </a>
