@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { Modal } from '@/app/components/ui/Modal';
-import { effects } from '@/app/styles/design-tokens';
+import { effects, responsive } from '@/app/styles/design-tokens';
 
 interface Service {
   key: string;
@@ -80,9 +80,10 @@ export function KeyServicesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: effects.animation.slow }}
-            className="text-[75px] font-black leading-normal text-white"
+            className="font-black leading-tight text-white text-center md:text-left"
             style={{
               fontFamily: 'var(--font-cairo), sans-serif',
+              fontSize: responsive.fontSize.sectionHeading,
             }}
           >
             {t.services?.title || 'KEY SERVICES'}
@@ -136,7 +137,8 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
   return (
     <div
       onClick={onClick}
-      className="relative w-full h-[338px] rounded-[30px] overflow-hidden cursor-pointer transition-all hover:scale-105 hover:shadow-2xl"
+      className="relative flex w-full cursor-pointer flex-col justify-end overflow-hidden rounded-[30px] transition-all hover:scale-[1.03] hover:shadow-2xl"
+      style={{ minHeight: 'clamp(240px, 60vw, 338px)' }}
     >
       {/* Background Image */}
       <img
@@ -149,10 +151,11 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
       <div className="absolute bottom-6 left-6 right-6 z-10">
         {/* Title */}
         <h3
-          className="font-bold leading-tight mb-2 text-white"
+          className="mb-2 font-bold leading-tight text-white"
           style={{
             fontFamily: 'Lato, sans-serif',
-            fontSize: '45px',
+            fontSize: responsive.fontSize.serviceTitle,
+            lineHeight: 1.05,
           }}
         >
           {service.title}
@@ -163,7 +166,8 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
           className="font-normal leading-normal text-white"
           style={{
             fontFamily: 'Lato, sans-serif',
-            fontSize: '24px',
+            fontSize: responsive.fontSize.serviceSubtitle,
+            lineHeight: 1.4,
           }}
         >
           {service.subtitle}
@@ -172,7 +176,7 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
 
       {/* Plus Button */}
       <button
-        className="absolute top-6 right-6 w-[54px] h-[54px] rounded-full flex items-center justify-center transition-all hover:scale-110 z-20"
+        className="absolute top-4 right-4 z-20 flex h-12 w-12 items-center justify-center rounded-full transition-all hover:scale-110 md:top-6 md:right-6 md:h-[54px] md:w-[54px]"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
           backdropFilter: 'blur(10px)',

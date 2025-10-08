@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { effects } from '@/app/styles/design-tokens';
+import { effects, responsive } from '@/app/styles/design-tokens';
 
 /**
  * Immersive Section Component
@@ -16,7 +16,7 @@ export function ImmersiveSection() {
   return (
     <section
       id="immersive"
-      className="relative w-full min-h-[1023px] flex items-center justify-center overflow-hidden snap-start snap-always"
+      className="relative flex w-full min-h-screen items-center justify-center overflow-hidden px-6 py-20 snap-start snap-always md:min-h-[1023px] md:px-10 md:py-24"
       style={{
         backgroundColor: '#FFFFFF',
       }}
@@ -33,7 +33,7 @@ export function ImmersiveSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center px-6 md:px-10 py-24">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center">
         <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-12">
           {/* Giant IMMERSIVE Title */}
           <motion.h2
@@ -41,9 +41,10 @@ export function ImmersiveSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: effects.animation.slow }}
-            className="relative text-[80px] font-black leading-[0.9] text-[#0288D1] md:text-[140px] lg:text-[180px] overflow-visible"
+            className="relative overflow-visible text-center font-black leading-[0.92] text-[#0288D1] md:text-left"
             style={{
               fontFamily: 'var(--font-cairo), var(--font-geist-sans), sans-serif',
+              fontSize: responsive.fontSize.displayLarge,
             }}
           >
             <span className="relative inline-block">
@@ -74,9 +75,11 @@ export function ImmersiveSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: effects.animation.slow, delay: 0.3 }}
-            className="text-sm leading-relaxed text-[#051C3D] opacity-80 md:text-base"
+            className="text-[#051C3D] opacity-80"
             style={{
               fontFamily: 'var(--font-cairo), var(--font-geist-sans), sans-serif',
+              fontSize: responsive.fontSize.bodyMd,
+              lineHeight: 1.6,
             }}
           >
             {t.immersive?.description ||

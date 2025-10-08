@@ -1,11 +1,12 @@
 import React from 'react';
-import { colors, spacing } from '@/app/styles/design-tokens';
+import { colors, layout, responsive } from '@/app/styles/design-tokens';
 
 interface SectionProps {
   id?: string;
   children: React.ReactNode;
   background?: 'navy' | 'darkNavy' | 'white' | 'transparent';
   pattern?: 'concentric' | 'dots' | 'none';
+  padding?: keyof typeof layout.padding;
   className?: string;
   minHeight?: string;
   fullHeight?: boolean;
@@ -19,6 +20,7 @@ export function Section({
   children,
   background = 'navy',
   pattern = 'none',
+  padding = 'desktop',
   className = '',
   minHeight,
   fullHeight = false,
@@ -29,6 +31,15 @@ export function Section({
     white: colors.neutral.white,
     transparent: 'transparent',
   }[background];
+
+  const horizontalPadding =
+    padding === 'wide'
+      ? responsive.spacing.sectionInlineWide
+      : responsive.spacing.sectionInline;
+
+  const blockPadding = fullHeight
+    ? responsive.spacing.sectionBlockFull
+    : responsive.spacing.sectionBlock;
 
   const getPatternStyle = () => {
     switch (pattern) {
@@ -54,8 +65,10 @@ export function Section({
       style={{
         backgroundColor,
         minHeight: fullHeight ? '100vh' : minHeight,
-        paddingTop: spacing.section.py.desktop,
-        paddingBottom: spacing.section.py.desktop,
+        paddingTop: blockPadding,
+        paddingBottom: blockPadding,
+        paddingLeft: horizontalPadding,
+        paddingRight: horizontalPadding,
       }}
     >
       {/* Background Pattern */}

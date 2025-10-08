@@ -36,8 +36,6 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  overflow-y: scroll;
   scrollbar-gutter: stable;
 }
 
@@ -48,7 +46,6 @@ body {
   width: 100%;
   min-height: 100vh;
   margin: 0;
-  overflow-x: hidden;
 }
 
 /* Force main and body to handle overflow correctly */
@@ -59,7 +56,6 @@ main {
 
 /* Ensure sections don't overflow horizontally */
 section {
-  overflow-x: hidden;
   width: 100%;
 }
 
@@ -126,17 +122,4 @@ section {
 .select-none {
   user-select: none;
   -webkit-user-select: none;
-}
-
-/* Hero heading specific styles - prevent any overrides */
-#welcome h1 {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-family: 'Lato', sans-serif !important;
-  font-size: 80px !important;
-  font-style: normal !important;
-  font-weight: 900 !important;
-  line-height: normal !important;
-  color: #FFF !important;
-  text-align: center !important;
 }

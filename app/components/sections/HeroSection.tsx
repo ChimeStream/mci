@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MCILogo } from '@/app/components/ui/MCILogo';
-import { colors } from '@/app/styles/design-tokens';
+import { colors, responsive } from '@/app/styles/design-tokens';
 
 /**
  * Hero Section Component
@@ -115,7 +115,7 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="welcome"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pb-20 md:px-10 md:pb-24 lg:px-16 snap-start snap-always"
+      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40 lg:px-16 snap-start snap-always"
       style={{ backgroundColor: colors.primary.darkNavy }}
     >
       {/* Background Image with blur */}
@@ -137,73 +137,81 @@ export function HeroSection() {
 
       {/* Logo - Blurs when VR person appears */}
       <motion.div
-        className="absolute left-1/2 top-[57px] z-30 -translate-x-1/2 sm:top-12"
+        className="absolute left-1/2 top-12 z-30 -translate-x-1/2 sm:top-16 md:top-12"
         style={{ filter: `blur(${textLogoBlur}px)` }}
       >
         <MCILogo />
       </motion.div>
 
-      {/* Mobile: Absolute positioned text */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ filter: `blur(${textLogoBlur}px)` }}
-        className="absolute left-[27px] top-[275px] z-30 h-[282px] w-[331px] md:hidden"
-      >
-        <h1
-          className="flex flex-col text-[58px] font-black leading-[70px] text-white"
-          style={{
-            fontFamily: 'Lato, sans-serif',
-          }}
-        >
-          <span>WELCOME</span>
-          <span>TO</span>
-          <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
-          <span>WORLD</span>
-        </h1>
-      </motion.div>
-
-      {/* Desktop: Centered text */}
-      <div className="relative z-30 hidden w-full max-w-[960px] flex-col items-center text-center md:flex">
+      <div className="relative z-30 flex w-full max-w-[960px] flex-col items-center">
+        {/* Mobile Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           style={{ filter: `blur(${textLogoBlur}px)` }}
-          className="flex w-full flex-col gap-6"
+          className="flex w-full flex-col items-center text-center md:hidden"
         >
           <h1
-            className="flex flex-col items-center text-center text-5xl font-black leading-[1.1] text-white lg:text-[80px]"
+            className="flex flex-col text-white font-black"
             style={{
               fontFamily: 'Lato, sans-serif',
+              fontSize: responsive.fontSize.heroMobile,
+              lineHeight: 1.12,
+              letterSpacing: '-0.01em',
             }}
           >
-            <span>WELCOME TO</span>
-            <span className="mt-2 flex items-center justify-center gap-4">
-              <RotatingWord titles={titles} titleNumber={titleNumber} position="center" />
-              <span>WORLD</span>
-            </span>
+            <span>WELCOME</span>
+            <span>TO</span>
+            <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
+            <span>WORLD</span>
           </h1>
         </motion.div>
-      </div>
 
-      {/* Mobile VR illustration - Absolute positioned */}
-      <div className="absolute left-[19px] bottom-0 z-20 w-[436px] md:hidden">
-        <div className="pointer-events-none absolute inset-x-0 bottom-6 z-0 mx-auto h-[240px] w-[240px] rounded-full bg-gradient-to-t from-[#031138]/70 via-[#001a3f]/45 to-transparent blur-[90px]" />
-        <Image
-          src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
-          alt="Person wearing VR headset"
-          width={436}
-          height={558}
-          className="relative z-10 h-auto w-full object-contain drop-shadow-[0_32px_70px_rgba(0,10,40,0.55)]"
-          priority
-        />
+        {/* Desktop: Centered text */}
+        <div className="hidden w-full flex-col items-center text-center md:flex">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{ filter: `blur(${textLogoBlur}px)` }}
+            className="flex w-full flex-col gap-6"
+          >
+            <h1
+              className="flex flex-col items-center text-center font-black text-white"
+              style={{
+                fontFamily: 'Lato, sans-serif',
+                fontSize: responsive.fontSize.heroDesktop,
+                lineHeight: 1.1,
+                letterSpacing: '-0.015em',
+              }}
+            >
+              <span>WELCOME TO</span>
+              <span className="mt-2 flex flex-wrap items-center justify-center gap-4">
+                <RotatingWord titles={titles} titleNumber={titleNumber} position="center" />
+                <span>WORLD</span>
+              </span>
+            </h1>
+          </motion.div>
+        </div>
+
+        {/* Mobile VR illustration */}
+        <div className="relative mt-10 flex w-full justify-center md:hidden">
+          <div className="pointer-events-none absolute inset-x-0 bottom-[-40px] mx-auto h-52 w-52 rounded-full bg-gradient-to-t from-[#031138]/70 via-[#001a3f]/45 to-transparent blur-[90px]" />
+          <Image
+            src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
+            alt="Person wearing VR headset"
+            width={436}
+            height={558}
+            className="relative z-10 h-auto w-full max-w-[360px] sm:max-w-[420px] object-contain drop-shadow-[0_32px_70px_rgba(0,10,40,0.55)]"
+            priority
+          />
+        </div>
       </div>
 
       {/* VR Person - Desktop - Foreground (z-50) */}
       <motion.div
-        className="pointer-events-none absolute inset-x-0 bottom-[-6%] hidden justify-center md:flex"
+        className="pointer-events-none absolute inset-x-0 bottom-0 hidden justify-center md:flex"
         style={{
           y: vrPersonY,
           opacity: vrPersonOpacity,

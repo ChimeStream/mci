@@ -204,3 +204,26 @@ export const zIndex = {
   popover: 50,
   tooltip: 60,
 } as const;
+
+export const responsive = {
+  fontSize: {
+    heroMobile: 'clamp(2.5rem, 8.5vw, 3.75rem)',
+    heroDesktop: 'clamp(3.25rem, 7vw, 5rem)',
+    sectionHeading: 'clamp(2.25rem, 6.5vw, 4.6875rem)',
+    serviceTitle: 'clamp(1.75rem, 5vw, 2.8125rem)',
+    serviceSubtitle: 'clamp(1rem, 3.2vw, 1.5rem)',
+    display: 'clamp(3.5rem, 10vw, 7.5rem)',
+    displayLarge: 'clamp(4rem, 12vw, 11.25rem)',
+    bodyLg: 'clamp(1rem, 3vw, 1.5625rem)',
+    bodyMd: 'clamp(0.875rem, 2.5vw, 1.125rem)',
+    bodySm: 'clamp(0.8125rem, 2vw, 0.9375rem)',
+  },
+  spacing: {
+    sectionInlineCompact: 'clamp(1.5rem, 4vw, 2rem)',
+    sectionInlineComfort: 'clamp(1.5rem, 6vw, 3.5rem)',
+    sectionInline: 'clamp(1.5rem, 8vw, 6rem)',
+    sectionInlineWide: 'clamp(2rem, 10vw, 11.375rem)',
+    sectionBlock: 'clamp(3rem, 8vw, 5rem)',
+    sectionBlockFull: 'clamp(4rem, 12vh, 6rem)',
+  },
+} as const;

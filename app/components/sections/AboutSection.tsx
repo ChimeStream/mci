@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
+import { responsive } from '@/app/styles/design-tokens';
 
 /**
  * About Section Component - Rebuilt to match Figma exactly
@@ -42,7 +43,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden snap-start snap-always"
+      className="relative flex w-full flex-col justify-center overflow-hidden py-16 md:min-h-screen md:py-24 md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -60,19 +61,19 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 w-full flex flex-col items-center justify-center px-6 md:px-10 py-24">
-        <div className="w-full max-w-[1076px] flex flex-col gap-12">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center px-6 md:px-10">
+        <div className="w-full max-w-[1076px] flex flex-col gap-12 md:gap-14">
           {/* Header: Title + Play Button */}
-          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center text-white uppercase sm:text-left"
+              className="text-white uppercase"
               style={{
                 fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
-                fontSize: 'clamp(48px, 6vw, 75px)',
+                fontSize: responsive.fontSize.sectionHeading,
                 fontWeight: 900,
                 lineHeight: '1.15',
                 letterSpacing: '-0.01em',
@@ -107,13 +108,15 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center sm:text-left"
+            className="mx-auto max-w-[640px] text-center sm:mx-0 sm:max-w-none sm:text-left"
           >
             <p
-              className="text-white/80 text-sm md:text-base leading-[25px]"
+              className="text-white/80"
               style={{
                 fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
                 fontWeight: 400,
+                fontSize: responsive.fontSize.bodyMd,
+                lineHeight: 1.6,
               }}
             >
               {t.about?.description}
@@ -122,7 +125,7 @@ export function AboutSection() {
 
           {/* Stats Grid */}
           <div
-            className="w-full grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6 place-items-center xl:place-items-stretch"
+            className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -155,9 +158,10 @@ interface StatCardProps {
 function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
   return (
     <div
-      className="relative w-full max-w-[320px] sm:max-w-none xl:w-[260px] h-[162px] overflow-hidden rounded-[10px] border border-white/20 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+      className="relative w-full max-w-full overflow-hidden rounded-[18px] border border-white/20 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:border-white/40 hover:bg-white/10 sm:max-w-none lg:max-w-[320px] xl:w-[260px]"
       style={{
         backdropFilter: 'blur(18px)',
+        minHeight: 'clamp(150px, 45vw, 188px)',
       }}
     >
       <div
@@ -175,9 +179,10 @@ function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
 
         {/* Title */}
         <h3
-          className="text-white text-sm font-semibold leading-tight"
+          className="text-white font-semibold leading-tight"
           style={{
             fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
+            fontSize: responsive.fontSize.bodyMd,
           }}
         >
           {title}
@@ -185,9 +190,10 @@ function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
 
         {/* Subtitle */}
         <p
-          className="text-white/70 text-xs leading-tight"
+          className="text-white/70 leading-tight"
           style={{
             fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
+            fontSize: responsive.fontSize.bodySm,
           }}
         >
           {subtitle}

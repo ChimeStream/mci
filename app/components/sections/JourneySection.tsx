@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { colors, effects } from '@/app/styles/design-tokens';
+import { colors, effects, responsive } from '@/app/styles/design-tokens';
 import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
 
 const journeyData = [
@@ -41,11 +41,9 @@ export function JourneySection() {
   return (
     <div
       id="journey"
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full overflow-hidden py-16 md:min-h-screen md:py-24 md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
-        padding: 0,
-        margin: 0,
       }}
     >
       {/* Background Layers */}
@@ -70,7 +68,7 @@ export function JourneySection() {
         />
       </div>
 
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 md:px-10">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center px-6 md:px-10">
         <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-12">
           {/* Title */}
           <motion.div
@@ -80,29 +78,72 @@ export function JourneySection() {
             transition={{ duration: effects.animation.slow }}
           >
             <h2
-              className="text-[75px] font-black leading-normal"
+              className="text-center font-black leading-tight md:text-left"
               style={{
                 fontFamily: 'var(--font-cairo), sans-serif',
                 color: '#0095DA',
+                fontSize: responsive.fontSize.sectionHeading,
               }}
             >
               {t.journey?.title || 'OUR JOURNEY'}
             </h2>
           </motion.div>
 
-          {/* Circular Timeline */}
-          <div className="relative w-full h-[600px] md:h-[700px]">
-            <CircularTimeline
-              items={journeyData}
-              radius={600}
-              rotation={rotation}
-              onRotationChange={setRotation}
-              className="h-full"
-            />
+          {/* Circular Timeline - Desktop */}
+          <div className="relative hidden w-full md:block">
+            <div className="h-[520px] lg:h-[640px] xl:h-[700px]">
+              <CircularTimeline
+                items={journeyData}
+                radius={520}
+                rotation={rotation}
+                onRotationChange={setRotation}
+                className="h-full"
+              />
+            </div>
 
             {/* Arrow Buttons */}
             <ArrowButton direction="prev" onClick={handlePrev} />
             <ArrowButton direction="next" onClick={handleNext} />
+          </div>
+
+          {/* Timeline List - Mobile */}
+          <div className="md:hidden">
+            <p
+              className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-[#0095DA]/70"
+              style={{ fontFamily: 'var(--font-cairo), sans-serif' }}
+            >
+              {t.journey?.subtitle || 'Milestones'}
+            </p>
+            <div className="relative pl-8">
+              <span className="absolute left-4 top-1 bottom-8 w-px bg-white/15" aria-hidden="true" />
+              <div className="space-y-6">
+                {journeyData.map((item, index) => (
+                  <div key={`${item.year}-${index}`} className="relative">
+                    <span
+                      className="absolute left-4 top-4 h-3 w-3 -translate-x-1/2 rounded-full bg-[#0095DA]"
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="rounded-2xl bg-[#00162E]/90 p-5 shadow-xl backdrop-blur-lg"
+                      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
+                    >
+                      <div
+                        className="text-2xl font-bold text-white"
+                        style={{ fontFamily: 'Lato, sans-serif' }}
+                      >
+                        {item.year}
+                      </div>
+                      <p
+                        className="mt-2 text-sm leading-relaxed text-white/80"
+                        style={{ fontFamily: 'Lato, sans-serif' }}
+                      >
+                        {item.event}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

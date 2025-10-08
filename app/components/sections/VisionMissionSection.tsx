@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { effects } from '@/app/styles/design-tokens';
+import { effects, responsive } from '@/app/styles/design-tokens';
 
 /**
  * Vision & Mission Section Component
@@ -84,17 +84,21 @@ export function VisionMissionSection() {
             className="text-center"
           >
             <h2
-              className="mb-8 text-[75px] font-black leading-[141px] text-white"
+              className="mb-8 font-black text-white"
               style={{
                 fontFamily: 'Cairo, sans-serif',
+                fontSize: responsive.fontSize.sectionHeading,
+                lineHeight: 1.3,
               }}
             >
               {t.vision?.title || 'OUR VISION'}
             </h2>
             <p
-              className="mx-auto max-w-[1076px] text-center text-[25px] font-normal leading-[25px] text-white"
+              className="mx-auto max-w-[1076px] text-center font-normal text-white"
               style={{
                 fontFamily: 'Cairo, sans-serif',
+                fontSize: responsive.fontSize.bodyLg,
+                lineHeight: 1.6,
               }}
             >
               {t.vision?.description}
@@ -110,17 +114,21 @@ export function VisionMissionSection() {
             className="text-center"
           >
             <h2
-              className="mb-8 text-[75px] font-black leading-[141px] text-white"
+              className="mb-8 font-black text-white"
               style={{
                 fontFamily: 'Cairo, sans-serif',
+                fontSize: responsive.fontSize.sectionHeading,
+                lineHeight: 1.3,
               }}
             >
               {t.mission?.title || 'OUR MISSION'}
             </h2>
             <p
-              className="mx-auto max-w-[1076px] text-center text-[25px] font-normal leading-[30px] text-white"
+              className="mx-auto max-w-[1076px] text-center font-normal text-white"
               style={{
                 fontFamily: 'Cairo, sans-serif',
+                fontSize: responsive.fontSize.bodyLg,
+                lineHeight: 1.6,
               }}
             >
               {t.mission?.description}
@@ -130,7 +138,7 @@ export function VisionMissionSection() {
       </div>
 
       {/* Content - Mobile (Responsive) */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 py-20 min-h-screen flex items-center md:hidden">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] items-center px-6 py-20 md:hidden">
         <div className="space-y-16">
           {/* Vision */}
           <motion.div
@@ -140,10 +148,16 @@ export function VisionMissionSection() {
             transition={{ duration: effects.animation.slow }}
             className="text-center"
           >
-            <h2 className="mb-6 text-4xl font-black text-white" style={{ fontFamily: 'Cairo, sans-serif' }}>
+            <h2
+              className="mb-6 font-black text-white"
+              style={{ fontFamily: 'Cairo, sans-serif', fontSize: responsive.fontSize.sectionHeading, lineHeight: 1.2 }}
+            >
               {t.vision?.title || 'OUR VISION'}
             </h2>
-            <p className="text-lg text-white opacity-90" style={{ fontFamily: 'Cairo, sans-serif' }}>
+            <p
+              className="text-white opacity-90"
+              style={{ fontFamily: 'Cairo, sans-serif', fontSize: responsive.fontSize.bodyMd, lineHeight: 1.6 }}
+            >
               {t.vision?.description}
             </p>
           </motion.div>
@@ -156,10 +170,16 @@ export function VisionMissionSection() {
             transition={{ duration: effects.animation.slow, delay: 0.3 }}
             className="text-center"
           >
-            <h2 className="mb-6 text-4xl font-black text-white" style={{ fontFamily: 'Cairo, sans-serif' }}>
+            <h2
+              className="mb-6 font-black text-white"
+              style={{ fontFamily: 'Cairo, sans-serif', fontSize: responsive.fontSize.sectionHeading, lineHeight: 1.2 }}
+            >
               {t.mission?.title || 'OUR MISSION'}
             </h2>
-            <p className="text-lg text-white opacity-90" style={{ fontFamily: 'Cairo, sans-serif' }}>
+            <p
+              className="text-white opacity-90"
+              style={{ fontFamily: 'Cairo, sans-serif', fontSize: responsive.fontSize.bodyMd, lineHeight: 1.6 }}
+            >
               {t.mission?.description}
             </p>
           </motion.div>
