@@ -4,7 +4,9 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Slider from 'react-slick';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { GlassCard } from '@/app/components/ui/GlassCard';
+import { Section } from '@/app/components/layout/Section';
+import { Heading, Text } from '@/app/components/ui/Typography';
+import { colors, typography, spacing, effects } from '@/app/styles/design-tokens';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -23,34 +25,10 @@ const journeyData = [
   { year: '2025', event: 'Immersive communication ecosystem' },
 ];
 
-function NextArrow({ onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors flex items-center justify-center"
-      aria-label="Next slide"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
-    </button>
-  );
-}
-
-function PrevArrow({ onClick }: any) {
-  return (
-    <button
-      onClick={onClick}
-      className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-colors flex items-center justify-center"
-      aria-label="Previous slide"
-    >
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-white">
-        <polyline points="15 18 9 12 15 6" />
-      </svg>
-    </button>
-  );
-}
-
+/**
+ * Journey Section Component
+ * Displays company timeline with horizontal carousel
+ */
 export function JourneySection() {
   const { t } = useLanguage();
   const sliderRef = useRef<Slider>(null);
@@ -62,8 +40,8 @@ export function JourneySection() {
     slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: false,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <ArrowButton direction="next" />,
+    prevArrow: <ArrowButton direction="prev" />,
     swipe: true,
     swipeToSlide: true,
     responsive: [
@@ -79,62 +57,131 @@ export function JourneySection() {
         settings: {
           slidesToShow: 1,
           centerMode: false,
-          arrows: false,
         },
       },
     ],
   };
 
   return (
-    <section
+    <Section
       id="journey"
-      className="relative min-h-screen w-full py-20 px-4 md:px-8 bg-gradient-to-b from-white via-[#e3f2fd] to-[#bbdefb]"
+      background="navy"
+      minHeight="auto"
     >
-      <div className="max-w-7xl mx-auto w-full">
+      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[182px]">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: effects.animation.slow }}
+          className="mb-12"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-cyan-600 mb-4">
-            {t.journey?.title}
-          </h2>
-          <div className="w-24 h-1 bg-cyan-400 mx-auto rounded-full" />
+          <Heading size="4xl" className="md:text-[64px]">
+            {t.journey?.title || 'OUR JOURNEY'}
+          </Heading>
         </motion.div>
 
-        {/* Carousel */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative overflow-hidden w-full"
-          style={{ margin: '0 auto' }}
-        >
+        {/* Timeline Carousel */}
+        <div className="relative px-12">
           <Slider ref={sliderRef} {...settings}>
             {journeyData.map((item, index) => (
               <div key={index} className="px-3">
-                <GlassCard className="h-64 flex flex-col items-center justify-center text-center">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    <div className="text-5xl font-bold text-cyan-600 mb-4">
-                      {item.year}
-                    </div>
-                    <p className="text-gray-800 text-lg font-medium px-4">
-                      {item.event}
-                    </p>
-                  </motion.div>
-                </GlassCard>
+                <TimelineCard year={item.year} event={item.event} />
               </div>
             ))}
           </Slider>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </Section>
+  );
+}
+
+/**
+ * Timeline Card Component
+ */
+interface TimelineCardProps {
+  year: string;
+  event: string;
+}
+
+function TimelineCard({ year, event }: TimelineCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: effects.animation.slow }}
+      className="rounded-lg border p-6 h-[200px] flex flex-col justify-between transition-all hover:scale-105"
+      style={{
+        borderColor: colors.neutral.gray[200],
+        backgroundColor: colors.neutral.gray[50],
+        backdropFilter: 'blur(10px)',
+      }}
+    >
+      {/* Year */}
+      <div
+        style={{
+          fontFamily: typography.fontFamily.primary,
+          fontSize: typography.fontSize['3xl'],
+          fontWeight: typography.fontWeight.black,
+          color: colors.accent.cyan,
+          lineHeight: typography.lineHeight.tight,
+        }}
+      >
+        "{year}"
+      </div>
+
+      {/* Event */}
+      <p
+        style={{
+          fontFamily: typography.fontFamily.primary,
+          fontSize: typography.fontSize.sm,
+          fontWeight: typography.fontWeight.normal,
+          color: colors.neutral.white,
+          opacity: 0.85,
+          lineHeight: typography.lineHeight.snug,
+          margin: 0,
+        }}
+      >
+        {event}
+      </p>
+    </motion.div>
+  );
+}
+
+/**
+ * Arrow Button Component
+ */
+interface ArrowButtonProps {
+  onClick?: () => void;
+  direction: 'prev' | 'next';
+}
+
+function ArrowButton({ onClick, direction }: ArrowButtonProps) {
+  const isNext = direction === 'next';
+  const position = isNext ? 'right-4' : 'left-4';
+
+  return (
+    <button
+      onClick={onClick}
+      className={`absolute ${position} top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110`}
+      style={{
+        backgroundColor: colors.neutral.gray[100],
+        backdropFilter: 'blur(10px)',
+      }}
+      aria-label={isNext ? 'Next slide' : 'Previous slide'}
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke={colors.neutral.white}
+        strokeWidth="2"
+      >
+        <polyline points={isNext ? '9 18 15 12 9 6' : '15 18 9 12 15 6'} />
+      </svg>
+    </button>
   );
 }

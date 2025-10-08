@@ -3,43 +3,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { VideoPlayer } from '@/app/components/ui/VideoPlayer';
-import { GlassCard } from '@/app/components/ui/GlassCard';
+import { Heading, Text } from '@/app/components/ui/Typography';
+import { effects } from '@/app/styles/design-tokens';
 
+/**
+ * Vision & Mission Section Component
+ * Displays company vision and mission with background image
+ */
 export function VisionMissionSection() {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Background Video */}
+    <section className="relative min-h-[994px] w-full overflow-hidden flex items-center justify-center">
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <VideoPlayer
-          srcDesktop="/assets/videos/vision-desktop.mp4"
-          srcMobile="/assets/videos/vision-mobile.mp4"
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('/ezgif-4880d1597b211d.jpg')`,
+          }}
         />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full py-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto w-full space-y-16">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[182px] py-20">
+        <div className="space-y-16 md:space-y-24">
           {/* Vision */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            transition={{ duration: effects.animation.slow }}
+            className="text-center max-w-[1076px] mx-auto"
           >
-            <GlassCard className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                {t.vision?.title}
-              </h2>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-                {t.vision?.description}
-              </p>
-            </GlassCard>
+            <Heading size="4xl" className="md:text-[64px] mb-6">
+              {t.vision?.title || 'OUR VISION'}
+            </Heading>
+            <Text size="sm" className="md:text-base" opacity={0.9}>
+              {t.vision?.description}
+            </Text>
           </motion.div>
 
           {/* Mission */}
@@ -47,17 +51,15 @@ export function VisionMissionSection() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-center"
+            transition={{ duration: effects.animation.slow, delay: 0.3 }}
+            className="text-center max-w-[1076px] mx-auto"
           >
-            <GlassCard className="p-8 md:p-12">
-              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                {t.mission?.title}
-              </h2>
-              <p className="text-white/90 text-lg md:text-xl leading-relaxed">
-                {t.mission?.description}
-              </p>
-            </GlassCard>
+            <Heading size="4xl" className="md:text-[64px] mb-6">
+              {t.mission?.title || 'OUR MISSION'}
+            </Heading>
+            <Text size="sm" className="md:text-base" opacity={0.9}>
+              {t.mission?.description}
+            </Text>
           </motion.div>
         </div>
       </div>
