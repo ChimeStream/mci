@@ -149,8 +149,8 @@ export function HeroSection() {
           }}
         >
           <span>WELCOME TO</span>
-          <span className="flex items-center justify-center" style={{ minHeight: '1.2em' }}>
-            <span className="relative inline-block overflow-hidden" style={{ minWidth: '500px' }}>
+          <span className="flex items-center justify-center gap-4" style={{ minHeight: '1.2em' }}>
+            <span className="relative overflow-hidden" style={{ display: 'inline-block', minWidth: '400px', maxWidth: '600px' }}>
               {titles.map((title, index) => (
                 <motion.span
                   key={index}
@@ -167,7 +167,7 @@ export function HeroSection() {
                 </motion.span>
               ))}
             </span>
-            <span className="ml-4">WORLD</span>
+            <span>WORLD</span>
           </span>
         </h1>
       </motion.div>
