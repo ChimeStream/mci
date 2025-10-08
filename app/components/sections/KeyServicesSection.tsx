@@ -2,31 +2,59 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { Section } from '@/app/components/layout/Section';
-import { Heading, Text } from '@/app/components/ui/Typography';
 import { Modal } from '@/app/components/ui/Modal';
-import { colors, typography, effects } from '@/app/styles/design-tokens';
+import { effects } from '@/app/styles/design-tokens';
 
 interface Service {
   key: string;
-  icon: string;
-  modalContent?: React.ReactNode;
+  title: string;
+  subtitle: string;
+  image: string;
 }
 
 const services: Service[] = [
-  { key: '5g', icon: '/assets/images/services/5g.svg' },
-  { key: 'fintech', icon: '/assets/images/services/fintech.svg' },
-  { key: 'platforms', icon: '/assets/images/services/platforms.svg' },
-  { key: 'kids', icon: '/assets/images/services/kids.svg' },
-  { key: 'b2b', icon: '/assets/images/services/b2b.svg' },
-  { key: 'sim', icon: '/assets/images/services/sim.svg' },
+  {
+    key: '5g',
+    title: '5.5G',
+    subtitle: 'Future-ready connectivity',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
+  {
+    key: 'fintech',
+    title: 'Fintech',
+    subtitle: 'Secure digital finance solutions',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
+  {
+    key: 'platforms',
+    title: 'Platforms',
+    subtitle: 'Education, entertainment, health, e-commerce',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
+  {
+    key: 'kids',
+    title: 'Kids & Teen',
+    subtitle: 'Safe and empowering ecosystem',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
+  {
+    key: 'b2b',
+    title: 'B2B & B2G',
+    subtitle: 'Enabling smart enterprises and government',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
+  {
+    key: 'sim',
+    title: 'SIM Card',
+    subtitle: 'Flexible communication for all needs',
+    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+  },
 ];
 
 /**
  * Key Services Section Component
- * Displays company services with modal interactions
+ * Displays company services in a 2x3 grid with modal interactions
  */
 export function KeyServicesSection() {
   const { t } = useLanguage();
@@ -35,48 +63,48 @@ export function KeyServicesSection() {
   const closeModal = () => setSelectedService(null);
 
   return (
-    <Section
+    <div
       id="services"
-      background="transparent"
-      minHeight="100vh"
-      className="bg-gradient-to-b from-[#bbdefb] via-[#64b5f6] to-[#2196f3]"
+      className="relative w-full min-h-screen overflow-hidden"
+      style={{
+        backgroundColor: '#0095DA',
+        padding: 0,
+        margin: 0,
+      }}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[182px]">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: effects.animation.slow }}
-          className="text-center mb-16"
-        >
-          <Heading size="4xl" className="md:text-[64px] mb-4">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 md:px-10 py-24">
+        <div className="w-full max-w-[1076px] flex flex-col gap-16">
+          {/* Title */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: effects.animation.slow }}
+            className="text-[75px] font-black leading-normal text-white"
+            style={{
+              fontFamily: 'var(--font-cairo), sans-serif',
+            }}
+          >
             {t.services?.title || 'KEY SERVICES'}
-          </Heading>
-          <div
-            className="w-24 h-1 mx-auto rounded-full"
-            style={{ backgroundColor: colors.neutral.white }}
-          />
-        </motion.div>
+          </motion.h2>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: effects.animation.slow, delay: 0.1 * index }}
-            >
-              <ServiceCard
-                service={service}
-                onClick={() => setSelectedService(service.key)}
-                title={t.services?.[service.key]?.title}
-                subtitle={t.services?.[service.key]?.subtitle}
-              />
-            </motion.div>
-          ))}
+          {/* Services Grid - 2 rows x 3 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: effects.animation.slow, delay: 0.1 * index }}
+              >
+                <ServiceCard
+                  service={service}
+                  onClick={() => setSelectedService(service.key)}
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -85,14 +113,14 @@ export function KeyServicesSection() {
         <Modal
           isOpen={true}
           onClose={closeModal}
-          title={t.services?.[selectedService]?.title || ''}
+          title={services.find(s => s.key === selectedService)?.title || ''}
         >
-          <Text size="base">
+          <p className="text-white text-base">
             {t.services?.[selectedService]?.description}
-          </Text>
+          </p>
         </Modal>
       )}
-    </Section>
+    </div>
   );
 }
 
@@ -101,73 +129,58 @@ export function KeyServicesSection() {
  */
 interface ServiceCardProps {
   service: Service;
-  title?: string;
-  subtitle?: string;
   onClick: () => void;
 }
 
-function ServiceCard({ service, title, subtitle, onClick }: ServiceCardProps) {
+function ServiceCard({ service, onClick }: ServiceCardProps) {
   return (
     <div
       onClick={onClick}
-      className="h-80 rounded-lg border flex flex-col items-center justify-center text-center cursor-pointer transition-all hover:scale-105 hover:shadow-xl p-6"
-      style={{
-        backgroundColor: colors.neutral.gray[50],
-        borderColor: colors.neutral.gray[200],
-        backdropFilter: 'blur(10px)',
-      }}
+      className="relative w-full h-[338px] rounded-[30px] overflow-hidden cursor-pointer transition-all hover:scale-105 hover:shadow-2xl"
     >
-      {/* Service Icon */}
-      <div className="w-32 h-32 mb-6 relative">
-        <Image
-          src={service.icon}
-          alt={title || ''}
-          fill
-          className="object-contain"
-        />
+      {/* Background Image */}
+      <img
+        src={service.image}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+      />
+
+      {/* Content */}
+      <div className="absolute bottom-6 left-6 right-6 z-10">
+        {/* Title */}
+        <h3
+          className="font-bold leading-tight mb-2 text-white"
+          style={{
+            fontFamily: 'Lato, sans-serif',
+            fontSize: '45px',
+          }}
+        >
+          {service.title}
+        </h3>
+
+        {/* Subtitle */}
+        <p
+          className="font-normal leading-normal text-white"
+          style={{
+            fontFamily: 'Lato, sans-serif',
+            fontSize: '24px',
+          }}
+        >
+          {service.subtitle}
+        </p>
       </div>
 
-      {/* Service Title */}
-      <h3
+      {/* Plus Button */}
+      <button
+        className="absolute top-6 right-6 w-[54px] h-[54px] rounded-full flex items-center justify-center transition-all hover:scale-110 z-20"
         style={{
-          fontFamily: typography.fontFamily.primary,
-          fontSize: typography.fontSize.xl,
-          fontWeight: typography.fontWeight.bold,
-          color: colors.neutral.white,
-          lineHeight: typography.lineHeight.tight,
-          marginBottom: '0.5rem',
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(10px)',
         }}
+        aria-label={`Learn more about ${service.title}`}
       >
-        {title}
-      </h3>
-
-      {/* Service Subtitle */}
-      <p
-        style={{
-          fontFamily: typography.fontFamily.primary,
-          fontSize: typography.fontSize.sm,
-          fontWeight: typography.fontWeight.normal,
-          color: colors.neutral.white,
-          opacity: 0.8,
-          lineHeight: typography.lineHeight.snug,
-          margin: 0,
-        }}
-      >
-        {subtitle}
-      </p>
-
-      {/* Arrow Icon */}
-      <svg
-        className="mt-4"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke={colors.neutral.white}
-        strokeWidth="2"
-      >
-        <polyline points="9 18 15 12 9 6" />
-      </svg>
+        <span className="text-white text-[30px] font-normal leading-none">+</span>
+      </button>
     </div>
   );
 }
