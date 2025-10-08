@@ -217,13 +217,15 @@ interface RotatingWordProps {
 }
 
 function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
-  const containerStyle = position === 'center'
-    ? { minWidth: '500px', height: '1.2em' }
-    : { height: '1.2em' };
+  const containerStyle =
+    position === 'center'
+      ? { minWidth: '500px', height: '1.2em' }
+      : { height: '1.2em' };
 
-  const wordStyle = position === 'center'
-    ? 'absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap'
-    : 'absolute left-0 top-0 whitespace-nowrap';
+  const wordStyle =
+    position === 'center'
+      ? 'absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap'
+      : 'absolute left-0 top-0 whitespace-nowrap';
 
   return (
     <span className="relative overflow-visible inline-block" style={containerStyle}>
