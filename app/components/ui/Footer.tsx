@@ -17,7 +17,7 @@ export function Footer() {
       }}
     >
       {/* MCI Logo */}
-      <div className="relative w-[70px] h-[28px] mb-4">
+      <div className="relative w-[70px] h-[28px] mb-[18px]">
         <Image
           src="/6eac54c9da6549546babb7b1ad69a02d21e26c65.svg"
           alt="MCI"
@@ -29,10 +29,11 @@ export function Footer() {
 
       {/* Copyright Text */}
       <p
-        className="text-[10px] text-[#808080] leading-normal text-center"
+        className="text-[10px] leading-[12px] text-center"
         style={{
           fontFamily: 'Lato, sans-serif',
           fontWeight: 300,
+          color: '#808080',
         }}
       >
         Copyright © 2025 MCI. All rights reserved.
