@@ -63,13 +63,13 @@ export function AboutSection() {
       <div className="relative z-10 w-full flex flex-col items-center justify-center px-6 md:px-10 py-24">
         <div className="w-full max-w-[1076px] flex flex-col gap-12">
           {/* Header: Title + Play Button */}
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:justify-between sm:text-left">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-white uppercase"
+              className="text-center text-white uppercase sm:text-left"
               style={{
                 fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
                 fontSize: 'clamp(48px, 6vw, 75px)',
@@ -83,11 +83,12 @@ export function AboutSection() {
 
             {/* Play Button */}
             <motion.button
+              type="button"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="flex-shrink-0 w-[60px] h-[60px] rounded-full border border-white/40 flex items-center justify-center hover:bg-white/10 transition-all duration-300"
+              className="flex h-[60px] w-[60px] items-center justify-center rounded-full border border-white/40 hover:bg-white/10 transition-all duration-300"
               aria-label="Play about video"
             >
               <Image
@@ -106,6 +107,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center sm:text-left"
           >
             <p
               className="text-white/80 text-sm md:text-base leading-[25px]"
@@ -153,7 +155,7 @@ interface StatCardProps {
 function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
   return (
     <div
-      className="relative w-full xl:w-[260px] h-[162px] overflow-hidden rounded-[10px] border border-white/20 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:border-white/40 hover:bg-white/10"
+      className="relative w-full max-w-[320px] sm:max-w-none xl:w-[260px] h-[162px] overflow-hidden rounded-[10px] border border-white/20 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:border-white/40 hover:bg-white/10"
       style={{
         backdropFilter: 'blur(18px)',
       }}
