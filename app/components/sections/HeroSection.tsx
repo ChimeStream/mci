@@ -149,22 +149,25 @@ export function HeroSection() {
           }}
         >
           <span>WELCOME TO</span>
-          <span className="relative w-full flex justify-center overflow-hidden" style={{ minHeight: '1.2em' }}>
-            {titles.map((title, index) => (
-              <motion.span
-                key={index}
-                className="absolute top-0 whitespace-nowrap"
-                initial={{ opacity: 0, y: -100 }}
-                transition={{ type: 'spring', stiffness: 50 }}
-                animate={
-                  titleNumber === index
-                    ? { y: 0, opacity: 1 }
-                    : { y: titleNumber > index ? -150 : 150, opacity: 0 }
-                }
-              >
-                {title.toUpperCase()} WORLD
-              </motion.span>
-            ))}
+          <span className="flex items-center justify-center" style={{ minHeight: '1.2em' }}>
+            <span className="relative inline-block overflow-hidden" style={{ minWidth: '500px' }}>
+              {titles.map((title, index) => (
+                <motion.span
+                  key={index}
+                  className="absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap"
+                  initial={{ opacity: 0, y: -100 }}
+                  transition={{ type: 'spring', stiffness: 50 }}
+                  animate={
+                    titleNumber === index
+                      ? { y: 0, opacity: 1 }
+                      : { y: titleNumber > index ? -150 : 150, opacity: 0 }
+                  }
+                >
+                  {title.toUpperCase()}
+                </motion.span>
+              ))}
+            </span>
+            <span className="ml-4">WORLD</span>
           </span>
         </h1>
       </motion.div>
