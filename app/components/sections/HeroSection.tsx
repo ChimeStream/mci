@@ -39,7 +39,8 @@ export function HeroSection() {
           accumulatedDelta.current = Math.max(0, accumulatedDelta.current); // Don't go below 0
 
           // Map accumulated scroll to progress (0 to 1)
-          const newProgress = Math.max(0, Math.min(1, accumulatedDelta.current / 1600));
+          // Increased to 3200 to make VR person stay longer
+          const newProgress = Math.max(0, Math.min(1, accumulatedDelta.current / 3200));
           setScrollProgress(newProgress);
 
           // If animation is complete and scrolling down, transition to About
@@ -103,7 +104,7 @@ export function HeroSection() {
     <section
       ref={sectionRef}
       id="welcome"
-      className="relative w-full h-screen overflow-hidden bg-[#0a1628]"
+      className="relative w-full min-h-[1500px] md:h-screen md:overflow-hidden bg-[#0a1628]"
     >
       {/* Background Image with blur */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -133,15 +134,47 @@ export function HeroSection() {
         <MCILogo />
       </motion.div>
 
-      {/* Main Heading - Responsive - Blurs when VR person appears */}
+      {/* Main Heading - Responsive - Blurs when VR person appears - Behind VR person */}
       <motion.div
-        className="absolute top-[50%] -translate-y-1/2 md:top-[416px] md:translate-y-0 left-1/2 -translate-x-1/2 w-[90%] md:w-[728px] px-4 md:px-0 z-10 flex items-center justify-center"
+        className="absolute top-[275px] md:top-[416px] left-[27px] md:left-1/2 md:-translate-x-1/2 w-[331px] md:w-[728px] z-30"
         style={{
           filter: `blur(${textLogoBlur}px)`,
         }}
       >
+        {/* Mobile: 4 lines - WELCOME / TO / [WORD] / WORLD */}
         <h1
-          className="m-0 p-0 text-white text-center text-xl sm:text-3xl md:text-5xl lg:text-[80px] font-black flex flex-col items-center"
+          className="m-0 p-0 text-white text-left text-[58px] font-black flex flex-col md:hidden"
+          style={{
+            fontFamily: 'Lato, sans-serif',
+            lineHeight: 'normal',
+            width: '100%'
+          }}
+        >
+          <span>WELCOME</span>
+          <span>TO</span>
+          <span className="relative overflow-visible" style={{ height: '1.2em' }}>
+            {titles.map((title, index) => (
+              <motion.span
+                key={index}
+                className="absolute left-0 top-0 whitespace-nowrap"
+                initial={{ opacity: 0, y: -100 }}
+                transition={{ type: 'spring', stiffness: 50 }}
+                animate={
+                  titleNumber === index
+                    ? { y: 0, opacity: 1 }
+                    : { y: titleNumber > index ? -150 : 150, opacity: 0 }
+                }
+              >
+                {title.toUpperCase()}
+              </motion.span>
+            ))}
+          </span>
+          <span>WORLD</span>
+        </h1>
+
+        {/* Desktop: 2 lines - WELCOME TO / [WORD] WORLD */}
+        <h1
+          className="hidden md:flex m-0 p-0 text-white text-center text-5xl lg:text-[80px] font-black flex-col items-center"
           style={{
             fontFamily: 'Lato, sans-serif',
             lineHeight: '1.2',
@@ -150,7 +183,7 @@ export function HeroSection() {
         >
           <span>WELCOME TO</span>
           <span className="flex items-center justify-center gap-4">
-            <span className="relative overflow-hidden inline-block" style={{ minWidth: '500px', height: '1.2em' }}>
+            <span className="relative inline-block" style={{ minWidth: '500px', height: '1.2em' }}>
               {titles.map((title, index) => (
                 <motion.span
                   key={index}
@@ -172,9 +205,9 @@ export function HeroSection() {
         </h1>
       </motion.div>
 
-      {/* VR Person slides UP from navbar area as additional overlay layer */}
+      {/* VR Person slides UP from navbar area as additional overlay layer - Desktop only - In foreground */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center z-50"
+        className="hidden md:flex absolute inset-0 items-center justify-center z-50"
         style={{
           y: vrPersonY,
           opacity: vrPersonOpacity,
@@ -206,6 +239,17 @@ export function HeroSection() {
           />
         </div>
       </motion.div>
+
+      {/* Static VR image for mobile - shown at bottom of hero */}
+      <div className="md:hidden absolute top-[845px] left-[19.19px] w-[435.912px] h-[558px] z-10">
+        <Image
+          src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
+          alt="Person wearing VR headset"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
     </section>
   );
 }

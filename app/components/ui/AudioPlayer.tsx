@@ -10,18 +10,23 @@ interface AudioPlayerProps {
 
 export function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const togglePlay = () => {
-    if (audioRef.current) {
+    if (audioRef.current && !hasError) {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.play().catch(() => setHasError(true));
       }
       setIsPlaying(!isPlaying);
     }
   };
+
+  if (hasError) {
+    return null; // Hide audio player if file is missing
+  }
 
   return (
     <div className={`flex items-center gap-4 ${className}`}>
@@ -59,6 +64,7 @@ export function AudioPlayer({ src, className = '' }: AudioPlayerProps) {
         ref={audioRef}
         src={src}
         onEnded={() => setIsPlaying(false)}
+        onError={() => setHasError(true)}
         controls
         className="flex-1 h-10"
       />
