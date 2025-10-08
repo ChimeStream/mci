@@ -1,14 +1,12 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Slider from 'react-slick';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { Section } from '@/app/components/layout/Section';
-import { Heading, Text } from '@/app/components/ui/Typography';
-import { colors, typography, spacing, effects } from '@/app/styles/design-tokens';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Heading } from '@/app/components/ui/Typography';
+import { colors, effects } from '@/app/styles/design-tokens';
+import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
 
 const journeyData = [
   { year: '2014', event: 'The establishment of Iran Mobile Communications Company' },
@@ -27,126 +25,88 @@ const journeyData = [
 
 /**
  * Journey Section Component
- * Displays company timeline with horizontal carousel
+ * Displays company timeline with 3D circular carousel
  */
 export function JourneySection() {
   const { t } = useLanguage();
-  const sliderRef = useRef<Slider>(null);
+  const [rotation, setRotation] = useState(0);
+  const anglePerItem = 360 / journeyData.length;
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    centerMode: false,
-    nextArrow: <ArrowButton direction="next" />,
-    prevArrow: <ArrowButton direction="prev" />,
-    swipe: true,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerMode: false,
-        },
-      },
-    ],
+  const handleNext = () => {
+    setRotation((prev) => prev - anglePerItem);
+  };
+
+  const handlePrev = () => {
+    setRotation((prev) => prev + anglePerItem);
   };
 
   return (
     <Section
       id="journey"
-      background="navy"
-      minHeight="auto"
+      background="transparent"
+      minHeight="100vh"
+      className="h-screen overflow-hidden !p-0 !m-0"
+      style={{ backgroundColor: '#0B1750', padding: '0 !important', margin: '0 !important', paddingTop: 0, paddingBottom: 0 }}
     >
-      <div className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[182px]">
-        {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: effects.animation.slow }}
-          className="mb-12"
-        >
-          <Heading size="4xl" className="md:text-[64px]">
-            {t.journey?.title || 'OUR JOURNEY'}
-          </Heading>
-        </motion.div>
+      {/* Background Layers */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Gradient Overlay - teal to navy */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, rgba(0,195,170,0.15) 0%, rgba(0,149,218,0.20) 50%, rgba(11,23,80,0.4) 100%)',
+            mixBlendMode: 'normal',
+          }}
+        />
 
-        {/* Timeline Carousel */}
-        <div className="relative px-12">
-          <Slider ref={sliderRef} {...settings}>
-            {journeyData.map((item, index) => (
-              <div key={index} className="px-3">
-                <TimelineCard year={item.year} event={item.event} />
-              </div>
-            ))}
-          </Slider>
+        {/* Pattern with subtle effect */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: 'url(/1b8428e905ccc5c51f305d9af193851f394c7dcc.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 md:px-10">
+        <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-12">
+          {/* Title */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: effects.animation.slow }}
+          >
+            <h2
+              className="text-[75px] font-black leading-normal"
+              style={{
+                fontFamily: 'var(--font-cairo), sans-serif',
+                color: '#0095DA',
+              }}
+            >
+              {t.journey?.title || 'OUR JOURNEY'}
+            </h2>
+          </motion.div>
+
+          {/* Circular Timeline */}
+          <div className="relative w-full h-[600px] md:h-[700px]">
+            <CircularTimeline
+              items={journeyData}
+              radius={600}
+              rotation={rotation}
+              onRotationChange={setRotation}
+              className="h-full"
+            />
+
+            {/* Arrow Buttons */}
+            <ArrowButton direction="prev" onClick={handlePrev} />
+            <ArrowButton direction="next" onClick={handleNext} />
+          </div>
         </div>
       </div>
     </Section>
-  );
-}
-
-/**
- * Timeline Card Component
- */
-interface TimelineCardProps {
-  year: string;
-  event: string;
-}
-
-function TimelineCard({ year, event }: TimelineCardProps) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: effects.animation.slow }}
-      className="rounded-lg border p-6 h-[200px] flex flex-col justify-between transition-all hover:scale-105"
-      style={{
-        borderColor: colors.neutral.gray[200],
-        backgroundColor: colors.neutral.gray[50],
-        backdropFilter: 'blur(10px)',
-      }}
-    >
-      {/* Year */}
-      <div
-        style={{
-          fontFamily: typography.fontFamily.primary,
-          fontSize: typography.fontSize['3xl'],
-          fontWeight: typography.fontWeight.black,
-          color: colors.accent.cyan,
-          lineHeight: typography.lineHeight.tight,
-        }}
-      >
-        "{year}"
-      </div>
-
-      {/* Event */}
-      <p
-        style={{
-          fontFamily: typography.fontFamily.primary,
-          fontSize: typography.fontSize.sm,
-          fontWeight: typography.fontWeight.normal,
-          color: colors.neutral.white,
-          opacity: 0.85,
-          lineHeight: typography.lineHeight.snug,
-          margin: 0,
-        }}
-      >
-        {event}
-      </p>
-    </motion.div>
   );
 }
 
