@@ -1,9 +1,29 @@
 import React from 'react';
 import Image from 'next/image';
 
-export function MCILogo() {
+interface MCILogoProps {
+  width?: number;
+  height?: number;
+  variant?: 'color' | 'mono';
+}
+
+export function MCILogo({ width = 125, height = 58, variant = 'color' }: MCILogoProps) {
+  const style: React.CSSProperties = {
+    width: `${width}px`,
+    height: `${height}px`,
+  };
+
+  if (variant === 'mono') {
+    style.filter = 'saturate(0) brightness(0)';
+  }
+
   return (
-    <div className="relative w-[125px] h-[58px]">
+    <div
+      className="relative"
+      style={style}
+      role="img"
+      aria-label="MCI logo"
+    >
       {/* Vector components that make up the full logo */}
       <div className="absolute inset-[10.47%_82.3%_50.54%_5.17%]">
         <Image alt="" src="/89d528f2ff18062ca6b01e8f8e7c8468d929a9e0.svg" fill className="object-contain" />

@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
-  weight: ["900"], // Black weight
-  display: 'swap', // Ensure font loads properly
+  weight: ["300", "900"], // Light for footer, Black for hero
+  display: 'swap',
 });
 
 const inter = Inter({
