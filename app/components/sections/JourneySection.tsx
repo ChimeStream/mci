@@ -3,8 +3,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { Section } from '@/app/components/layout/Section';
-import { Heading } from '@/app/components/ui/Typography';
 import { colors, effects } from '@/app/styles/design-tokens';
 import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
 
@@ -41,12 +39,14 @@ export function JourneySection() {
   };
 
   return (
-    <Section
+    <div
       id="journey"
-      background="transparent"
-      minHeight="100vh"
-      className="h-screen overflow-hidden !p-0 !m-0"
-      style={{ backgroundColor: '#0B1750', padding: '0 !important', margin: '0 !important', paddingTop: 0, paddingBottom: 0 }}
+      className="relative w-full h-screen overflow-hidden"
+      style={{
+        backgroundColor: '#0B1750',
+        padding: 0,
+        margin: 0,
+      }}
     >
       {/* Background Layers */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -106,7 +106,7 @@ export function JourneySection() {
           </div>
         </div>
       </div>
-    </Section>
+    </div>
   );
 }
 
