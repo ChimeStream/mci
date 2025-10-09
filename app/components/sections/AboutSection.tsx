@@ -56,7 +56,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full flex-col items-center overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
+      className="relative w-full overflow-hidden md:min-h-screen md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -73,8 +73,9 @@ export function AboutSection() {
         />
       </div>
 
-      {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center">
+      {/* Padding Container */}
+      <div className="relative z-10 w-full px-6 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24 lg:px-16 lg:py-32">
+        {/* Max-width Content Wrapper */}
         <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-6 md:gap-14">
           {/* Header: Title + Play Button */}
           <div className="flex items-start justify-between">
