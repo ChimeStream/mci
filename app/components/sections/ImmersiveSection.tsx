@@ -21,8 +21,8 @@ export function ImmersiveSection() {
         backgroundColor: '#FFFFFF',
       }}
     >
-      {/* Background Dot Pattern */}
-      <div className="absolute inset-0 z-0">
+      {/* Dot Pattern - On top of text */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
         <Image
           src="/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png"
           alt=""
@@ -47,26 +47,7 @@ export function ImmersiveSection() {
               fontSize: responsive.fontSize.displayLarge,
             }}
           >
-            <span className="relative inline-block">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-[18%] -left-[12%] z-20 h-[140%] w-[55%] rounded-full opacity-80"
-                style={{
-                  backgroundImage: 'url("/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png")',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'left top',
-                  mixBlendMode: 'multiply',
-                  maskImage:
-                    'linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage:
-                    'linear-gradient(90deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 60%, rgba(0,0,0,0) 100%)',
-                }}
-              />
-              <span className="relative z-10 block">
-                {t.immersive?.title || 'IMMERSIVE'}
-              </span>
-            </span>
+            {t.immersive?.title || 'IMMERSIVE'}
           </motion.h2>
 
           {/* Description Text */}
