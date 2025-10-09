@@ -21,35 +21,46 @@ export function HeroSection() {
 
   const titles = ['connected', 'limitless', 'seamless', 'intelligent', 'dynamic'];
 
-  // Mobile VR Person fade-in trigger and scroll detection
+  // Mobile VR Person fade-in trigger on first interaction
   useEffect(() => {
-    let hasInitiallyShown = false;
+    let hasTriggered = false;
 
-    const timer = setTimeout(() => {
-      setShowMobileVRPerson(true);
-      hasInitiallyShown = true;
-    }, 1500); // Fade in after 1.5 seconds
-
-    // Reset mobile VR person visibility when scrolling away
-    const handleScroll = () => {
-      // Only handle scroll after initial animation has completed
-      if (!hasInitiallyShown) return;
-
-      const currentScroll = window.scrollY;
-      // If we've scrolled past the hero section, hide the mobile VR person
-      if (currentScroll > 100) {
-        setShowMobileVRPerson(false);
-      } else if (currentScroll < 50) {
-        // When back near the top, show it again
+    const triggerVRPerson = () => {
+      if (!hasTriggered) {
+        hasTriggered = true;
         setShowMobileVRPerson(true);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      // First interaction - trigger the VR person
+      if (!hasTriggered) {
+        triggerVRPerson();
+        return;
+      }
+
+      // After triggered, handle show/hide based on scroll position
+      if (currentScroll > 100) {
+        setShowMobileVRPerson(false);
+      } else if (currentScroll < 50) {
+        setShowMobileVRPerson(true);
+      }
+    };
+
+    const handleTouch = () => {
+      if (!hasTriggered) {
+        triggerVRPerson();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchstart', handleTouch, { passive: true });
 
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchstart', handleTouch);
     };
   }, []);
 

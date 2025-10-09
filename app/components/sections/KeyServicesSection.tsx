@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { ServiceModal } from '@/app/components/ui/ServiceModal';
 import { FintechContent } from '@/app/components/sections/service-content/FintechContent';
+import { PlatformsContent } from '@/app/components/sections/service-content/PlatformsContent';
 import { effects, responsive } from '@/app/styles/design-tokens';
 
 interface Service {
@@ -120,11 +121,13 @@ export function KeyServicesSection() {
           onClose={closeModal}
           title={services.find(s => s.key === selectedService)?.title || ''}
           subtitle={services.find(s => s.key === selectedService)?.subtitle || ''}
-          showPlayButton={selectedService === 'fintech'}
+          showPlayButton={selectedService === 'fintech' || selectedService === 'platforms'}
           onPlayClick={handlePlayClick}
         >
           {selectedService === 'fintech' ? (
             <FintechContent />
+          ) : selectedService === 'platforms' ? (
+            <PlatformsContent />
           ) : (
             <p className="text-gray-700 text-base leading-relaxed">
               {t.services?.[selectedService]?.description || 'Content will be added here.'}
