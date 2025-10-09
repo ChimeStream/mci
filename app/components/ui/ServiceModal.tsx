@@ -9,9 +9,11 @@ interface ServiceModalProps {
   title: string;
   subtitle: string;
   children: ReactNode;
+  showPlayButton?: boolean;
+  onPlayClick?: () => void;
 }
 
-export function ServiceModal({ isOpen, onClose, title, subtitle, children }: ServiceModalProps) {
+export function ServiceModal({ isOpen, onClose, title, subtitle, children, showPlayButton = false, onPlayClick }: ServiceModalProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -48,6 +50,27 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children }: Ser
             >
               {/* Header */}
               <div className="relative px-8 pt-8 pb-6 md:px-12 md:pt-12 md:pb-8">
+                {/* Play Button (optional) */}
+                {showPlayButton && (
+                  <button
+                    onClick={onPlayClick}
+                    className="absolute top-6 right-16 md:top-8 md:right-20 w-12 h-12 flex items-center justify-center text-[#0095DA] hover:text-[#0095DA]/70 transition-colors"
+                    aria-label="Play video"
+                  >
+                    <svg
+                      width="50"
+                      height="50"
+                      viewBox="0 0 50 50"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                    >
+                      <circle cx="25" cy="25" r="23" />
+                      <path d="M20 15 L35 25 L20 35 Z" fill="currentColor" stroke="none" />
+                    </svg>
+                  </button>
+                )}
+
                 {/* Close Button */}
                 <button
                   onClick={onClose}

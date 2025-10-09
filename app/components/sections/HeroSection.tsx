@@ -23,19 +23,25 @@ export function HeroSection() {
 
   // Mobile VR Person fade-in trigger and scroll detection
   useEffect(() => {
+    let hasInitiallyShown = false;
+
     const timer = setTimeout(() => {
       setShowMobileVRPerson(true);
+      hasInitiallyShown = true;
     }, 1500); // Fade in after 1.5 seconds
 
     // Reset mobile VR person visibility when scrolling away
     const handleScroll = () => {
+      // Only handle scroll after initial animation has completed
+      if (!hasInitiallyShown) return;
+
       const currentScroll = window.scrollY;
       // If we've scrolled past the hero section, hide the mobile VR person
       if (currentScroll > 100) {
         setShowMobileVRPerson(false);
       } else if (currentScroll < 50) {
-        // When back near the top, show it again after a brief delay
-        setTimeout(() => setShowMobileVRPerson(true), 300);
+        // When back near the top, show it again
+        setShowMobileVRPerson(true);
       }
     };
 
