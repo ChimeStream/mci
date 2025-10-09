@@ -65,15 +65,15 @@ export function KeyServicesSection() {
   return (
     <div
       id="services"
-      className="relative w-full min-h-screen overflow-hidden"
+      className="relative w-full min-h-screen overflow-hidden px-6 md:px-10"
       style={{
         backgroundColor: '#0095DA',
         padding: 0,
         margin: 0,
       }}
     >
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 md:px-10 py-24">
-        <div className="w-full max-w-[1076px] flex flex-col gap-16">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center py-24">
+        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-16">
           {/* Title */}
           <motion.h2
             initial={{ opacity: 0, y: 30 }}

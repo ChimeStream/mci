@@ -117,7 +117,7 @@ export function JourneySection() {
   return (
     <div
       id="journey"
-      className="relative w-full overflow-hidden py-16 md:min-h-screen md:py-24 md:snap-start md:snap-always"
+      className="relative w-full overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -146,8 +146,8 @@ export function JourneySection() {
         />
       </div>
 
-      <div className="relative z-10 flex w-full flex-col items-center justify-center px-6 md:px-10">
-        <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-12">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center">
+        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12">
           {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}

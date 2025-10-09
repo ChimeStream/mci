@@ -56,7 +56,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full flex-col items-center overflow-hidden px-6 pb-[90px] pt-[76px] md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
+      className="relative flex w-full flex-col items-center overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}

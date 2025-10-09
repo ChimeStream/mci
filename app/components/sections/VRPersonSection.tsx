@@ -23,7 +23,7 @@ export function VRPersonSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#00509E] to-[#001F3F]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#00509E] to-[#001F3F] px-6 py-16 md:px-10 md:py-24">
       {/* Background Text (Blurred) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <motion.div

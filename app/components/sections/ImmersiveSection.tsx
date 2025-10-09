@@ -34,7 +34,7 @@ export function ImmersiveSection() {
 
       {/* Content Container - Centered */}
       <div className="relative z-10 flex w-full flex-col items-center justify-center">
-        <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-12">
+        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12">
           {/* Giant IMMERSIVE Title */}
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
