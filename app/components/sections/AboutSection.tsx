@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { responsive } from '@/app/styles/design-tokens';
 
 /**
  * About Section Component - Rebuilt to match Figma exactly
@@ -57,7 +56,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full flex-col justify-start overflow-hidden pt-[76px] pb-[90px] md:min-h-screen md:py-24 md:snap-start md:snap-always md:justify-center"
+      className="relative flex w-full flex-col items-center overflow-hidden px-6 pb-[90px] pt-[76px] md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -75,8 +74,8 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center">
-        <div className="w-full max-w-[1076px] flex flex-col gap-6 md:gap-14 px-8 md:px-10">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center">
+        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-6 md:gap-14">
           {/* Header: Title + Play Button */}
           <div className="flex items-start justify-between">
             <motion.h2
