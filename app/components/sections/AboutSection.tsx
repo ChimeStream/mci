@@ -43,7 +43,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full flex-col justify-start overflow-hidden pt-[76px] pb-12 md:min-h-screen md:py-24 md:snap-start md:snap-always md:justify-center"
+      className="relative flex w-full flex-col justify-start overflow-hidden pt-[76px] pb-[90px] md:min-h-screen md:py-24 md:snap-start md:snap-always md:justify-center"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -61,10 +61,10 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center px-[27px] md:px-10">
+      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center px-[33px] md:px-10">
         <div className="w-full max-w-[1076px] flex flex-col md:gap-14">
           {/* Header: Title + Play Button */}
-          <div className="flex items-start justify-between mb-[40px] md:mb-0">
+          <div className="flex items-start justify-between mb-[22px] md:mb-0">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -108,7 +108,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-[80px] md:mb-0"
+            className="mb-[30px] md:mb-0"
           >
             <p
               className="text-white/90 text-left"
@@ -125,7 +125,7 @@ export function AboutSection() {
 
           {/* Stats Grid */}
           <div
-            className="grid w-full grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6"
+            className="flex flex-col gap-[10px] sm:grid sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6"
           >
             {stats.map((stat, index) => (
               <motion.div
