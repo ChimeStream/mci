@@ -65,14 +65,12 @@ export function KeyServicesSection() {
   return (
     <div
       id="services"
-      className="relative w-full min-h-screen overflow-hidden px-6 md:px-10"
+      className="relative w-full min-h-screen overflow-hidden"
       style={{
         backgroundColor: '#0095DA',
-        padding: 0,
-        margin: 0,
       }}
     >
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center py-24">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24">
         <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-16">
           {/* Title */}
           <motion.h2
@@ -138,7 +136,7 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
     <div
       onClick={onClick}
       className="relative flex w-full cursor-pointer flex-col justify-end overflow-hidden rounded-[30px] transition-all hover:scale-[1.03] hover:shadow-2xl"
-      style={{ minHeight: 'clamp(240px, 60vw, 338px)' }}
+      style={{ height: 'clamp(320px, 60vw, 338px)' }}
     >
       {/* Background Image */}
       <img
