@@ -63,7 +63,7 @@ export function HeroSection() {
           accumulatedDelta.current += e.deltaY;
           accumulatedDelta.current = Math.max(0, accumulatedDelta.current);
 
-          const newProgress = Math.max(0, Math.min(1, accumulatedDelta.current / 3200));
+          const newProgress = Math.max(0, Math.min(1, accumulatedDelta.current / 1800));
           setScrollProgress(newProgress);
 
           if (newProgress >= 1 && e.deltaY > 0 && !isAnimating) {
@@ -73,7 +73,7 @@ export function HeroSection() {
               if (aboutSection) {
                 aboutSection.scrollIntoView({ behavior: 'smooth' });
               }
-            }, 100);
+            }, 800);
           }
         }
       } else if (currentScroll === 0 && e.deltaY < 0) {
@@ -150,15 +150,15 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           style={{ filter: `blur(${textLogoBlur}px)` }}
-          className="flex w-full flex-col items-center text-center md:hidden"
+          className="flex w-full flex-col items-start text-left md:hidden"
         >
           <h1
             className="flex flex-col text-white font-black"
             style={{
               fontFamily: 'Lato, sans-serif',
-              fontSize: responsive.fontSize.heroMobile,
-              lineHeight: 1.12,
-              letterSpacing: '-0.01em',
+              fontSize: 'clamp(3.5rem, 12vw, 5rem)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
             }}
           >
             <span>WELCOME</span>
@@ -195,23 +195,12 @@ export function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Mobile VR illustration */}
-        <div className="relative mt-10 flex w-full justify-center md:hidden">
-          <div className="pointer-events-none absolute inset-x-0 bottom-[-40px] mx-auto h-52 w-52 rounded-full bg-gradient-to-t from-[#031138]/70 via-[#001a3f]/45 to-transparent blur-[90px]" />
-          <Image
-            src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
-            alt="Person wearing VR headset"
-            width={436}
-            height={558}
-            className="relative z-10 h-auto w-full max-w-[360px] sm:max-w-[420px] object-contain drop-shadow-[0_32px_70px_rgba(0,10,40,0.55)]"
-            priority
-          />
-        </div>
+        {/* Mobile VR illustration - Hidden, only shows on desktop scroll */}
       </div>
 
-      {/* VR Person - Desktop - Foreground (z-50) */}
+      {/* VR Person - Desktop - Foreground (below Navigation) */}
       <motion.div
-        className="pointer-events-none absolute inset-x-0 bottom-0 hidden justify-center md:flex"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-35 hidden justify-center md:flex"
         style={{
           y: vrPersonY,
           opacity: vrPersonOpacity,
