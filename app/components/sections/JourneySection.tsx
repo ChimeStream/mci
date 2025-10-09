@@ -119,20 +119,36 @@ export function JourneySection() {
       id="journey"
       className="relative w-full overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
-        background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
+        backgroundColor: '#0B1750',
       }}
     >
-      {/* Background Layers */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      {/* Background Layers - Matching Figma structure */}
+      <div className="absolute inset-0 z-0">
+        {/* Layer 1: Dark Navy Base (Rectangle 2) */}
+        <div className="absolute inset-0" style={{ backgroundColor: '#0B1750' }} />
 
-        {/* Pattern with subtle effect */}
+        {/* Layer 2: White to Cyan Gradient (Rectangle 15) */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0"
           style={{
+            background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
+          }}
+        />
+
+        {/* Layer 3: Pattern with plus-lighter blend mode (mci-main-pattern 1) */}
+        <div
+          className="absolute"
+          style={{
+            width: '3121px',
+            height: '3024px',
+            left: '-722px',
+            top: '-553px',
             backgroundImage:
               'url(/1b8428e905ccc5c51f305d9af193851f394c7dcc.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: '100% 100%',
+            backgroundRepeat: 'no-repeat',
+            backgroundBlendMode: 'plus-lighter',
+            opacity: 0.15,
           }}
         />
       </div>
