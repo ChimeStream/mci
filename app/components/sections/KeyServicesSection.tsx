@@ -8,6 +8,7 @@ import { FintechContent } from '@/app/components/sections/service-content/Fintec
 import { PlatformsContent } from '@/app/components/sections/service-content/PlatformsContent';
 import { KidsContent } from '@/app/components/sections/service-content/KidsContent';
 import { FiveGContent } from '@/app/components/sections/service-content/FiveGContent';
+import { SimCardContent } from '@/app/components/sections/service-content/SimCardContent';
 import { effects, responsive } from '@/app/styles/design-tokens';
 
 interface Service {
@@ -123,7 +124,7 @@ export function KeyServicesSection() {
           onClose={closeModal}
           title={services.find(s => s.key === selectedService)?.title || ''}
           subtitle={services.find(s => s.key === selectedService)?.subtitle || ''}
-          showPlayButton={selectedService === 'fintech' || selectedService === 'platforms' || selectedService === 'kids'}
+          showPlayButton={selectedService === 'fintech' || selectedService === 'platforms' || selectedService === 'kids' || selectedService === 'sim'}
           onPlayClick={handlePlayClick}
         >
           {selectedService === 'fintech' ? (
@@ -134,6 +135,8 @@ export function KeyServicesSection() {
             <KidsContent />
           ) : selectedService === '5g' ? (
             <FiveGContent />
+          ) : selectedService === 'sim' ? (
+            <SimCardContent />
           ) : (
             <p className="text-gray-700 text-base leading-relaxed">
               {t.services?.[selectedService]?.description || 'Content will be added here.'}
