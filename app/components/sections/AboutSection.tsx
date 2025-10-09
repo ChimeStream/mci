@@ -62,9 +62,9 @@ export function AboutSection() {
 
       {/* Content Container - Centered */}
       <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center px-[27px] md:px-10">
-        <div className="w-full max-w-[1076px] flex flex-col gap-[30px] md:gap-14">
+        <div className="w-full max-w-[1076px] flex flex-col md:gap-14">
           {/* Header: Title + Play Button */}
-          <div className="flex items-start justify-between">
+          <div className="flex items-start justify-between mb-[40px] md:mb-0">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -108,6 +108,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-[80px] md:mb-0"
           >
             <p
               className="text-white/90 text-left"
