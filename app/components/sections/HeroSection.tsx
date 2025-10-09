@@ -41,10 +41,12 @@ export function HeroSection() {
         return;
       }
 
-      // After triggered, only hide when scrolling away
-      // Don't automatically show again when returning to top
-      if (currentScroll > 100) {
+      // After triggered, keep VR person visible while scrolling down
+      // Only hide when scrolling back to the very top (< 10px)
+      if (currentScroll < 10) {
         setShowMobileVRPerson(false);
+      } else if (currentScroll >= 10) {
+        setShowMobileVRPerson(true);
       }
     };
 

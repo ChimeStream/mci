@@ -7,6 +7,7 @@ import { ServiceModal } from '@/app/components/ui/ServiceModal';
 import { FintechContent } from '@/app/components/sections/service-content/FintechContent';
 import { PlatformsContent } from '@/app/components/sections/service-content/PlatformsContent';
 import { KidsContent } from '@/app/components/sections/service-content/KidsContent';
+import { FiveGContent } from '@/app/components/sections/service-content/FiveGContent';
 import { effects, responsive } from '@/app/styles/design-tokens';
 
 interface Service {
@@ -131,6 +132,8 @@ export function KeyServicesSection() {
             <PlatformsContent />
           ) : selectedService === 'kids' ? (
             <KidsContent />
+          ) : selectedService === '5g' ? (
+            <FiveGContent />
           ) : (
             <p className="text-gray-700 text-base leading-relaxed">
               {t.services?.[selectedService]?.description || 'Content will be added here.'}
