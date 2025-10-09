@@ -119,20 +119,11 @@ export function JourneySection() {
       id="journey"
       className="relative w-full overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
-        backgroundColor: '#0B1750',
+        background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
       }}
     >
       {/* Background Layers */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Gradient Overlay - teal to navy */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(180deg, rgba(0,195,170,0.15) 0%, rgba(0,149,218,0.20) 50%, rgba(11,23,80,0.4) 100%)',
-            mixBlendMode: 'normal',
-          }}
-        />
 
         {/* Pattern with subtle effect */}
         <div
