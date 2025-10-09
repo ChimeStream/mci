@@ -61,10 +61,10 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center px-6 md:px-10">
-        <div className="w-full max-w-[1076px] flex flex-col gap-12 md:gap-14">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center px-[33px] md:px-10">
+        <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-14">
           {/* Header: Title + Play Button */}
-          <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+          <div className="flex items-start justify-between">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export function AboutSection() {
               className="text-white uppercase"
               style={{
                 fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
-                fontSize: responsive.fontSize.sectionHeading,
+                fontSize: 'clamp(32px, 8vw, 75px)',
                 fontWeight: 900,
                 lineHeight: '1.15',
                 letterSpacing: '-0.01em',
@@ -89,7 +89,7 @@ export function AboutSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="flex h-[60px] w-[60px] items-center justify-center rounded-full border border-white/40 hover:bg-white/10 transition-all duration-300"
+              className="flex h-[38px] w-[38px] md:h-[60px] md:w-[60px] items-center justify-center rounded-full border border-white/40 hover:bg-white/10 transition-all duration-300"
               aria-label="Play about video"
             >
               <Image
@@ -97,7 +97,7 @@ export function AboutSection() {
                 alt="Play about us video"
                 width={28}
                 height={28}
-                className="w-[28px] h-[28px]"
+                className="w-[20px] h-[20px] md:w-[28px] md:h-[28px]"
               />
             </motion.button>
           </div>
@@ -108,15 +108,14 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mx-auto max-w-[640px] text-center sm:mx-0 sm:max-w-none sm:text-left"
           >
             <p
-              className="text-white/80"
+              className="text-white/90 text-left"
               style={{
                 fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
                 fontWeight: 400,
-                fontSize: responsive.fontSize.bodyMd,
-                lineHeight: 1.6,
+                fontSize: 'clamp(13px, 3.5vw, 16px)',
+                lineHeight: 1.7,
               }}
             >
               {t.about?.description}
@@ -158,46 +157,40 @@ interface StatCardProps {
 function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
   return (
     <div
-      className="relative w-full max-w-full overflow-hidden rounded-[18px] border border-white/20 bg-white/5 px-6 py-8 text-center transition-all duration-300 hover:border-white/40 hover:bg-white/10 sm:max-w-none lg:max-w-[320px] xl:w-[260px]"
+      className="relative w-full overflow-hidden rounded-[18px] md:rounded-[20px] px-6 py-8 text-center transition-all duration-300 hover:bg-[#0d1e5c]"
       style={{
-        backdropFilter: 'blur(18px)',
-        minHeight: 'clamp(150px, 45vw, 188px)',
+        backgroundColor: '#091345',
+        minHeight: '162px',
       }}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-60"
-        style={{
-          background: 'radial-gradient(120% 120% at 50% 0%, rgba(0, 149, 218, 0.35) 0%, rgba(11, 23, 80, 0.05) 65%)',
-        }}
-      />
-
-      <div className="relative z-10 flex h-full flex-col items-center justify-center gap-3">
+      <div className="flex h-full flex-col items-center justify-center gap-4 md:gap-3">
         {/* Icon */}
-        <div className="flex h-[56px] w-[56px] items-center justify-center rounded-full bg-white/10">
+        <div className="flex items-center justify-center">
           <Image src={iconSrc} alt={iconAlt} width={35} height={35} className="h-[35px] w-[35px]" />
         </div>
 
-        {/* Title */}
-        <h3
-          className="text-white font-semibold leading-tight"
-          style={{
-            fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
-            fontSize: responsive.fontSize.bodyMd,
-          }}
-        >
-          {title}
-        </h3>
+        {/* Title + Subtitle */}
+        <div className="flex flex-col gap-1">
+          <h3
+            className="text-white font-normal leading-tight"
+            style={{
+              fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
+              fontSize: 'clamp(14px, 3.5vw, 16px)',
+            }}
+          >
+            {title}
+          </h3>
 
-        {/* Subtitle */}
-        <p
-          className="text-white/70 leading-tight"
-          style={{
-            fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
-            fontSize: responsive.fontSize.bodySm,
-          }}
-        >
-          {subtitle}
-        </p>
+          <p
+            className="text-white font-normal leading-tight"
+            style={{
+              fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
+              fontSize: 'clamp(14px, 3.5vw, 16px)',
+            }}
+          >
+            {subtitle}
+          </p>
+        </div>
       </div>
     </div>
   );
