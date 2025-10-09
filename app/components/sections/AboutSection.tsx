@@ -43,7 +43,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative flex w-full flex-col justify-center overflow-hidden py-16 md:min-h-screen md:py-24 md:snap-start md:snap-always"
+      className="relative flex w-full flex-col justify-start overflow-hidden pt-[76px] pb-12 md:min-h-screen md:py-24 md:snap-start md:snap-always md:justify-center"
       style={{
         backgroundColor: '#0B1750',
       }}
@@ -61,8 +61,8 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center px-[33px] md:px-10">
-        <div className="w-full max-w-[1076px] flex flex-col gap-8 md:gap-14">
+      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center px-[27px] md:px-10">
+        <div className="w-full max-w-[1076px] flex flex-col gap-[30px] md:gap-14">
           {/* Header: Title + Play Button */}
           <div className="flex items-start justify-between">
             <motion.h2
@@ -124,7 +124,7 @@ export function AboutSection() {
 
           {/* Stats Grid */}
           <div
-            className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6"
+            className="grid w-full grid-cols-1 gap-[10px] sm:grid-cols-2 sm:gap-6 xl:grid-cols-4 xl:gap-x-[11px] xl:gap-y-6"
           >
             {stats.map((stat, index) => (
               <motion.div
