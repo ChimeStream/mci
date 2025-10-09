@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { useActiveSection } from '@/app/hooks/useActiveSection';
@@ -19,6 +19,24 @@ export function Navigation() {
   const activeSection = useActiveSection();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const languageSwitcherRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (languageSwitcherRef.current && !languageSwitcherRef.current.contains(event.target as Node)) {
+        setIsLanguageDropdownOpen(false);
+      }
+    };
+
+    if (isLanguageDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLanguageDropdownOpen]);
 
   // Sections with light backgrounds need dark text
   const isLightBackground = activeSection === 'immersive' || activeSection === 'footer';
@@ -87,7 +105,7 @@ export function Navigation() {
           </a>
 
           {/* Language Switcher - Exact Figma position on desktop, right-aligned on mobile */}
-          <div className="absolute right-[13px] md:left-[303px] md:right-auto top-[13px] w-[57px] h-[58px]">
+          <div ref={languageSwitcherRef} className="absolute right-[13px] md:left-[303px] md:right-auto top-[13px] w-[57px] h-[58px]">
             <button
               onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
               className="relative w-full h-full"

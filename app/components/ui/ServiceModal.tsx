@@ -39,7 +39,10 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children, showP
           />
 
           {/* Modal Container */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-6 py-8 md:px-12 md:py-16">
+          <div
+            className="fixed inset-0 z-[51] flex items-center justify-center px-6 py-8 md:px-12 md:py-16"
+            onClick={onClose}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
