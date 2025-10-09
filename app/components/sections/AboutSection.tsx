@@ -184,7 +184,7 @@ function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
       className="relative w-full overflow-hidden rounded-[18px] md:rounded-[20px] px-6 py-8 transition-all duration-300 hover:bg-[#0d1e5c] flex items-center justify-center"
       style={{
         backgroundColor: '#091345',
-        minHeight: '162px',
+        height: '180px',
       }}
     >
       <div className="flex flex-col items-center justify-center gap-4 md:gap-3 text-center">
