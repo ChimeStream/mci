@@ -1,66 +1,66 @@
 {
   "nav": {
-    "welcome": "Bienvenida",
-    "about": "Acerca de",
-    "journey": "Trayectoria",
+    "welcome": "Bienvenido",
+    "about": "Nosotros",
+    "journey": "Nuestra Historia",
     "services": "Servicios"
   },
   "hero": {
-    "title": "BIENVENIDO AL",
-    "subtitle": "¡MENSAJE DE EJEMPLO!"
+    "title": "BIENVENIDO A",
+    "subtitle": "¡TU FUTURO DIGITAL!"
   },
   "about": {
-    "title": "SOBRE NOSOTROS",
-    "description": "MCI, la mayor holding de economía digital de Irán, está a la vanguardia de la transformación inteligente en tecnología y comunicaciones. Con una visión de futuro, Hamrah Aval ha evolucionado más allá de un operador móvil para convertirse en la fuerza impulsora del ecosistema digital de Irán. A través de una diversa red de subsidiarias y servicios que abarcan telecomunicaciones, fintech, educación, entretenimiento y plataformas digitales, la empresa está dando forma a una vida digital más inteligente, más simple y más conectada para todos.",
-    "stat1": "El Primer Móvil",
-    "stat1sub": "Operador Desde 1993",
-    "stat2": "Sirviendo a más de 100 millones",
-    "stat2sub": "suscriptores",
-    "stat3": "Pionero en 4G, 5G y 5.5G",
-    "stat3sub": "redes",
-    "stat4": "Expandiéndose a servicios",
-    "stat4sub": "digitales, VOD, ciudades inteligentes, IoT e IA"
+    "title": "QUIÉNES SOMOS",
+    "description": "MCI, el conglomerado líder de la economía digital en Irán, impulsa la transformación tecnológica y de comunicaciones más avanzada del país. Hamrah Aval ha trascendido su rol como operador móvil para convertirse en el corazón del ecosistema digital iraní. A través de una red diversificada de empresas filiales y servicios que abarcan telecomunicaciones, tecnología financiera, educación, entretenimiento y plataformas digitales, estamos construyendo una vida digital más inteligente, accesible y conectada para todos. En un mundo donde la tecnología y las personas están más unidas que nunca, Hamrah Aval abraza la visión de Comunicación Inmersiva: crear conexiones significativas y centradas en el ser humano a través de una experiencia compartida, donde nadie está solo y cada persona forma parte de un viaje colectivo y humano. Este enfoque eleva a MCI más allá de ser un simple operador, transformándolo en una plataforma de experiencias inteligentes, un espacio donde educación, entretenimiento, salud, negocios y comunicación convergen en un viaje inmersivo.",
+    "stat1": "Primer Operador Móvil",
+    "stat1sub": "desde 1993",
+    "stat2": "Más de 100 millones",
+    "stat2sub": "de usuarios",
+    "stat3": "Pioneros en 4G, 5G y 5.5G",
+    "stat3sub": "liderando la conectividad",
+    "stat4": "Innovación digital:",
+    "stat4sub": "VOD, ciudades inteligentes, IoT e IA"
   },
   "vision": {
     "title": "NUESTRA VISIÓN",
-    "description": "Proporcionar comunicaciones inclusivas y experiencias digitales superiores a través del desarrollo de soluciones inteligentes y asociaciones estratégicas, para crear un futuro mejor."
+    "description": "Ofrecer comunicaciones inclusivas y experiencias digitales excepcionales mediante soluciones inteligentes y alianzas estratégicas, construyendo juntos un futuro mejor."
   },
   "mission": {
     "title": "NUESTRA MISIÓN",
-    "description": "Pioneros en comunicaciones y más allá"
+    "description": "Revolucionar las comunicaciones y trascender fronteras"
   },
   "immersive": {
-    "title": "INMERSIVO",
-    "description": "Nuestro camino futuro se basa en la base de una experiencia inmersiva, un viaje que disuelve las fronteras entre los mundos físico y digital, permitiendo la vida dentro de un ecosistema rico, inteligente e interconectado."
+    "title": "EXPERIENCIA INMERSIVA",
+    "description": "Nuestro futuro se construye sobre experiencias inmersivas: un viaje que difumina los límites entre lo físico y lo digital, permitiéndote vivir en un ecosistema inteligente, rico e interconectado. La inmersión significa estar completamente presente en el momento, donde nuestros clientes no solo consumen servicios, sino que realmente viven la experiencia. Es un viaje compartido donde nadie está solo, y cada persona se convierte en parte de una experiencia colectiva y humana. Este enfoque eleva a MCI más allá de ser un operador tradicional, transformándolo en una plataforma de experiencias inteligentes, un lugar donde educación, entretenimiento, salud, negocios y comunicación convergen en un único viaje inmersivo."
   },
   "journey": {
-    "title": "NUESTRO VIAJE"
+    "title": "NUESTRA TRAYECTORIA"
   },
   "services": {
-    "title": "SERVICIOS CLAVE",
+    "title": "SERVICIOS PRINCIPALES",
     "5g": {
       "title": "5.5G",
-      "subtitle": "Conectividad preparada para el futuro"
+      "subtitle": "Conectividad del mañana, hoy"
     },
     "fintech": {
       "title": "Fintech",
-      "subtitle": "Soluciones de finanzas digitales seguras"
+      "subtitle": "Finanzas digitales seguras e inteligentes"
     },
     "platforms": {
       "title": "Plataformas",
-      "subtitle": "Educación, entretenimiento, salud, comercio electrónico"
+      "subtitle": "Educación, entretenimiento, salud y comercio"
     },
     "kids": {
-      "title": "Niños y Adolescentes",
-      "subtitle": "Ecosistema seguro y empoderador"
+      "title": "Niños y Jóvenes",
+      "subtitle": "Un ecosistema seguro que los empodera"
     },
     "b2b": {
       "title": "B2B y B2G",
-      "subtitle": "Habilitando empresas inteligentes y gobierno"
+      "subtitle": "Potenciando empresas y gobiernos inteligentes"
     },
     "sim": {
       "title": "Tarjeta SIM",
-      "subtitle": "Comunicación flexible para todas las necesidades"
+      "subtitle": "Comunicación flexible para cada necesidad"
     }
   }
 }
