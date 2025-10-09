@@ -1,10 +1,12 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { colors, effects, responsive } from '@/app/styles/design-tokens';
 import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type JourneyMilestone = {
   year: string;
@@ -103,14 +105,6 @@ export function JourneySection() {
   const { t } = useLanguage();
   const [rotation, setRotation] = useState(0);
   const anglePerItem = 360 / journeyData.length;
-  const trackRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [isPointerDown, setIsPointerDown] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [scrollStartX, setScrollStartX] = useState(0);
-  const [velocity, setVelocity] = useState(0);
-  const [lastScrollLeft, setLastScrollLeft] = useState(0);
-  const [lastTimestamp, setLastTimestamp] = useState<number | null>(null);
 
   const handleNext = () => {
     setRotation((prev) => prev - anglePerItem);
@@ -118,47 +112,6 @@ export function JourneySection() {
 
   const handlePrev = () => {
     setRotation((prev) => prev + anglePerItem);
-  };
-
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.setPointerCapture(event.pointerId);
-    setIsPointerDown(true);
-    setDragStartX(event.clientX);
-    setScrollStartX(track.scrollLeft);
-    setVelocity(0);
-    setLastTimestamp(Date.now());
-  };
-
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!isPointerDown) return;
-    const track = trackRef.current;
-    if (!track) return;
-    const delta = dragStartX - event.clientX;
-    track.scrollLeft = scrollStartX + delta;
-    const now = Date.now();
-    const elapsed = lastTimestamp ? now - lastTimestamp : 0;
-    if (elapsed > 0) {
-      const currentVelocity = (track.scrollLeft - lastScrollLeft) / elapsed;
-      setVelocity(currentVelocity);
-      setLastTimestamp(now);
-      setLastScrollLeft(track.scrollLeft);
-    }
-  };
-
-  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
-    const track = trackRef.current;
-    if (!track) return;
-    track.releasePointerCapture(event.pointerId);
-    setIsPointerDown(false);
-    const momentumDistance = velocity * 200;
-    const targetScroll = track.scrollLeft + momentumDistance;
-    const scrollOptions: ScrollToOptions = {
-      left: targetScroll,
-      behavior: 'smooth',
-    };
-    track.scrollTo(scrollOptions);
   };
 
   return (
@@ -231,143 +184,175 @@ export function JourneySection() {
             <ArrowButton direction="next" onClick={handleNext} />
           </div>
 
-          {/* Timeline List - Mobile */}
+          {/* Timeline Carousel - Mobile */}
           <div className="md:hidden">
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#0B1750] to-transparent" />
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#0B1750] to-transparent" />
-              <div
-                ref={trackRef}
-                role="list"
-                aria-roledescription="timeline"
-                aria-label="Company milestones"
-                className="flex gap-5 overflow-x-auto pb-6 pl-4 pr-4 [-ms-overflow-style:'none'] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                style={{ WebkitOverflowScrolling: 'touch' }}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerLeave={(event) => {
-                  if (!isPointerDown) return;
-                  handlePointerUp(event);
-                }}
-              >
-                {journeyData.map((item, index) => (
-                  <div
-                    key={`${item.year}-${index}`}
-                    ref={(ref) => {
-                      cardRefs.current[index] = ref;
-                    }}
-                    role="listitem"
-                    aria-label={`${item.year}: ${item.event}`}
-                    className="relative flex shrink-0 snap-center cursor-pointer select-none overflow-hidden rounded-[30px] transition-transform duration-300 hover:scale-105"
-                    style={{
-                      width: 'calc(100vw - 3rem)',
-                      maxWidth: '400px',
-                      height: '70vh',
-                      minHeight: '500px',
-                      maxHeight: '600px',
-                    }}
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${item.cover})`,
-                      }}
-                    />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#00162E]/95" />
-
-                    {/* Year - Fixed at top */}
-                    <div className="absolute top-8 left-6 right-6 z-10">
-                      <div
-                        className="font-bold leading-tight"
-                        style={{
-                          fontFamily: 'Lato, sans-serif',
-                          fontSize: '48px',
-                          color: 'white',
-                        }}
-                      >
-                        {item.year}
-                      </div>
-                    </div>
-
-                    {/* Event - Fixed at bottom */}
-                    <div className="absolute bottom-8 left-6 right-6 z-10">
-                      <p
-                        className="font-normal leading-relaxed"
-                        style={{
-                          fontFamily: 'Lato, sans-serif',
-                          fontSize: '16px',
-                          color: 'white',
-                        }}
-                      >
-                        {item.event}
-                      </p>
-                    </div>
-                    <div
-                      className="pointer-events-none absolute inset-x-6 bottom-5 h-16 rounded-full"
-                      style={{
-                        background:
-                          'radial-gradient(circle at center, rgba(0,118,255,0.35) 0%, rgba(0,118,255,0) 70%)',
-                        filter: 'blur(12px)',
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="mt-4 flex items-center justify-center gap-4">
-                <button
-                  type="button"
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all disabled:cursor-not-allowed disabled:opacity-40"
-                  aria-label="Previous milestone"
-                  style={{
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                  }}
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <polyline points="15 18 9 12 15 6" />
-                  </svg>
-                </button>
-                <div className="flex items-center gap-2">
-                  {journeyData.map((_, indicatorIndex) => (
-                    <span
-                      key={`indicator-${indicatorIndex}`}
-                      className="h-2 w-5 rounded-full bg-white/20 transition-colors"
-                    />
-                  ))}
-                </div>
-                <button
-                  type="button"
-                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all disabled:cursor-not-allowed disabled:opacity-40"
-                  aria-label="Next milestone"
-                  style={{
-                    backdropFilter: 'blur(14px)',
-                    WebkitBackdropFilter: 'blur(14px)',
-                  }}
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <polyline points="9 18 15 12 9 6" />
-                  </svg>
-                </button>
-              </div>
-            </div>
+            <MobileJourneyCarousel items={journeyData} />
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Mobile Journey Carousel Component
+ */
+interface MobileJourneyCarouselProps {
+  items: JourneyMilestone[];
+}
+
+function MobileJourneyCarousel({ items }: MobileJourneyCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(Math.floor(items.length / 2));
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+  }, [items.length]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
+  }, [items.length]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      handleNext();
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [handleNext]);
+
+  return (
+    <div className="relative w-full">
+      {/* Carousel Container */}
+      <div className="relative w-full h-[500px] flex items-center justify-center overflow-hidden">
+        {/* Carousel Wrapper with 3D perspective */}
+        <div className="relative w-full h-full flex items-center justify-center" style={{ perspective: '1000px' }}>
+          {items.map((item, index) => {
+            const offset = index - currentIndex;
+            const total = items.length;
+            let pos = (offset + total) % total;
+            if (pos > Math.floor(total / 2)) {
+              pos = pos - total;
+            }
+
+            const isCenter = pos === 0;
+            const isAdjacent = Math.abs(pos) === 1;
+
+            return (
+              <div
+                key={`${item.year}-${index}`}
+                className={cn(
+                  'absolute transition-all duration-500 ease-in-out',
+                  'flex items-center justify-center'
+                )}
+                style={{
+                  width: 'min(280px, calc(100vw - 6rem))',
+                  height: '450px',
+                  transform: `
+                    translateX(${pos * 50}%)
+                    scale(${isCenter ? 1 : isAdjacent ? 0.85 : 0.7})
+                    rotateY(${pos * -10}deg)
+                  `,
+                  zIndex: isCenter ? 10 : isAdjacent ? 5 : 1,
+                  opacity: isCenter ? 1 : isAdjacent ? 0.4 : 0,
+                  filter: isCenter ? 'blur(0px)' : 'blur(4px)',
+                  visibility: Math.abs(pos) > 1 ? 'hidden' : 'visible',
+                }}
+              >
+                <div className="relative w-full h-full overflow-hidden rounded-[30px] shadow-2xl">
+                  {/* Background Image */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage: item.cover ? `url(${item.cover})` : 'none',
+                      backgroundColor: item.cover ? 'transparent' : '#00162E',
+                    }}
+                  />
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#00162E]/95" />
+
+                  {/* Year - Fixed at top */}
+                  <div className="absolute top-8 left-6 right-6 z-10">
+                    <div
+                      className="font-bold leading-tight"
+                      style={{
+                        fontFamily: 'Lato, sans-serif',
+                        fontSize: '42px',
+                        color: 'white',
+                      }}
+                    >
+                      {item.year}
+                    </div>
+                  </div>
+
+                  {/* Event - Fixed at bottom */}
+                  <div className="absolute bottom-8 left-6 right-6 z-10">
+                    <p
+                      className="font-normal leading-relaxed"
+                      style={{
+                        fontFamily: 'Lato, sans-serif',
+                        fontSize: '14px',
+                        color: 'white',
+                      }}
+                    >
+                      {item.event}
+                    </p>
+                  </div>
+
+                  {/* Glow effect */}
+                  <div
+                    className="pointer-events-none absolute inset-x-6 bottom-5 h-16 rounded-full"
+                    style={{
+                      background:
+                        'radial-gradient(circle at center, rgba(0,118,255,0.35) 0%, rgba(0,118,255,0) 70%)',
+                      filter: 'blur(12px)',
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20"
+          aria-label="Previous milestone"
+          style={{
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+          }}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all hover:bg-white/20"
+          aria-label="Next milestone"
+          style={{
+            backdropFilter: 'blur(14px)',
+            WebkitBackdropFilter: 'blur(14px)',
+          }}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+      </div>
+
+      {/* Pagination Indicators */}
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {items.map((_, indicatorIndex) => (
+          <button
+            key={`indicator-${indicatorIndex}`}
+            onClick={() => setCurrentIndex(indicatorIndex)}
+            className={cn(
+              'h-2 rounded-full transition-all',
+              currentIndex === indicatorIndex
+                ? 'w-8 bg-white/80'
+                : 'w-2 bg-white/20 hover:bg-white/40'
+            )}
+            aria-label={`Go to milestone ${indicatorIndex + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

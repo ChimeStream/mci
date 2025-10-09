@@ -12,6 +12,20 @@ import { responsive } from '@/app/styles/design-tokens';
  */
 export function AboutSection() {
   const { t } = useLanguage();
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+
+  const handlePlayAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
 
   const stats = [
     {
@@ -61,10 +75,10 @@ export function AboutSection() {
       </div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center px-[33px] md:px-10">
-        <div className="w-full max-w-[1076px] flex flex-col md:gap-14">
+      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center">
+        <div className="w-full max-w-[1076px] flex flex-col gap-6 md:gap-14 px-8 md:px-10">
           {/* Header: Title + Play Button */}
-          <div className="flex items-start justify-between mb-[22px] md:mb-0">
+          <div className="flex items-start justify-between">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,16 +99,17 @@ export function AboutSection() {
             {/* Play Button */}
             <motion.button
               type="button"
+              onClick={handlePlayAudio}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
               className="flex h-[38px] w-[38px] md:h-[60px] md:w-[60px] items-center justify-center rounded-full border border-white/40 hover:bg-white/10 transition-all duration-300"
-              aria-label="Play about video"
+              aria-label={isPlaying ? "Pause about audio" : "Play about audio"}
             >
               <Image
                 src="/about/play-circle.svg"
-                alt="Play about us video"
+                alt={isPlaying ? "Pause" : "Play"}
                 width={28}
                 height={28}
                 className="w-[20px] h-[20px] md:w-[28px] md:h-[28px]"
@@ -108,7 +123,6 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-[30px] md:mb-0"
           >
             <p
               className="text-white/90 text-left"
@@ -141,6 +155,15 @@ export function AboutSection() {
           </div>
         </div>
       </div>
+
+      {/* Hidden Audio Element */}
+      <audio
+        ref={audioRef}
+        src="/about_us.mp3"
+        onEnded={() => setIsPlaying(false)}
+        onPause={() => setIsPlaying(false)}
+        onPlay={() => setIsPlaying(true)}
+      />
     </section>
   );
 }
@@ -158,22 +181,22 @@ interface StatCardProps {
 function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
   return (
     <div
-      className="relative w-full overflow-hidden rounded-[18px] md:rounded-[20px] px-6 py-8 text-center transition-all duration-300 hover:bg-[#0d1e5c]"
+      className="relative w-full overflow-hidden rounded-[18px] md:rounded-[20px] px-6 py-8 transition-all duration-300 hover:bg-[#0d1e5c] flex items-center justify-center"
       style={{
         backgroundColor: '#091345',
         minHeight: '162px',
       }}
     >
-      <div className="flex h-full flex-col items-center justify-center gap-4 md:gap-3">
+      <div className="flex flex-col items-center justify-center gap-4 md:gap-3 text-center">
         {/* Icon */}
         <div className="flex items-center justify-center">
           <Image src={iconSrc} alt={iconAlt} width={35} height={35} className="h-[35px] w-[35px]" />
         </div>
 
         {/* Title + Subtitle */}
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 items-center">
           <h3
-            className="text-white font-normal leading-tight"
+            className="text-white font-normal leading-tight text-center"
             style={{
               fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
               fontSize: 'clamp(14px, 3.5vw, 16px)',
@@ -183,7 +206,7 @@ function StatCard({ iconSrc, iconAlt, title, subtitle }: StatCardProps) {
           </h3>
 
           <p
-            className="text-white font-normal leading-tight"
+            className="text-white font-normal leading-tight text-center"
             style={{
               fontFamily: "var(--font-cairo), var(--font-geist-sans), sans-serif",
               fontSize: 'clamp(14px, 3.5vw, 16px)',
