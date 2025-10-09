@@ -21,34 +21,34 @@ const services: Service[] = [
     image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
   },
   {
-    key: 'fintech',
-    title: 'Fintech',
-    subtitle: 'Secure digital finance solutions',
-    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
-  },
-  {
     key: 'platforms',
     title: 'Platforms',
     subtitle: 'Education, entertainment, health, e-commerce',
-    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
-  },
-  {
-    key: 'kids',
-    title: 'Kids & Teen',
-    subtitle: 'Safe and empowering ecosystem',
-    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+    image: '/ec0c2c452948fa5c55147147f79ed7675a92cb7b.png',
   },
   {
     key: 'b2b',
     title: 'B2B & B2G',
     subtitle: 'Enabling smart enterprises and government',
-    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+    image: '/395a9d2647885796c36b125b499067e9d397fca7.png',
+  },
+  {
+    key: 'fintech',
+    title: 'Fintech',
+    subtitle: 'Secure digital finance solutions',
+    image: '/67b50ed6f89217113e61400ed34b0a038e69ef2c.png',
+  },
+  {
+    key: 'kids',
+    title: 'Kids & Teen',
+    subtitle: 'Safe and empowering ecosystem',
+    image: '/c950957124d3b8206039e9938d5c0b48882504a5.png',
   },
   {
     key: 'sim',
     title: 'SIM Card',
     subtitle: 'Flexible communication for all needs',
-    image: '/8f010138181b084db2f5163f520b46132abed3d0.png',
+    image: '/bdaef04009e34446e981b2685592255c4b8afe59.png',
   },
 ];
 
@@ -145,11 +145,20 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
 
+      {/* Gradient Overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(0, 118, 255, 0.7) 0%, rgba(0, 0, 0, 0.7) 100%)',
+          opacity: 0.5,
+        }}
+      />
+
       {/* Content */}
-      <div className="absolute bottom-6 left-6 right-6 z-10">
+      <div className="absolute bottom-6 left-6 right-6 z-10 flex flex-col">
         {/* Title */}
         <h3
-          className="mb-2 font-bold leading-tight text-white"
+          className="mb-2 font-bold leading-tight text-white whitespace-nowrap"
           style={{
             fontFamily: 'Lato, sans-serif',
             fontSize: responsive.fontSize.serviceTitle,
@@ -166,6 +175,7 @@ function ServiceCard({ service, onClick }: ServiceCardProps) {
             fontFamily: 'Lato, sans-serif',
             fontSize: responsive.fontSize.serviceSubtitle,
             lineHeight: 1.4,
+            minHeight: '3.5em', // Ensures consistent subtitle area height
           }}
         >
           {service.subtitle}
