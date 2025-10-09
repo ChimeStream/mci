@@ -233,12 +233,6 @@ export function JourneySection() {
 
           {/* Timeline List - Mobile */}
           <div className="md:hidden">
-            <p
-              className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-[#0095DA]/70"
-              style={{ fontFamily: 'var(--font-cairo), sans-serif' }}
-            >
-              {t.journey?.subtitle || 'Milestones'}
-            </p>
             <div className="relative">
               <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#0B1750] to-transparent" />
               <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#0B1750] to-transparent" />
@@ -267,8 +261,11 @@ export function JourneySection() {
                     aria-label={`${item.year}: ${item.event}`}
                     className="relative flex shrink-0 snap-center cursor-pointer select-none overflow-hidden rounded-[30px] transition-transform duration-300 hover:scale-105"
                     style={{
-                      minWidth: 'clamp(240px, 80vw, 286px)',
-                      height: 'clamp(320px, 82vw, 452px)',
+                      width: 'calc(100vw - 3rem)',
+                      maxWidth: '400px',
+                      height: '70vh',
+                      minHeight: '500px',
+                      maxHeight: '600px',
                     }}
                   >
                     <div
@@ -277,24 +274,35 @@ export function JourneySection() {
                         backgroundImage: `url(${item.cover})`,
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#0076FF]/40 via-[#001F3F]/55 to-[#000000]/90" />
-                    <div className="relative flex h-full w-full flex-col justify-between p-6">
-                      <div>
-                        <span
-                          className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-bold uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm"
-                          style={{ fontFamily: 'Lato, sans-serif' }}
-                        >
-                          {item.year}
-                        </span>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#00162E]/95" />
+
+                    {/* Year - Fixed at top */}
+                    <div className="absolute top-8 left-6 right-6 z-10">
+                      <div
+                        className="font-bold leading-tight"
+                        style={{
+                          fontFamily: 'Lato, sans-serif',
+                          fontSize: '48px',
+                          color: 'white',
+                        }}
+                      >
+                        {item.year}
                       </div>
-                      <div>
-                        <p
-                          className="text-lg font-semibold leading-snug text-white"
-                          style={{ fontFamily: 'Lato, sans-serif' }}
-                        >
-                          {item.event}
-                        </p>
-                      </div>
+                    </div>
+
+                    {/* Event - Fixed at bottom */}
+                    <div className="absolute bottom-8 left-6 right-6 z-10">
+                      <p
+                        className="font-normal leading-relaxed"
+                        style={{
+                          fontFamily: 'Lato, sans-serif',
+                          fontSize: '16px',
+                          color: 'white',
+                        }}
+                      >
+                        {item.event}
+                      </p>
                     </div>
                     <div
                       className="pointer-events-none absolute inset-x-6 bottom-5 h-16 rounded-full"
