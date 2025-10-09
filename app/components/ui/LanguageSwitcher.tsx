@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { Language } from '@/app/utils/language-detector';
 import Image from 'next/image';
@@ -15,9 +15,27 @@ const languageLabels: Record<Language, string> = {
 export function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="ml-4 relative">
+    <div ref={dropdownRef} className="ml-4 relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-[57px] h-[58px] relative"
