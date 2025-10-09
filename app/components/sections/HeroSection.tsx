@@ -21,13 +21,30 @@ export function HeroSection() {
 
   const titles = ['connected', 'limitless', 'seamless', 'intelligent', 'dynamic'];
 
-  // Mobile VR Person fade-in trigger
+  // Mobile VR Person fade-in trigger and scroll detection
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMobileVRPerson(true);
     }, 1500); // Fade in after 1.5 seconds
 
-    return () => clearTimeout(timer);
+    // Reset mobile VR person visibility when scrolling away
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      // If we've scrolled past the hero section, hide the mobile VR person
+      if (currentScroll > 100) {
+        setShowMobileVRPerson(false);
+      } else if (currentScroll < 50) {
+        // When back near the top, show it again after a brief delay
+        setTimeout(() => setShowMobileVRPerson(true), 300);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Title rotation animation

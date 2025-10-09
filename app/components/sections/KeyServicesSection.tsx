@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
-import { Modal } from '@/app/components/ui/Modal';
+import { ServiceModal } from '@/app/components/ui/ServiceModal';
 import { effects, responsive } from '@/app/styles/design-tokens';
 
 interface Service {
@@ -109,15 +109,16 @@ export function KeyServicesSection() {
 
       {/* Modal */}
       {selectedService && (
-        <Modal
+        <ServiceModal
           isOpen={true}
           onClose={closeModal}
           title={services.find(s => s.key === selectedService)?.title || ''}
+          subtitle={services.find(s => s.key === selectedService)?.subtitle || ''}
         >
-          <p className="text-white text-base">
-            {t.services?.[selectedService]?.description}
+          <p className="text-gray-700 text-base leading-relaxed">
+            {t.services?.[selectedService]?.description || 'Content will be added here.'}
           </p>
-        </Modal>
+        </ServiceModal>
       )}
     </div>
   );
