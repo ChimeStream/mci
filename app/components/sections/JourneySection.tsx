@@ -1,24 +1,98 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { colors, effects, responsive } from '@/app/styles/design-tokens';
 import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
 
-const journeyData = [
-  { year: '2014', event: 'The establishment of Iran Mobile Communications Company' },
-  { year: '2015', event: 'Launch of 4G LTE network' },
-  { year: '2016', event: 'Expansion into digital services' },
-  { year: '2017', event: 'Introduction of e-learning platforms' },
-  { year: '2018', event: 'Launch of fintech solutions' },
-  { year: '2019', event: 'Development of smart city initiatives' },
-  { year: '2020', event: 'COVID-19 response: Remote services expansion' },
-  { year: '2021', event: '5G network pilot program' },
-  { year: '2022', event: 'IoT platform launch' },
-  { year: '2023', event: 'AI and machine learning integration' },
-  { year: '2024', event: '5.5G network deployment' },
-  { year: '2025', event: 'Immersive communication ecosystem' },
+type JourneyMilestone = {
+  year: string;
+  event: string;
+  cover: string;
+};
+
+const journeyData: JourneyMilestone[] = [
+  {
+    year: '1993',
+    event: 'The launch of the Mobile Communications Project',
+    cover: '/bc26f8a62236505a81d16759a699eeaa57ba5847.png',
+  },
+  {
+    year: '1994',
+    event: 'The establishment of Iran Mobile Communications Company',
+    cover: '',
+  },
+  {
+    year: '1996',
+    event: 'Surpassing 60,000 subscribers',
+    cover: '',
+  },
+  {
+    year: '2000',
+    event: 'Surpassing 1.4 million subscribers and covering 733 cities',
+    cover: '',
+  },
+  {
+    year: '2002',
+    event: 'Introduction to SMS Service',
+    cover: '',
+  },
+  {
+    year: '2006',
+    event: 'Surpassing 10 million subscribers',
+    cover: '',
+  },
+  {
+    year: '2007',
+    event: 'The brand name selection of Hamrah Aval (No One Is Alone)',
+    cover: '/ee1d963de6382555b36c1c5348b8cc50adaf7c24.png',
+  },
+  {
+    year: '2010',
+    event: 'Launch of GPRS Internet Service and EDGE Technology',
+    cover: '',
+  },
+  {
+    year: '2012',
+    event: 'Completion of the privatization process',
+    cover: '',
+  },
+  {
+    year: '2014',
+    event: 'Introduction of 3G Technology and the Launch of Third-Generation Mobile Services',
+    cover: '/9b794ef5a4424664c17579386d444fa110b59f50.png',
+  },
+  {
+    year: '2015',
+    event: 'Deployment of LTE/4G technology and provision of high-speed internet services',
+    cover: '',
+  },
+  {
+    year: '2019',
+    event: 'Introduction of the VoLTE service to improve the quality of voice calls over the 4G network',
+    cover: '',
+  },
+  {
+    year: '2021',
+    event: 'Surpassing 70 million subscribers and becoming the largest operator in the Middle East',
+    cover: '/f62fc24b5440eff874e7f6cf33985718aabfdbb6.png',
+  },
+  {
+    year: '2022',
+    event: 'The commencement of 5G testing and the launch of the first 5G sites in the country',
+    cover: '',
+  },
+  {
+    year: '2023',
+    event: 'Surpassing 100 million subscribers',
+    cover: '',
+  },
+  {
+    year: '2025',
+    event: 'MCI Rebranding Based on the IMMERSIVE Concept',
+    cover: '/e85f3fc12577496025181fc2c8050515fda0f174.png',
+  },
 ];
 
 /**
@@ -29,6 +103,14 @@ export function JourneySection() {
   const { t } = useLanguage();
   const [rotation, setRotation] = useState(0);
   const anglePerItem = 360 / journeyData.length;
+  const trackRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isPointerDown, setIsPointerDown] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [scrollStartX, setScrollStartX] = useState(0);
+  const [velocity, setVelocity] = useState(0);
+  const [lastScrollLeft, setLastScrollLeft] = useState(0);
+  const [lastTimestamp, setLastTimestamp] = useState<number | null>(null);
 
   const handleNext = () => {
     setRotation((prev) => prev - anglePerItem);
@@ -36,6 +118,47 @@ export function JourneySection() {
 
   const handlePrev = () => {
     setRotation((prev) => prev + anglePerItem);
+  };
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.setPointerCapture(event.pointerId);
+    setIsPointerDown(true);
+    setDragStartX(event.clientX);
+    setScrollStartX(track.scrollLeft);
+    setVelocity(0);
+    setLastTimestamp(Date.now());
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!isPointerDown) return;
+    const track = trackRef.current;
+    if (!track) return;
+    const delta = dragStartX - event.clientX;
+    track.scrollLeft = scrollStartX + delta;
+    const now = Date.now();
+    const elapsed = lastTimestamp ? now - lastTimestamp : 0;
+    if (elapsed > 0) {
+      const currentVelocity = (track.scrollLeft - lastScrollLeft) / elapsed;
+      setVelocity(currentVelocity);
+      setLastTimestamp(now);
+      setLastScrollLeft(track.scrollLeft);
+    }
+  };
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    const track = trackRef.current;
+    if (!track) return;
+    track.releasePointerCapture(event.pointerId);
+    setIsPointerDown(false);
+    const momentumDistance = velocity * 200;
+    const targetScroll = track.scrollLeft + momentumDistance;
+    const scrollOptions: ScrollToOptions = {
+      left: targetScroll,
+      behavior: 'smooth',
+    };
+    track.scrollTo(scrollOptions);
   };
 
   return (
@@ -52,7 +175,8 @@ export function JourneySection() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, rgba(0,195,170,0.15) 0%, rgba(0,149,218,0.20) 50%, rgba(11,23,80,0.4) 100%)',
+            background:
+              'linear-gradient(180deg, rgba(0,195,170,0.15) 0%, rgba(0,149,218,0.20) 50%, rgba(11,23,80,0.4) 100%)',
             mixBlendMode: 'normal',
           }}
         />
@@ -61,7 +185,8 @@ export function JourneySection() {
         <div
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: 'url(/1b8428e905ccc5c51f305d9af193851f394c7dcc.png)',
+            backgroundImage:
+              'url(/1b8428e905ccc5c51f305d9af193851f394c7dcc.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -114,34 +239,123 @@ export function JourneySection() {
             >
               {t.journey?.subtitle || 'Milestones'}
             </p>
-            <div className="relative pl-8">
-              <span className="absolute left-4 top-1 bottom-8 w-px bg-white/15" aria-hidden="true" />
-              <div className="space-y-6">
+            <div className="relative">
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#0B1750] to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-[#0B1750] to-transparent" />
+              <div
+                ref={trackRef}
+                role="list"
+                aria-roledescription="timeline"
+                aria-label="Company milestones"
+                className="flex gap-5 overflow-x-auto pb-6 pl-4 pr-4 [-ms-overflow-style:'none'] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerLeave={(event) => {
+                  if (!isPointerDown) return;
+                  handlePointerUp(event);
+                }}
+              >
                 {journeyData.map((item, index) => (
-                  <div key={`${item.year}-${index}`} className="relative">
-                    <span
-                      className="absolute left-4 top-4 h-3 w-3 -translate-x-1/2 rounded-full bg-[#0095DA]"
-                      aria-hidden="true"
-                    />
+                  <div
+                    key={`${item.year}-${index}`}
+                    ref={(ref) => {
+                      cardRefs.current[index] = ref;
+                    }}
+                    role="listitem"
+                    aria-label={`${item.year}: ${item.event}`}
+                    className="relative flex shrink-0 snap-center cursor-pointer select-none overflow-hidden rounded-[30px] transition-transform duration-300 hover:scale-105"
+                    style={{
+                      minWidth: 'clamp(240px, 80vw, 286px)',
+                      height: 'clamp(320px, 82vw, 452px)',
+                    }}
+                  >
                     <div
-                      className="rounded-2xl bg-[#00162E]/90 p-5 shadow-xl backdrop-blur-lg"
-                      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-                    >
-                      <div
-                        className="text-2xl font-bold text-white"
-                        style={{ fontFamily: 'Lato, sans-serif' }}
-                      >
-                        {item.year}
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{
+                        backgroundImage: `url(${item.cover})`,
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-[#0076FF]/40 via-[#001F3F]/55 to-[#000000]/90" />
+                    <div className="relative flex h-full w-full flex-col justify-between p-6">
+                      <div>
+                        <span
+                          className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-sm font-bold uppercase tracking-[0.25em] text-white/90 backdrop-blur-sm"
+                          style={{ fontFamily: 'Lato, sans-serif' }}
+                        >
+                          {item.year}
+                        </span>
                       </div>
-                      <p
-                        className="mt-2 text-sm leading-relaxed text-white/80"
-                        style={{ fontFamily: 'Lato, sans-serif' }}
-                      >
-                        {item.event}
-                      </p>
+                      <div>
+                        <p
+                          className="text-lg font-semibold leading-snug text-white"
+                          style={{ fontFamily: 'Lato, sans-serif' }}
+                        >
+                          {item.event}
+                        </p>
+                      </div>
                     </div>
+                    <div
+                      className="pointer-events-none absolute inset-x-6 bottom-5 h-16 rounded-full"
+                      style={{
+                        background:
+                          'radial-gradient(circle at center, rgba(0,118,255,0.35) 0%, rgba(0,118,255,0) 70%)',
+                        filter: 'blur(12px)',
+                      }}
+                    />
                   </div>
                 ))}
+              </div>
+              <div className="mt-4 flex items-center justify-center gap-4">
+                <button
+                  type="button"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all disabled:cursor-not-allowed disabled:opacity-40"
+                  aria-label="Previous milestone"
+                  style={{
+                    backdropFilter: 'blur(14px)',
+                    WebkitBackdropFilter: 'blur(14px)',
+                  }}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </button>
+                <div className="flex items-center gap-2">
+                  {journeyData.map((_, indicatorIndex) => (
+                    <span
+                      key={`indicator-${indicatorIndex}`}
+                      className="h-2 w-5 rounded-full bg-white/20 transition-colors"
+                    />
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  className="flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-all disabled:cursor-not-allowed disabled:opacity-40"
+                  aria-label="Next milestone"
+                  style={{
+                    backdropFilter: 'blur(14px)',
+                    WebkitBackdropFilter: 'blur(14px)',
+                  }}
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>

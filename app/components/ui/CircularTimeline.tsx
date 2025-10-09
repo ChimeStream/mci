@@ -9,6 +9,7 @@ const cn = (...classes: (string | undefined | null | false)[]) => {
 export interface TimelineItem {
   year: string;
   event: string;
+  cover?: string;
 }
 
 interface CircularTimelineProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,7 +20,7 @@ interface CircularTimelineProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const CircularTimeline = React.forwardRef<HTMLDivElement, CircularTimelineProps>(
-  ({ items, className, radius = 600, rotation: externalRotation, onRotationChange, ...props }, ref) => {
+  ({ items, className, radius = 1400, rotation: externalRotation, onRotationChange, ...props }, ref) => {
     const [internalRotation, setInternalRotation] = useState(0);
     const rotation = externalRotation !== undefined ? externalRotation : internalRotation;
     const touchStartRef = useRef<{ x: number; rotation: number } | null>(null);
@@ -128,13 +129,13 @@ const CircularTimeline = React.forwardRef<HTMLDivElement, CircularTimelineProps>
                 key={`${item.year}-${i}`}
                 role="group"
                 aria-label={`Year ${item.year}`}
-                className="absolute w-[220px] h-[320px] pointer-events-none"
+                className="absolute w-[180px] h-[260px] pointer-events-none"
                 style={{
                   transform: `rotateY(${itemAngle}deg) translateZ(${radius}px) scale(${scale})`,
                   left: '50%',
                   top: '50%',
-                  marginLeft: '-110px',
-                  marginTop: '-160px',
+                  marginLeft: '-90px',
+                  marginTop: '-130px',
                   opacity: opacity,
                   transition: 'opacity 0.3s linear, transform 0.3s linear'
                 }}
@@ -146,25 +147,44 @@ const CircularTimeline = React.forwardRef<HTMLDivElement, CircularTimelineProps>
                     borderRadius: '30px',
                   }}
                 >
-                  <div className="absolute bottom-6 left-6 right-6">
-                    {/* Year */}
+                  {/* Background Image */}
+                  {item.cover && (
+                    <img
+                      src={item.cover}
+                      alt=""
+                      className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+                    />
+                  )}
+
+                  {/* Gradient Overlay for text readability */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: 'linear-gradient(to bottom, transparent 0%, rgba(0, 22, 46, 0.7) 70%, rgba(0, 22, 46, 0.95) 100%)',
+                    }}
+                  />
+
+                  {/* Year - Fixed at top */}
+                  <div className="absolute top-6 left-6 right-6 z-10">
                     <div
-                      className="font-bold leading-tight mb-4"
+                      className="font-bold leading-tight"
                       style={{
                         fontFamily: 'Lato, sans-serif',
-                        fontSize: '36px',
+                        fontSize: '30px',
                         color: 'white',
                       }}
                     >
                       {item.year}
                     </div>
+                  </div>
 
-                    {/* Event */}
+                  {/* Event - Fixed at bottom */}
+                  <div className="absolute bottom-6 left-6 right-6 z-10">
                     <p
                       className="font-normal leading-snug pr-2"
                       style={{
                         fontFamily: 'Lato, sans-serif',
-                        fontSize: '14px',
+                        fontSize: '12px',
                         color: 'white',
                       }}
                     >
