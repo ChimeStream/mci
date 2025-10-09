@@ -17,8 +17,18 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const accumulatedDelta = useRef(0);
   const [titleNumber, setTitleNumber] = useState(0);
+  const [showMobileVRPerson, setShowMobileVRPerson] = useState(false);
 
   const titles = ['connected', 'limitless', 'seamless', 'intelligent', 'dynamic'];
+
+  // Mobile VR Person fade-in trigger
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMobileVRPerson(true);
+    }, 1500); // Fade in after 1.5 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Title rotation animation
   useEffect(() => {
@@ -102,8 +112,14 @@ export function HeroSection() {
   }, [scrollProgress, isAnimating, enableScrollAnimation]);
 
   // Animation values
-  const backgroundBlur = enableScrollAnimation ? scrollProgress * 20 : 0;
-  const textLogoBlur = enableScrollAnimation ? scrollProgress * 10 : 0;
+  // Desktop: blur based on scroll progress
+  // Mobile: blur when VR person appears
+  const backgroundBlur = enableScrollAnimation
+    ? scrollProgress * 20
+    : (showMobileVRPerson ? 8 : 0); // Mobile blur
+  const textLogoBlur = enableScrollAnimation
+    ? scrollProgress * 10
+    : (showMobileVRPerson ? 4 : 0); // Mobile blur
 
   const navbarHeight = typeof window !== 'undefined' ? window.innerHeight * 0.15 : 150;
   const vrPersonStartY = typeof window !== 'undefined' ? window.innerHeight - navbarHeight : 700;
@@ -166,6 +182,50 @@ export function HeroSection() {
             <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
             <span>WORLD</span>
           </h1>
+        </motion.div>
+
+        {/* Mobile VR Person - Only visible on mobile */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{
+            opacity: showMobileVRPerson ? 1 : 0,
+            y: showMobileVRPerson ? 0 : 50,
+          }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="relative mt-8 w-full max-w-[320px] md:hidden"
+        >
+          <div className="relative flex w-full items-center justify-center">
+            {/* Glow effect behind VR person */}
+            <motion.div
+              animate={{
+                opacity: showMobileVRPerson ? [0.3, 0.6, 0.3] : 0,
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl -z-10"
+              style={{ backgroundColor: `${colors.accent.cyan}30` }}
+            />
+
+            {/* VR Person Image */}
+            <Image
+              src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
+              alt="Person wearing VR headset"
+              width={400}
+              height={533}
+              className="w-full h-auto object-contain"
+              style={{
+                filter: 'drop-shadow(0 20px 40px rgba(0, 12, 45, 0.5))',
+              }}
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Desktop: Centered text */}
