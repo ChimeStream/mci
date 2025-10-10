@@ -221,7 +221,7 @@ export function HeroSection() {
               letterSpacing: '-0.02em',
             }}
           >
-            {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word, i) => (
+            {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
               <span key={i}>{word}</span>
             ))}
             <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
