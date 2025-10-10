@@ -9,17 +9,11 @@ import { colors, responsive } from '@/app/styles/design-tokens';
 
 /**
  * Hero Section Component
- * Full-screen hero with animated title rotation and VR person scroll animation
+ * Full-screen hero with animated title rotation and static VR person
  */
 export function HeroSection() {
   const { t, language } = useLanguage();
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [enableScrollAnimation, setEnableScrollAnimation] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const accumulatedDelta = useRef(0);
   const [titleNumber, setTitleNumber] = useState(0);
-  const [showMobileVRPerson, setShowMobileVRPerson] = useState(false);
 
   // Get translated rotating words
   const titles = [
@@ -30,50 +24,6 @@ export function HeroSection() {
     t.hero?.rotatingWords?.word5 || 'dynamic',
   ];
 
-  // Mobile VR Person fade-in trigger on first interaction
-  useEffect(() => {
-    let hasTriggered = false;
-
-    const triggerVRPerson = () => {
-      if (!hasTriggered) {
-        hasTriggered = true;
-        setShowMobileVRPerson(true);
-      }
-    };
-
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-
-      // First interaction - trigger the VR person
-      if (!hasTriggered) {
-        triggerVRPerson();
-        return;
-      }
-
-      // After triggered, keep VR person visible while scrolling down
-      // Only hide when scrolling back to the very top (< 10px)
-      if (currentScroll < 10) {
-        setShowMobileVRPerson(false);
-      } else if (currentScroll >= 10) {
-        setShowMobileVRPerson(true);
-      }
-    };
-
-    const handleTouch = () => {
-      if (!hasTriggered) {
-        triggerVRPerson();
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('touchstart', handleTouch, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchstart', handleTouch);
-    };
-  }, []);
-
   // Title rotation animation
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -82,173 +32,98 @@ export function HeroSection() {
     return () => clearTimeout(timeoutId);
   }, [titleNumber, titles.length]);
 
-  // VR person scroll animation
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-    const mediaQuery = window.matchMedia('(pointer: fine) and (hover: hover)');
-    const update = (event: MediaQueryListEvent | MediaQueryList) => {
-      setEnableScrollAnimation(event.matches);
-    };
-
-    update(mediaQuery);
-    mediaQuery.addEventListener('change', update);
-
-    return () => mediaQuery.removeEventListener('change', update);
-  }, []);
-
-  // VR person scroll animation
-  useEffect(() => {
-    if (!enableScrollAnimation) {
-      setScrollProgress(0);
-      setIsAnimating(false);
-      accumulatedDelta.current = 0;
-      return;
-    }
-
-    const handleWheel = (e: WheelEvent) => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll < 50) {
-        if (scrollProgress < 1 || e.deltaY < 0) {
-          e.preventDefault();
-
-          accumulatedDelta.current += e.deltaY;
-          accumulatedDelta.current = Math.max(0, accumulatedDelta.current);
-
-          const newProgress = Math.max(0, Math.min(1, accumulatedDelta.current / 1800));
-          setScrollProgress(newProgress);
-
-          if (newProgress >= 1 && e.deltaY > 0 && !isAnimating) {
-            setIsAnimating(true);
-            setTimeout(() => {
-              const aboutSection = document.querySelector('#about');
-              if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth' });
-              }
-            }, 800);
-          }
-        }
-      } else if (currentScroll === 0 && e.deltaY < 0) {
-        accumulatedDelta.current = 0;
-        setScrollProgress(0);
-        setIsAnimating(false);
-      }
-    };
-
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
-      if (currentScroll < 100 && (isAnimating || scrollProgress >= 1)) {
-        accumulatedDelta.current = 0;
-        setScrollProgress(0);
-        setIsAnimating(false);
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrollProgress, isAnimating, enableScrollAnimation]);
-
-  // Animation values
-  // Desktop: blur based on scroll progress
-  // Mobile: blur when VR person appears
-  const backgroundBlur = enableScrollAnimation
-    ? scrollProgress * 20
-    : (showMobileVRPerson ? 8 : 0); // Mobile blur
-  const textLogoBlur = enableScrollAnimation
-    ? scrollProgress * 10
-    : (showMobileVRPerson ? 4 : 0); // Mobile blur
-
-  const navbarHeight = typeof window !== 'undefined' ? window.innerHeight * 0.15 : 150;
-  const vrPersonStartY = typeof window !== 'undefined' ? window.innerHeight - navbarHeight : 700;
-  const vrPersonY = vrPersonStartY - (scrollProgress * vrPersonStartY);
-  const vrPersonOpacity = enableScrollAnimation ? Math.min(1, scrollProgress * 3) : 1;
-  const vrPersonScale = enableScrollAnimation ? 0.85 + scrollProgress * 0.15 : 1;
-
   return (
     <section
-      ref={sectionRef}
       id="welcome"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-6 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40 lg:px-16 snap-start snap-always"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6 pb-0 pt-24 md:px-10 md:pb-0 md:pt-32 lg:px-16 snap-start snap-always"
       style={{ backgroundColor: colors.primary.darkNavy }}
     >
-      {/* Background Image with blur */}
+      {/* Background Image */}
       <div className="absolute inset-0 h-full w-full overflow-hidden">
-        <motion.div
-          className="absolute inset-0 h-full w-full"
-          style={{ filter: `blur(${backgroundBlur}px)` }}
-        >
-          <Image
-            src="/15b444842f513a65288885724ebd0f768ee77221.png"
-            alt=""
-            fill
-            className="object-cover object-center"
-            priority
-          />
-        </motion.div>
+        <Image
+          src="/15b444842f513a65288885724ebd0f768ee77221.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          priority
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#031138]/40 to-[#031138]/80" />
       </div>
 
-      {/* Logo - Blurs when VR person appears */}
-      <motion.div
-        className="absolute left-1/2 top-12 z-30 -translate-x-1/2 sm:top-16 md:top-12"
-        style={{ filter: `blur(${textLogoBlur}px)` }}
-      >
+      {/* Logo */}
+      <div className="absolute left-1/2 top-12 z-30 -translate-x-1/2 sm:top-16 md:top-12">
         <MCILogo />
-      </motion.div>
+      </div>
 
-      <div className="relative z-30 flex w-full max-w-[960px] flex-col items-center">
-        {/* Mobile Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ filter: `blur(${textLogoBlur}px)` }}
-          className="flex w-full flex-col items-start md:hidden"
-        >
-          <h1
-            className="flex flex-col text-white font-black w-full"
-            style={{
-              fontFamily: 'Lato, sans-serif',
-              fontSize: 'clamp(3.5rem, 12vw, 5rem)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
-              textAlign: language === 'ar' ? 'right' : 'left',
-            }}
-            dir={language === 'ar' ? 'rtl' : 'ltr'}
+      {/* Content Container */}
+      <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1200px] mx-auto gap-8">
+        {/* Left side: Text - Desktop & Mobile */}
+        <div className="flex flex-col justify-center w-full md:w-auto md:flex-shrink-0">
+          {/* Mobile Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex w-full flex-col items-start md:hidden"
           >
-            {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
-              <span key={i}>{word}</span>
-            ))}
-            <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
-            <span>{t.hero?.world || 'WORLD'}</span>
-          </h1>
-        </motion.div>
+            <h1
+              className="flex flex-col text-white font-black w-full"
+              style={{
+                fontFamily: 'Lato, sans-serif',
+                fontSize: 'clamp(3rem, 10vw, 4.5rem)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                textAlign: language === 'ar' ? 'right' : 'left',
+              }}
+              dir={language === 'ar' ? 'rtl' : 'ltr'}
+            >
+              {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
+                <span key={i}>{word}</span>
+              ))}
+              <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
+              <span>{t.hero?.world || 'WORLD'}</span>
+            </h1>
+          </motion.div>
 
-        {/* Mobile VR Person - Only visible on mobile */}
+          {/* Desktop Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="hidden md:flex w-full flex-col"
+          >
+            <h1
+              className="flex flex-col text-white font-black"
+              style={{
+                fontFamily: 'Lato, sans-serif',
+                fontSize: 'clamp(3.5rem, 5vw, 6rem)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                textAlign: language === 'ar' ? 'right' : 'left',
+              }}
+              dir={language === 'ar' ? 'rtl' : 'ltr'}
+            >
+              {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
+                <span key={i}>{word}</span>
+              ))}
+              <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
+              <span>{t.hero?.world || 'WORLD'}</span>
+            </h1>
+          </motion.div>
+        </div>
+
+        {/* Right side: VR Person - Desktop Only - Aligned to bottom */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{
-            opacity: showMobileVRPerson ? 1 : 0,
-            y: showMobileVRPerson ? 0 : 50,
-          }}
-          transition={{
-            duration: 1.2,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="relative mt-8 w-full max-w-[320px] md:hidden"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="hidden md:flex justify-end items-end relative flex-shrink-0 absolute bottom-0 right-0 h-full"
         >
-          <div className="relative flex w-full items-center justify-center">
+          <div className="relative flex items-end justify-center h-full">
             {/* Glow effect behind VR person */}
             <motion.div
               animate={{
-                opacity: showMobileVRPerson ? [0.3, 0.6, 0.3] : 0,
+                opacity: [0.3, 0.6, 0.3],
                 scale: [1, 1.2, 1],
               }}
               transition={{
@@ -256,79 +131,35 @@ export function HeroSection() {
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl -z-10"
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-3xl -z-10"
               style={{ backgroundColor: `${colors.accent.cyan}30` }}
             />
 
-            {/* VR Person Image */}
+            {/* VR Person Image - Bottom aligned, larger */}
             <Image
               src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
               alt="Person wearing VR headset"
-              width={400}
-              height={533}
-              className="w-full h-auto object-contain"
+              width={700}
+              height={933}
+              className="w-auto h-full object-contain object-bottom"
               style={{
-                filter: 'drop-shadow(0 20px 40px rgba(0, 12, 45, 0.5))',
+                filter: 'drop-shadow(0 42px 90px rgba(0, 12, 45, 0.65))',
               }}
               priority
             />
           </div>
         </motion.div>
-
-        {/* Desktop: Centered text */}
-        <div className="hidden w-full flex-col items-center text-center md:flex">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            style={{ filter: `blur(${textLogoBlur}px)` }}
-            className="flex w-full flex-col gap-6"
-          >
-            <h1
-              className="flex flex-col items-center text-center font-black text-white"
-              style={{
-                fontFamily: 'Lato, sans-serif',
-                fontSize: responsive.fontSize.heroDesktop,
-                lineHeight: 1.1,
-                letterSpacing: '-0.015em',
-              }}
-            >
-              <span>{t.hero?.welcomeTo || 'WELCOME TO'}</span>
-              <span className="mt-2 flex flex-wrap items-center justify-center gap-4">
-                <RotatingWord titles={titles} titleNumber={titleNumber} position="center" />
-                <span>{t.hero?.world || 'WORLD'}</span>
-              </span>
-            </h1>
-          </motion.div>
-        </div>
-
-        {/* Mobile VR illustration - Hidden, only shows on desktop scroll */}
       </div>
 
-      {/* VR Person - Desktop - Foreground (below Navigation) */}
+      {/* Mobile VR Person - Below text */}
       <motion.div
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-35 hidden justify-center md:flex"
-        style={{
-          y: vrPersonY,
-          opacity: vrPersonOpacity,
-          scale: vrPersonScale,
-        }}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className="relative mt-8 w-full flex justify-center md:hidden z-20"
       >
-        <div className="relative flex w-full items-center justify-center">
-          <div className="pointer-events-none absolute inset-x-0 bottom-[-8%] z-0 mx-auto h-[420px] w-[420px] rounded-full bg-gradient-to-t from-[#031138]/70 via-[#001a3f]/45 to-transparent blur-[120px]" />
-          <Image
-            src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
-            alt="Person wearing VR headset"
-            width={600}
-            height={800}
-            className="h-[60vh] w-auto object-contain md:h-[70vh] lg:h-[75vh] xl:h-[80vh] md:max-h-[600px] lg:max-h-[700px] xl:max-h-[800px]"
-            style={{
-              filter: 'drop-shadow(0 42px 90px rgba(0, 12, 45, 0.65))',
-            }}
-            priority
-          />
-
-          {/* Glow effect */}
+        <div className="relative flex items-center justify-center max-w-[400px]">
+          {/* Glow effect behind VR person */}
           <motion.div
             animate={{
               opacity: [0.3, 0.6, 0.3],
@@ -339,8 +170,21 @@ export function HeroSection() {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-3xl -z-10"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl -z-10"
             style={{ backgroundColor: `${colors.accent.cyan}30` }}
+          />
+
+          {/* VR Person Image */}
+          <Image
+            src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
+            alt="Person wearing VR headset"
+            width={400}
+            height={533}
+            className="w-full h-auto object-contain"
+            style={{
+              filter: 'drop-shadow(0 20px 40px rgba(0, 12, 45, 0.5))',
+            }}
+            priority
           />
         </div>
       </motion.div>
@@ -374,7 +218,7 @@ function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
     tempContainer.style.fontWeight = '900'; // font-black
     tempContainer.style.fontSize = position === 'center'
       ? responsive.fontSize.heroDesktop
-      : 'clamp(3.5rem, 12vw, 5rem)';
+      : 'clamp(3rem, 10vw, 4.5rem)';
     tempContainer.style.letterSpacing = position === 'center' ? '-0.015em' : '-0.02em';
 
     document.body.appendChild(tempContainer);
