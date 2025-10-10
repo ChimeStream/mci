@@ -1,0 +1,26 @@
+{
+  "about": {
+    "title": "QUIÉNES SOMOS",
+    "description": "MCI, el conglomerado líder de la economía digital en Irán, impulsa la transformación tecnológica y de comunicaciones más avanzada del país. Hamrah Aval ha trascendido su rol como operador móvil para convertirse en el corazón del ecosistema digital iraní. A través de una red diversificada de empresas filiales y servicios que abarcan telecomunicaciones, tecnología financiera, educación, entretenimiento y plataformas digitales, estamos construyendo una vida digital más inteligente, accesible y conectada para todos. En un mundo donde la tecnología y las personas están más unidas que nunca, Hamrah Aval abraza la visión de Comunicación Inmersiva: crear conexiones significativas y centradas en el ser humano a través de una experiencia compartida, donde nadie está solo y cada persona forma parte de un viaje colectivo y humano. Este enfoque eleva a MCI más allá de ser un simple operador, transformándolo en una plataforma de experiencias inteligentes, un espacio donde educación, entretenimiento, salud, negocios y comunicación convergen en un viaje inmersivo.",
+    "stat1": "Primer Operador Móvil",
+    "stat1sub": "desde 1993",
+    "stat2": "Más de 100 millones",
+    "stat2sub": "de usuarios",
+    "stat3": "Pioneros en 4G, 5G y 5.5G",
+    "stat3sub": "liderando la conectividad",
+    "stat4": "Innovación digital:",
+    "stat4sub": "VOD, ciudades inteligentes, IoT e IA"
+  },
+  "vision": {
+    "title": "NUESTRA VISIÓN",
+    "description": "Ofrecer comunicaciones inclusivas y experiencias digitales excepcionales mediante soluciones inteligentes y alianzas estratégicas, construyendo juntos un futuro mejor."
+  },
+  "mission": {
+    "title": "NUESTRA MISIÓN",
+    "description": "Revolucionar las comunicaciones y trascender fronteras"
+  },
+  "immersive": {
+    "title": "INMERSIVO",
+    "description": "Nuestro futuro se construye sobre experiencias inmersivas: un viaje que difumina los límites entre lo físico y lo digital, permitiéndote vivir en un ecosistema inteligente, rico e interconectado. La inmersión significa estar completamente presente en el momento, donde nuestros clientes no solo consumen servicios, sino que realmente viven la experiencia. Es un viaje compartido donde nadie está solo, y cada persona se convierte en parte de una experiencia colectiva y humana. Este enfoque eleva a MCI más allá de ser un operador tradicional, transformándolo en una plataforma de experiencias inteligentes, un lugar donde educación, entretenimiento, salud, negocios y comunicación convergen en un único viaje inmersivo."
+  }
+}

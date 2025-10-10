@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useLanguage } from '@/app/hooks/useLanguage';
 
 interface FeatureCard {
   icon: string;
@@ -14,41 +15,33 @@ interface ContentSection {
 }
 
 export function FintechContent() {
-  const features: FeatureCard[] = [
-    {
-      icon: '/711f23113f3d42204a4464b160a479d1e65d05c4.svg',
-      title: 'Sim POS',
-    },
-    {
-      icon: '/438a871ddc9ff1195c165d6d77201ef13355922d.svg',
-      title: 'Financial super-app',
-    },
-    {
-      icon: '/ff178d5a87bd15ab13dab8690f013cd343ec723f.svg',
-      title: 'MCI CVC',
-    },
+  const { t } = useLanguage();
+
+  // Get translated features and sections from services namespace
+  const fintechData = t.services?.fintech;
+
+  const featureIcons = [
+    '/711f23113f3d42204a4464b160a479d1e65d05c4.svg',
+    '/438a871ddc9ff1195c165d6d77201ef13355922d.svg',
+    '/ff178d5a87bd15ab13dab8690f013cd343ec723f.svg',
   ];
 
-  const sections: ContentSection[] = [
-    {
-      title: 'FINANCIAL SUPER-APP',
-      image: '/2326fe119908c122a9754e4b331ff5e1f632edb4.png',
-      description:
-        'This platform offers users a wide range of services, from financial payments and bill settlements to registration for educational courses and accommodation rentals. It also provides a secure and integrated digital wallet for managing transactions, and users can receive a physical card linked to it for purchases at various stores. On average, the application is installed 208,000 times per month and has around 70,000 daily active users, who spend an average of approximately 168 seconds per day on the app.',
-    },
-    {
-      title: 'MCI CVC',
-      image: '/5e0a9e6f154a018c91c84a7cb2f07e76c014c585.png',
-      description:
-        'This fund is dedicated to investing in innovative and technology-driven projects and companies. Its mission is to identify and monitor emerging technologies while enabling their integration into the national value chain. Key investment areas include Artificial Intelligence, Internet of Things, Microelectronics, 5G communications, Industry 4.0, Smart Logistics, Communication Systems and Equipment, as well as Augmented and Virtual Reality.',
-    },
-    {
-      title: 'SIM POS',
-      image: '/173b5a8b657d93ee2f8553b906ea835c293d9b88.png',
-      description:
-        'SIM-POS is a specialized and secure SIM card designed for mobile point-of-sale (mPOS) devices. It plays a key role in transmitting financial transaction data to payment service provider (PSP) networks. This SIM card provides a stable and dedicated connection to banking and payment servers without the need for public internet, thereby enhancing the speed, security, and reliability of transactions.',
-    },
+  const sectionImages = [
+    '/2326fe119908c122a9754e4b331ff5e1f632edb4.png',
+    '/5e0a9e6f154a018c91c84a7cb2f07e76c014c585.png',
+    '/173b5a8b657d93ee2f8553b906ea835c293d9b88.png',
   ];
+
+  const features: FeatureCard[] = fintechData?.features?.map((f: any, i: number) => ({
+    icon: featureIcons[i],
+    title: f.title,
+  })) || [];
+
+  const sections: ContentSection[] = fintechData?.sections?.map((s: any, i: number) => ({
+    title: s.title,
+    image: sectionImages[i],
+    description: s.description,
+  })) || [];
 
   return (
     <div className="space-y-8">

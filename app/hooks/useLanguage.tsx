@@ -33,12 +33,28 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   }, []);
 
   useEffect(() => {
-    // Load translations when language changes
+    // Load all namespace translations when language changes
     const loadTranslations = async () => {
       try {
-        const response = await fetch(`/locales/${language}.json`);
-        const data = await response.json();
-        setTranslations(data);
+        const namespaces = ['common', 'hero', 'about', 'journey', 'services'];
+        const translationPromises = namespaces.map(namespace =>
+          fetch(`/locales/${language}/${namespace}.json`).then(res => res.json())
+        );
+
+        const [common, hero, about, journey, services] = await Promise.all(translationPromises);
+
+        // Merge all namespaces into a single translations object
+        setTranslations({
+          nav: common.nav,
+          footer: common.footer,
+          hero,
+          about: about.about,
+          vision: about.vision,
+          mission: about.mission,
+          immersive: about.immersive,
+          journey,
+          services,
+        });
       } catch (error) {
         console.error(`Failed to load translations for ${language}:`, error);
       }

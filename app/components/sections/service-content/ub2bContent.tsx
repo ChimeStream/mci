@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/app/hooks/useLanguage';
 
-export function ub2bContent() {
+export function Ub2bContent() {
   const { t } = useLanguage();
 
   return (

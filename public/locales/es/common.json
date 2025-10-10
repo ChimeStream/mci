@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "welcome": "Inicio",
+    "about": "Nosotros",
+    "journey": "Trayectoria",
+    "services": "Servicios"
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 MCI. Todos los derechos reservados."
+  }
+}

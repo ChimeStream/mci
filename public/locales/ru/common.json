@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "welcome": "Главная",
+    "about": "О нас",
+    "journey": "Путь",
+    "services": "Услуги"
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 MCI. Все права защищены."
+  }
+}

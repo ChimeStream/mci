@@ -1,0 +1,170 @@
+{
+  "title": "KEY SERVICES",
+  "5g": {
+    "title": "5.5G",
+    "subtitle": "Future-ready connectivity",
+    "description": "With the introduction of 5.5G, MCI takes a major step toward the future of connectivity. This next-generation technology delivers speeds beyond 5G, ultra-low latency, and significantly higher capacity. With 5.5G, users can experience ultra-fast internet, advanced augmented and virtual reality, large-scale IoT applications, and smart city services—seamlessly and without limits. This evolution positions MCI as the pioneer of digital transformation in Iran, where connectivity becomes not only faster, but also smarter, more reliable, and truly immersive."
+  },
+  "fintech": {
+    "title": "Fintech",
+    "subtitle": "Secure digital finance solutions",
+    "description": "MCI's fintech ecosystem transforms digital payments and financial services through innovation and security.",
+    "features": [
+      { "title": "Sim POS" },
+      { "title": "Financial super-app" },
+      { "title": "MCI CVC" }
+    ],
+    "sections": [
+      {
+        "title": "FINANCIAL SUPER-APP",
+        "description": "This platform offers users a wide range of services, from financial payments and bill settlements to registration for educational courses and accommodation rentals. It also provides a secure and integrated digital wallet for managing transactions, and users can receive a physical card linked to it for purchases at various stores. On average, the application is installed 208,000 times per month and has around 70,000 daily active users, who spend an average of approximately 168 seconds per day on the app."
+      },
+      {
+        "title": "MCI CVC",
+        "description": "This fund is dedicated to investing in innovative and technology-driven projects and companies. Its mission is to identify and monitor emerging technologies while enabling their integration into the national value chain. Key investment areas include Artificial Intelligence, Internet of Things, Microelectronics, 5G communications, Industry 4.0, Smart Logistics, Communication Systems and Equipment, as well as Augmented and Virtual Reality."
+      },
+      {
+        "title": "SIM POS",
+        "description": "SIM-POS is a specialized and secure SIM card designed for mobile point-of-sale (mPOS) devices. It plays a key role in transmitting financial transaction data to payment service provider (PSP) networks. This SIM card provides a stable and dedicated connection to banking and payment servers without the need for public internet, thereby enhancing the speed, security, and reliability of transactions."
+      }
+    ]
+  },
+  "platforms": {
+    "title": "Platforms",
+    "subtitle": "Education, entertainment, health, e-commerce",
+    "description": "MCI's digital platforms create an integrated ecosystem.",
+    "features": [
+      { "title": "E-Learning platform" },
+      { "title": "MCI VOD" },
+      { "title": "Real Estate Platform" },
+      { "title": "Messenger super app" },
+      { "title": "E-marketplace" },
+      { "title": "Home services platform" }
+    ],
+    "sections": [
+      {
+        "title": "E-LEARNING PLATFORM",
+        "description": "This application launched in April 2020 and, with features such as live streaming, voice chat, educational videos, and a digital magazine, has become the largest educational platform in the Middle East. The app has so far achieved 45 million unique installs, hosted over 3 million simultaneous users at the peak of the Omicron outbreak, and has up to 21 million daily active users. More than 202 billion messages and 37 billion documents have been exchanged through it, and over 10,000 educational contents have been provided for grades one through twelve."
+      },
+      {
+        "title": "E-MARKETPLACE",
+        "description": "This online store was founded in 2006 and has gradually become one of the main players in the country's e-commerce sector. The platform offers a wide range of products, including digital devices, home and kitchen goods, clothing, and books, and leverages an extensive supplier network and advanced logistics system to provide fast and reliable services to customers. According to the latest statistics, the store receives over 5.5 million daily visitors and sells more than 14.5 million products across various categories."
+      },
+      {
+        "title": "REAL ESTATE PLATFORM",
+        "description": "This startup, aiming to simplify, accelerate, and reduce risks in real estate transactions, began its operations in 2020. Today, the platform provides nationwide coverage and offers a range of specialized services, including property evaluation and pricing, expert consulting, an intelligent buying and selling assistant, and advertisement posting for its users. This service has approximately 28.5 million daily active users and 46.4 million monthly active users, with over 366 million text messages sent daily."
+      },
+      {
+        "title": "MCI VOD",
+        "description": "This platform offers a new experience for watching movies online. Users can watch their desired films online by purchasing tickets either with cash or using their SIM card credit. For easy access, the link to watch the movie is sent via SMS to the subscriber's mobile number."
+      },
+      {
+        "title": "MESSENGER SUPER APP",
+        "description": "This application launched in 2018 with two services: VOD and messaging. Rubika's main goal is to create a sweet and easy digital life experience for users in the virtual space. Over the years, it has aimed to get closer to this goal by expanding its services and improving their performance. Today, this super app offers messaging, VOD, Rubino, shopping, food delivery, mobile top-up, and cinema ticketing—all in a single application—striving to realize a complete digital lifestyle."
+      },
+      {
+        "title": "HOME SERVICE PLATFORM",
+        "description": "This online service platform has been operating in Iran since 2017, aiming to simplify access to various home and workplace services for users. The platform brings together specialists and service providers in categories such as home appliance repair, cleaning, plumbing, automotive, and beauty, enabling users to order services online quickly and reliably."
+      }
+    ]
+  },
+  "kids": {
+    "title": "Kids & Teen",
+    "subtitle": "Safe and empowering ecosystem",
+    "description": "MCI provides a safe digital environment for children and teenagers.",
+    "features": [
+      { "title": "MCI Academy" },
+      { "title": "Kids E-Academy" },
+      { "title": "Kids Code Academy" },
+      { "title": "Kids TV" },
+      { "title": "Kids Care" },
+      { "title": "Kids VOD" },
+      { "title": "Kids Talent" }
+    ],
+    "sections": [
+      {
+        "title": "MCI ACADEMY",
+        "description": "Founded in 2020, this academy operates with the goal of bridging the gap between academic education and the labor market needs in the ICT sector. The academy offers specialized courses and bootcamps across seven schools, including Artificial Intelligence, Data Science, Telecommunications Technologies, Internet of Things, Security, Digital Business, and Personal Development."
+      },
+      {
+        "title": "KIDS E-ACADEMY",
+        "description": "This service leverages modern educational technologies to provide interactive video content from elementary school to the university entrance exam. With comprehensive coverage of subjects, gifted student packages, and collaboration with top teachers, it paves the way for academic success."
+      },
+      {
+        "title": "KIDS CODE ACADEMY",
+        "description": "This online platform, launched in March 2024, is designed to teach programming to children and teenagers aged 7 to 12. By combining education with interactive and creative games, it creates an engaging learning environment that requires no prior knowledge or guidance."
+      },
+      {
+        "title": "KIDS TV",
+        "description": "This VOD service, designed specifically for children and teenagers, is offered through an application. With an engaging and user-friendly interface, the platform provides movies, series, and animations tailored to each age group, supported by age-based categorization and controlled access."
+      },
+      {
+        "title": "KIDS CARE",
+        "description": "This application is a parental control program designed to safely manage mobile usage for children aged 2 to 14. With features such as app and game locking, screen time management, and providing age-appropriate entertainment content, it enables parents to securely monitor their children's digital activities."
+      },
+      {
+        "title": "KIDS VOD",
+        "description": "This service is a tool for making informed choices about movies and animations, providing information on violence, messages, and social issues to help users select the best options for themselves and their families."
+      },
+      {
+        "title": "KIDS TALENT",
+        "description": "The National Talent Discovery Event is part of MCI's event series and is held with the aim of educating and nurturing the next generation of talent in the field of digital technologies. This event is specifically designed for students in grades 7 to 12."
+      }
+    ]
+  },
+  "b2b": {
+    "title": "B2B & B2G",
+    "subtitle": "Enabling smart enterprises and government",
+    "description": "MCI delivers enterprise-grade solutions that power smart businesses.",
+    "intro": "With the aim of providing comprehensive and specialized services to businesses, MCI (Hamrah Aval) has launched its B2B services since 2017. These services are designed with a focus on the communication and digital needs of organizations.",
+    "features": [
+      { "title": "Smart Logistics" },
+      { "title": "IOT" },
+      { "title": "Connected car" },
+      { "title": "Smart Agriculture" },
+      { "title": "Chat BOT" },
+      { "title": "Cloud Services" },
+      { "title": "AI Services" },
+      { "title": "Smart Utility" }
+    ],
+    "sections": [
+      {
+        "title": "SMART LOGISTICS",
+        "description": "The Smart Logistics service is a comprehensive, locally developed solution for real-time monitoring of the security status of containers and the country's transportation fleet, designed to enhance transparency, safety, and efficiency in the supply chain."
+      },
+      {
+        "title": "IOT",
+        "description": "As Iran's leading mobile operator, MCI has built a comprehensive IoT ecosystem to empower businesses and industries with smart connectivity solutions. The platform enables seamless integration of devices, sensors, and applications."
+      },
+      {
+        "title": "CONNECTED CAR",
+        "description": "This service consists of three components: hardware, platform, and user application. Key features include real-time monitoring of vehicle status, fleet tracking, and the ability to make emergency calls for immediate assistance."
+      },
+      {
+        "title": "SMART AGRICULTURE",
+        "description": "With the introduction of its Smart Agriculture service powered by IoT, MCI has taken a major step toward the digital transformation of the country's agriculture industry. By connecting sensors, equipment, and environmental data to an integrated platform, this service enables intelligent monitoring."
+      },
+      {
+        "title": "CLOUD SERVICES",
+        "description": "SASS is a solution aimed at managing sensitive organizational information and increasing employees' access to data. This service helps organizations store any file and access them at any time and from any location."
+      },
+      {
+        "title": "AI SERVICES",
+        "description": "AI Platform is a powerful cloud service for artificial intelligence, where any machine learning model can be easily built, trained, and deployed. Among the AI-based services are the Intelligent Voice Assistant (IVA), HoloBox, AI Interview, and others."
+      },
+      {
+        "title": "SMART UTILITY",
+        "description": "The Energy Management System provided by MCI includes smart meter-based consumption management, development of telecommunications infrastructure, creation and enhancement of meter-reading software, and delivery of intelligent services."
+      },
+      {
+        "title": "CHAT BOT",
+        "description": "MCI, leveraging advanced Large Language Model (LLM) technology, has developed an intelligent system that enables natural and smart interactions through text and voice. This system is offered in three formats: Chatbot, Intelligent Virtual Assistant (IVA), and HoloBox."
+      }
+    ]
+  },
+  "sim": {
+    "title": "SIM Card",
+    "subtitle": "Flexible communication for all needs",
+    "description": "MCI's SIM card services offer flexible, reliable, and accessible communication solutions tailored to diverse user needs."
+  }
+}
