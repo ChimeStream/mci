@@ -18,82 +18,82 @@ const journeyData: JourneyMilestone[] = [
   {
     year: '1993',
     event: 'The launch of the Mobile Communications Project',
-    cover: '/bc26f8a62236505a81d16759a699eeaa57ba5847.png',
+    cover: '/assets/images/1993.svg',
   },
   {
     year: '1994',
     event: 'The establishment of Iran Mobile Communications Company',
-    cover: '',
+    cover: '/assets/images/1994.svg',
   },
   {
     year: '1996',
     event: 'Surpassing 60,000 subscribers',
-    cover: '',
+    cover: '/assets/images/1996.svg',
   },
   {
     year: '2000',
     event: 'Surpassing 1.4 million subscribers and covering 733 cities',
-    cover: '',
+    cover: '/assets/images/2000.svg',
   },
   {
     year: '2002',
     event: 'Introduction to SMS Service',
-    cover: '',
+    cover: '/assets/images/2002.svg',
   },
   {
     year: '2006',
     event: 'Surpassing 10 million subscribers',
-    cover: '',
+    cover: '/assets/images/2006.svg',
   },
   {
     year: '2007',
     event: 'The brand name selection of Hamrah Aval (No One Is Alone)',
-    cover: '/ee1d963de6382555b36c1c5348b8cc50adaf7c24.png',
+    cover: '/assets/images/2007.svg',
   },
   {
     year: '2010',
     event: 'Launch of GPRS Internet Service and EDGE Technology',
-    cover: '',
+    cover: '/assets/images/2010.svg',
   },
   {
     year: '2012',
     event: 'Completion of the privatization process',
-    cover: '',
+    cover: '/assets/images/2012.svg',
   },
   {
     year: '2014',
     event: 'Introduction of 3G Technology and the Launch of Third-Generation Mobile Services',
-    cover: '/9b794ef5a4424664c17579386d444fa110b59f50.png',
+    cover: '/assets/images/2014.svg',
   },
   {
     year: '2015',
     event: 'Deployment of LTE/4G technology and provision of high-speed internet services',
-    cover: '',
+    cover: '/assets/images/2015.svg',
   },
   {
     year: '2019',
     event: 'Introduction of the VoLTE service to improve the quality of voice calls over the 4G network',
-    cover: '',
+    cover: '/assets/images/2019.svg',
   },
   {
     year: '2021',
     event: 'Surpassing 70 million subscribers and becoming the largest operator in the Middle East',
-    cover: '/f62fc24b5440eff874e7f6cf33985718aabfdbb6.png',
+    cover: '/assets/images/2021.svg',
   },
   {
     year: '2022',
     event: 'The commencement of 5G testing and the launch of the first 5G sites in the country',
-    cover: '',
+    cover: '/assets/images/2022.svg',
   },
   {
     year: '2023',
     event: 'Surpassing 100 million subscribers',
-    cover: '',
+    cover: '/assets/images/2023.svg',
   },
   {
     year: '2025',
     event: 'MCI Rebranding Based on the IMMERSIVE Concept',
-    cover: '/e85f3fc12577496025181fc2c8050515fda0f174.png',
+    cover: '/assets/images/2025.svg',
   },
 ];
 
