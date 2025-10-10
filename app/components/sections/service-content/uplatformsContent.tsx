@@ -9,7 +9,7 @@ export function uplatformsContent() {
   return (
     <div className="space-y-6">
       <p
-        className="text-gray-500 text-lg leading-relaxed"
+        className="text-gray-700 text-xl leading-relaxed"
         style={{
           fontFamily: 'var(--font-cairo), sans-serif',
         }}

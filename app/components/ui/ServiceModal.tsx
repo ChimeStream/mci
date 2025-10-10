@@ -128,7 +128,7 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children, showP
 
               {/* Scrollable Content */}
               <div
-                className="flex-1 overflow-y-auto px-8 py-8 md:px-12 md:py-12 custom-scrollbar"
+                className="flex-1 overflow-y-auto px-8 py-10 md:px-16 md:py-14 custom-scrollbar"
                 style={{
                   scrollbarWidth: 'thin',
                   scrollbarColor: '#0095DA #f1f1f1',
