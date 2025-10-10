@@ -13,34 +13,35 @@ import { useBackgroundParallax } from '@/app/hooks/useScrollParallax';
  */
 export function ImmersiveSection() {
   const { t } = useLanguage();
-  const { ref: parallaxRef, y: patternY } = useBackgroundParallax(0.4);
+  const { ref: parallaxRef, y: patternY } = useBackgroundParallax(0.18);
 
   return (
     <section
       ref={parallaxRef}
       id="immersive"
-      className="relative flex w-full min-h-screen items-center justify-center overflow-hidden px-6 py-20 snap-start snap-always md:min-h-[1023px] md:px-10 md:py-24"
+      className="relative w-full min-h-screen overflow-hidden px-6 pt-32 pb-10 md:px-10 md:pt-0 md:pb-24 md:flex md:items-center md:justify-center md:snap-start md:snap-always"
       style={{
         backgroundColor: '#FFFFFF',
       }}
     >
       {/* Dot Pattern with Parallax - On top of text */}
       <motion.div
-        className="absolute inset-0 z-20 pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none overflow-hidden"
         style={{ y: patternY }}
       >
         <Image
           src="/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png"
           alt=""
           fill
-          className="object-cover object-[center_top] md:object-center"
+          className="object-cover scale-[1.4] origin-center md:scale-100"
+          style={{ objectPosition: '55% 42%' }}
           priority
         />
       </motion.div>
 
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center">
-        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center md:items-center">
+        <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12 text-center md:text-left">
           {/* Giant IMMERSIVE Title */}
           <motion.h2
             initial={{ opacity: 0, y: 40 }}

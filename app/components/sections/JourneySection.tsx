@@ -125,21 +125,21 @@ export function JourneySection() {
     <div
       ref={parallaxRef}
       id="journey"
-      className="relative w-full overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
+      className="relative w-full min-h-screen overflow-hidden px-6 pt-10 pb-16 md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
-        backgroundColor: '#0B1750',
+        backgroundColor: '#0095DA',
       }}
     >
       {/* Background Layers - Matching Figma structure */}
       <div className="absolute inset-0 z-0">
-        {/* Layer 1: Dark Navy Base (Rectangle 2) */}
-        <div className="absolute inset-0" style={{ backgroundColor: '#0B1750' }} />
+        {/* Layer 1: Base color matches Key Services */}
+        <div className="absolute inset-0" style={{ backgroundColor: '#0095DA' }} />
 
         {/* Layer 2: White to Cyan Gradient (Rectangle 15) */}
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-x-0 top-[-200px] bottom-[-200px]"
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
+            background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 70%, #0095DA 100%)',
             y: patternY,
           }}
         />
@@ -163,7 +163,7 @@ export function JourneySection() {
         />
       </div>
 
-      <div className="relative z-10 flex w-full flex-col items-center justify-center">
+      <div className="relative z-10 flex w-full flex-col items-center justify-start md:justify-center">
         <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12">
           {/* Title */}
           <motion.div

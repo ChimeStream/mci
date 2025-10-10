@@ -35,7 +35,7 @@ export function HeroSection() {
   return (
     <section
       id="welcome"
-      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6 pb-0 pt-24 md:px-10 md:pb-0 md:pt-32 lg:px-16 snap-start snap-always"
+      className="relative flex h-screen w-full flex-col items-center justify-center overflow-hidden px-6 pb-0 pt-24 md:px-10 md:pb-0 md:pt-32 lg:px-16 md:snap-start md:snap-always"
       style={{ backgroundColor: colors.primary.darkNavy }}
     >
       {/* Background Image */}

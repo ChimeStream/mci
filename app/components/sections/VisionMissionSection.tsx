@@ -24,9 +24,12 @@ export function VisionMissionSection() {
   }, []);
 
   return (
-    <section ref={parallaxRef} className="relative w-full min-h-screen overflow-hidden flex items-center justify-center snap-start snap-always">
+    <section
+      ref={parallaxRef}
+      className="relative w-full overflow-hidden pt-20 pb-16 md:min-h-screen md:pt-0 md:pb-0 md:flex md:items-center md:justify-center md:snap-start md:snap-always"
+    >
       {/* Background Video with Parallax */}
-      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
+      <motion.div className="absolute inset-x-0 top-[-200px] bottom-[-200px]" style={{ y: backgroundY }}>
         {/* Desktop Video */}
         <video
           ref={videoRef}
@@ -58,7 +61,7 @@ export function VisionMissionSection() {
       <motion.div
         className="pointer-events-none absolute left-[-210px] top-[-370px] h-[1940px] w-[2002px] opacity-30"
         style={{
-          backgroundImage: `url('/pattern001.png')`,
+          backgroundImage: `url('/1b8428e905ccc5c51f305d9af193851f394c7dcc.png')`,
           backgroundSize: 'cover',
           mixBlendMode: 'overlay',
           y: middleY,
@@ -68,7 +71,7 @@ export function VisionMissionSection() {
       <motion.div
         className="pointer-events-none absolute left-[-74px] top-[1024px] h-[994px] w-[1593px] opacity-20"
         style={{
-          backgroundImage: `url('/ezgif-4880d1597b211d.png')`,
+          backgroundImage: `url('/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png')`,
           backgroundSize: 'cover',
           mixBlendMode: 'overlay',
           y: backgroundY,
@@ -141,8 +144,8 @@ export function VisionMissionSection() {
       </div>
 
       {/* Content - Mobile (Responsive) */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] items-center px-6 py-20 md:hidden">
-        <div className="space-y-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] items-center px-6 md:hidden">
+        <div className="w-full space-y-10">
           {/* Vision */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}

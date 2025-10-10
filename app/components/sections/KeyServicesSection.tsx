@@ -91,7 +91,7 @@ export function KeyServicesSection() {
         backgroundColor: '#0095DA',
       }}
     >
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center px-6 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-start px-6 pt-20 pb-20 sm:px-8 sm:pt-24 sm:pb-24 md:px-12 md:py-24 md:justify-center">
         <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-16">
           {/* Title */}
           <motion.h2
