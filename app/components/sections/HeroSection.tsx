@@ -81,8 +81,8 @@ export function HeroSection() {
                 <>
                   <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
                   <span>
+                    <span>{t.hero?.world || 'عالم'} </span>
                     <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
-                    <span> {t.hero?.world || 'عالم'}</span>
                   </span>
                 </>
               ) : (
@@ -117,8 +117,8 @@ export function HeroSection() {
                 <>
                   <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
                   <span>
+                    <span>{t.hero?.world || 'عالم'} </span>
                     <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
-                    <span> {t.hero?.world || 'عالم'}</span>
                   </span>
                 </>
               ) : (
