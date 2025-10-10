@@ -48,61 +48,78 @@ export function Navigation() {
     { key: 'services', href: '#services', label: 'Services' },
   ];
 
+  const navItemRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
+
+  // Update underline position when active section changes
+  useEffect(() => {
+    const updateUnderlinePosition = () => {
+      const activeIndex = navItems.findIndex(item => item.key === activeSection);
+      if (activeIndex !== -1 && navItemRefs.current[activeIndex] && containerRef.current) {
+        const activeElement = navItemRefs.current[activeIndex];
+        if (activeElement) {
+          const navBarRect = containerRef.current.getBoundingClientRect();
+          const elementRect = activeElement.getBoundingClientRect();
+
+          // Calculate position relative to the navigation bar container
+          const elementLeft = elementRect.left - navBarRect.left;
+          const elementCenter = elementLeft + (elementRect.width / 2);
+
+          setUnderlineStyle({
+            left: elementCenter - 7.25, // Center the 14.5px underline
+            width: 14.5,
+          });
+        }
+      }
+    };
+
+    // Small delay to ensure DOM is fully rendered and fonts are loaded
+    const timer = setTimeout(updateUnderlinePosition, 50);
+
+    // Also update on window resize to maintain centering
+    window.addEventListener('resize', updateUnderlinePosition);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateUnderlinePosition);
+    };
+  }, [activeSection, language, navItems]);
+
   return (
     <>
       {/* Navigation - Matching Figma exactly with absolute positioning */}
       <div className="fixed left-1/2 -translate-x-1/2 z-40 w-[370px] max-w-[calc(100vw-2rem)] h-[84px]" style={{ top: 'calc(100vh - 135px)' }}>
-        <div className="relative w-full h-full overflow-visible rounded-[42px] backdrop-blur-[60px] bg-white/[0.08] border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+        <div ref={containerRef} className="relative w-full h-full overflow-visible rounded-[42px] backdrop-blur-[60px] bg-white/[0.08] border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
           style={{
             backdropFilter: 'blur(60px) saturate(180%)',
             WebkitBackdropFilter: 'blur(60px) saturate(180%)',
           }}
         >
 
-          {/* Navigation Items - Responsive positioning */}
-          <a
-            href={navItems[0].href}
-            className={`absolute left-[20px] md:left-[30px] top-[34px] font-inter font-bold text-[11px] md:text-[12px] leading-normal transition-colors ${
-              isLightBackground
-                ? 'text-[#051C3D] hover:text-[#051C3D]'
-                : 'text-white hover:text-white'
-            }`}
+          {/* Navigation Items - Flexbox layout with proper spacing */}
+          <div
+            className="absolute left-[20px] md:left-[30px] top-[34px] right-[75px] flex items-center justify-between"
+            dir={language === 'ar' ? 'rtl' : 'ltr'}
           >
-            {t.nav?.[navItems[0].key] || navItems[0].label}
-          </a>
-
-          <a
-            href={navItems[1].href}
-            className={`absolute left-[85px] md:left-[106px] top-[34px] font-inter font-normal text-[11px] md:text-[12px] leading-normal transition-colors ${
-              isLightBackground
-                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
-                : 'text-white/75 hover:text-white'
-            }`}
-          >
-            {t.nav?.[navItems[1].key] || navItems[1].label}
-          </a>
-
-          <a
-            href={navItems[2].href}
-            className={`absolute left-[135px] md:left-[164px] top-[34px] font-inter font-normal text-[11px] md:text-[12px] leading-normal transition-colors ${
-              isLightBackground
-                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
-                : 'text-white/75 hover:text-white'
-            }`}
-          >
-            {t.nav?.[navItems[2].key] || navItems[2].label}
-          </a>
-
-          <a
-            href={navItems[3].href}
-            className={`absolute left-[195px] md:left-[232px] top-[34px] font-inter font-normal text-[11px] md:text-[12px] leading-normal transition-colors ${
-              isLightBackground
-                ? 'text-[#051C3D]/75 hover:text-[#051C3D]'
-                : 'text-white/75 hover:text-white'
-            }`}
-          >
-            {t.nav?.[navItems[3].key] || navItems[3].label}
-          </a>
+            {navItems.map((item, index) => (
+              <a
+                key={item.key}
+                ref={(el) => { navItemRefs.current[index] = el; }}
+                href={item.href}
+                className={`font-inter text-[11px] md:text-[12px] leading-normal transition-colors whitespace-nowrap ${
+                  activeSection === item.key
+                    ? isLightBackground
+                      ? 'text-[#051C3D] font-bold'
+                      : 'text-white font-bold'
+                    : isLightBackground
+                    ? 'text-[#051C3D]/75 hover:text-[#051C3D] font-normal'
+                    : 'text-white/75 hover:text-white font-normal'
+                }`}
+              >
+                {t.nav?.[item.key] || item.label}
+              </a>
+            ))}
+          </div>
 
           {/* Language Switcher - Exact Figma position on desktop, right-aligned on mobile */}
           <div ref={languageSwitcherRef} className="absolute right-[13px] md:left-[303px] md:right-auto top-[13px] w-[57px] h-[58px]">
@@ -162,15 +179,22 @@ export function Navigation() {
             </AnimatePresence>
           </div>
 
-          {/* Active indicator line under "Welcome" - Responsive positioning */}
-          <div className="absolute left-[40px] md:left-[51px] top-[55px] w-[14.5px] h-[2px]">
+          {/* Active indicator line - Dynamic positioning */}
+          <motion.div
+            className="absolute top-[55px] h-[2px]"
+            animate={{
+              left: underlineStyle.left,
+              width: underlineStyle.width,
+            }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
             <Image
               src="/0e0d007e3bf3288f4877466340642650eabf6157.svg"
               alt=""
               width={14.5}
               height={2}
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 
