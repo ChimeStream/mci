@@ -98,11 +98,11 @@ export function AboutSection() {
     >
       {/* Background Pattern with Parallax and Rotation */}
       <motion.div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none overflow-visible"
         style={{ y: backgroundY }}
       >
         <motion.div
-          className="absolute inset-0 w-full h-full flex items-center justify-center"
+          className="absolute inset-0 w-full h-full flex items-center justify-center overflow-visible"
           animate={{
             rotate: [0, 360],
           }}
@@ -112,14 +112,14 @@ export function AboutSection() {
             ease: 'linear',
           }}
         >
-          <div className="relative w-[120%] h-[120%]">
+          <div className="relative w-[200%] h-[200%]">
             <Image
               src="/about/pattern.svg"
               alt=""
               fill
               priority
-              sizes="100vw"
-              className="object-cover opacity-40 mix-blend-screen"
+              sizes="200vw"
+              className="object-contain opacity-40 mix-blend-screen"
             />
           </div>
         </motion.div>
