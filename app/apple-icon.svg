@@ -1,0 +1,16 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <rect width="180" height="180" rx="40" fill="#031138"/>
+
+  <!-- Stylized MCI -->
+  <g transform="translate(30, 50)">
+    <!-- M -->
+    <path d="M10 70V20L35 50L60 20V70" stroke="#00D9FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- C -->
+    <path d="M80 45C80 23 93 10 108 10C123 10 136 23 136 45C136 67 123 80 108 80C93 80 80 67 80 45Z" stroke="#00D9FF" stroke-width="8" fill="none"/>
+
+    <!-- Dot in C -->
+    <circle cx="108" cy="45" r="8" fill="#00D9FF"/>
+  </g>
+</svg>

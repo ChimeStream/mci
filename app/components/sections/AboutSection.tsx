@@ -64,19 +64,33 @@ export function AboutSection() {
         backgroundColor: '#0B1750',
       }}
     >
-      {/* Background Pattern with Parallax */}
+      {/* Background Pattern with Parallax and Rotation */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{ y: backgroundY }}
       >
-        <Image
-          src="/about/pattern.svg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-40 mix-blend-screen"
-        />
+        <motion.div
+          className="absolute inset-0 w-full h-full flex items-center justify-center"
+          animate={{
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 120,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        >
+          <div className="relative w-[120%] h-[120%]">
+            <Image
+              src="/about/pattern.svg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover opacity-40 mix-blend-screen"
+            />
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* Padding Container */}

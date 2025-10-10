@@ -33,7 +33,7 @@ export function ImmersiveSection() {
           src="/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png"
           alt=""
           fill
-          className="object-cover object-center"
+          className="object-cover object-[center_top] md:object-center"
           priority
         />
       </motion.div>

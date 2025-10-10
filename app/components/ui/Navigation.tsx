@@ -88,7 +88,7 @@ export function Navigation() {
   return (
     <>
       {/* Navigation - Matching Figma exactly with absolute positioning */}
-      <div className="fixed left-1/2 -translate-x-1/2 z-40 w-[370px] max-w-[calc(100vw-2rem)] h-[84px]" style={{ top: 'calc(100vh - 135px)' }}>
+      <div className="fixed left-1/2 -translate-x-1/2 bottom-12 z-40 w-[370px] max-w-[calc(100vw-2rem)] h-[84px]">
         <div ref={containerRef} className="relative w-full h-full overflow-visible rounded-[42px] backdrop-blur-[60px] bg-white/[0.08] border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
           style={{
             backdropFilter: 'blur(60px) saturate(180%)',

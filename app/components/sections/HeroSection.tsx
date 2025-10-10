@@ -40,13 +40,26 @@ export function HeroSection() {
     >
       {/* Background Image */}
       <div className="absolute inset-0 h-full w-full overflow-hidden">
-        <Image
-          src="/15b444842f513a65288885724ebd0f768ee77221.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        <motion.div
+          className="absolute inset-0 w-[110%] h-[110%]"
+          animate={{
+            x: ['0%', '-5%', '0%'],
+            y: ['0%', '-3%', '0%'],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+        >
+          <Image
+            src="/15b444842f513a65288885724ebd0f768ee77221.png"
+            alt=""
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#031138]/40 to-[#031138]/80" />
       </div>
 
@@ -176,9 +189,9 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative mt-8 w-full flex justify-center md:hidden z-20"
+        className="relative mt-4 w-full flex justify-center md:hidden z-20"
       >
-        <div className="relative flex items-center justify-center max-w-[400px]">
+        <div className="relative flex items-center justify-center max-w-[500px] w-full">
           {/* Glow effect behind VR person */}
           <motion.div
             animate={{
