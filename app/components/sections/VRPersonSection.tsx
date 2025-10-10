@@ -10,7 +10,17 @@ export function VRPersonSection() {
   const [pageLoaded, setPageLoaded] = useState(false);
 
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 0.5], [200, 0]);
+  // Different scroll behavior for mobile vs desktop
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const y = useTransform(scrollYProgress, [0, 0.5], isMobile ? [100, 0] : [200, 0]);
   const opacity = useTransform(scrollYProgress, [0.1, 0.3], [0, 1]);
 
   useEffect(() => {
@@ -23,7 +33,7 @@ export function VRPersonSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#00509E] to-[#001F3F] px-6 py-16 md:px-10 md:py-24">
+    <section className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden bg-gradient-to-b from-[#00509E] to-[#001F3F] px-6 pt-0 pb-16 md:px-10 md:py-24">
       {/* Background Text (Blurred) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <motion.div
@@ -39,23 +49,24 @@ export function VRPersonSection() {
       {/* VR Person Image */}
       <motion.div
         style={{ y, opacity }}
-        initial={{ opacity: 0, y: 200 }}
+        initial={{ opacity: 0, y: isMobile ? 100 : 200 }}
         animate={{
           opacity: pageLoaded ? 1 : 0,
-          y: pageLoaded ? 0 : 200,
+          y: pageLoaded ? 0 : (isMobile ? 100 : 200),
         }}
         transition={{
           duration: 1.2,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="relative z-10 w-full max-w-lg px-8"
+        className="relative z-10 w-full max-w-[105%] sm:max-w-[90%] md:max-w-lg px-0 md:px-8 -mt-12 md:mt-0"
+        style={{ height: 'auto' }}
       >
         <Image
           src="/assets/images/vr-person.png"
           alt="Person wearing VR headset"
           width={600}
           height={800}
-          className="w-full h-auto"
+          className="w-full h-auto scale-125 md:scale-100 origin-top"
           priority
         />
       </motion.div>

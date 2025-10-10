@@ -71,7 +71,7 @@ export function HeroSection() {
       {/* Content Container */}
       <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1600px] mx-auto gap-8 px-4 md:px-8 lg:px-12">
         {/* Left side: Text - Desktop & Mobile */}
-        <div className="flex flex-col justify-center w-full md:max-w-[45%] md:flex-shrink-0 md:ml-8 lg:ml-12">
+        <div className="flex flex-col justify-center w-full md:max-w-[45%] md:flex-shrink-0 md:ml-8 lg:ml-12 -mt-[300px] md:mt-0">
           {/* Mobile Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -189,9 +189,10 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="relative mt-4 w-full flex justify-center md:hidden z-20"
+        className="absolute bottom-0 left-0 right-0 w-full flex justify-center md:hidden z-20"
+        style={{ top: '48%' }}
       >
-        <div className="relative flex items-center justify-center max-w-[500px] w-full">
+        <div className="relative flex items-start justify-center w-full px-0">
           {/* Glow effect behind VR person */}
           <motion.div
             animate={{
@@ -203,7 +204,7 @@ export function HeroSection() {
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl -z-10"
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full blur-3xl -z-10"
             style={{ backgroundColor: `${colors.accent.cyan}30` }}
           />
 
@@ -211,9 +212,9 @@ export function HeroSection() {
           <Image
             src="/f1ab9b55fdbd9a3c728da5ea4065cc355e28208f.png"
             alt="Person wearing VR headset"
-            width={400}
-            height={533}
-            className="w-full h-auto object-contain"
+            width={600}
+            height={800}
+            className="w-full h-auto object-contain scale-125 origin-top"
             style={{
               filter: 'drop-shadow(0 20px 40px rgba(0, 12, 45, 0.5))',
             }}

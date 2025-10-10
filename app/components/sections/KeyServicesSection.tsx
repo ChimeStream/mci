@@ -70,11 +70,6 @@ export function KeyServicesSection() {
 
   const closeModal = () => setSelectedService(null);
 
-  const handlePlayClick = () => {
-    // TODO: Implement video play functionality
-    console.log('Play video for:', selectedService);
-  };
-
   // Get translated service data
   const getTranslatedService = (service: Service) => ({
     ...service,
@@ -139,8 +134,8 @@ export function KeyServicesSection() {
           onClose={closeModal}
           title={translatedService?.title || ''}
           subtitle={translatedService?.subtitle || ''}
-          showPlayButton={selectedService === 'fintech' || selectedService === 'platforms' || selectedService === 'kids' || selectedService === 'sim' || selectedService === 'b2b'}
-          onPlayClick={handlePlayClick}
+          showPlayButton={selectedService === 'fintech' || selectedService === 'platforms' || selectedService === 'kids' || selectedService === 'sim' || selectedService === 'b2b' || selectedService === '5g'}
+          serviceKey={selectedService}
         >
           {selectedService === 'fintech' ? (
             <FintechContent />

@@ -5,25 +5,57 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { useBackgroundParallax } from '@/app/hooks/useScrollParallax';
+import { useAudioManager } from '@/app/hooks/useAudioManager';
 
 /**
  * About Section Component - Rebuilt to match Figma exactly
  * Full height section with snap scroll behavior
  */
 export function AboutSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const { ref: parallaxRef, y: backgroundY } = useBackgroundParallax(0.5);
+  const { currentlyPlaying, setCurrentlyPlaying } = useAudioManager();
+  const AUDIO_ID = 'about-section';
+
+  // Map language code to sound folder name
+  const getLanguageFolder = (lang: string) => {
+    const folderMap: { [key: string]: string } = {
+      'en': 'en',
+      'es': 'sp', // Spanish folder is named 'sp'
+      'ru': 'ru',
+      'ar': 'ar',
+    };
+    return folderMap[lang] || 'en';
+  };
+
+  // Get language-specific audio path
+  const getAudioPath = () => {
+    const folder = getLanguageFolder(language);
+    // Handle lowercase filename for English
+    const fileName = language === 'en' ? 'about.mp3' : 'About.mp3';
+    return `/sound/${folder}/${fileName}`;
+  };
+
+  // Stop this audio if another one starts playing
+  React.useEffect(() => {
+    if (currentlyPlaying && currentlyPlaying !== AUDIO_ID && isPlaying) {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    }
+  }, [currentlyPlaying, isPlaying]);
 
   const handlePlayAudio = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
+        setCurrentlyPlaying(null);
       } else {
         audioRef.current.play();
         setIsPlaying(true);
+        setCurrentlyPlaying(AUDIO_ID);
       }
     }
   };
@@ -127,13 +159,23 @@ export function AboutSection() {
               className="flex h-[38px] w-[38px] md:h-[60px] md:w-[60px] items-center justify-center rounded-full border border-white/40 hover:bg-white/10 transition-all duration-300"
               aria-label={isPlaying ? "Pause about audio" : "Play about audio"}
             >
-              <Image
-                src="/about/play-circle.svg"
-                alt={isPlaying ? "Pause" : "Play"}
-                width={28}
-                height={28}
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
                 className="w-[20px] h-[20px] md:w-[28px] md:h-[28px]"
-              />
+              >
+                <circle cx="14" cy="14" r="13" stroke="white" strokeWidth="1.5" />
+                {isPlaying ? (
+                  <>
+                    <rect x="10" y="9" width="2.5" height="10" fill="white" />
+                    <rect x="15.5" y="9" width="2.5" height="10" fill="white" />
+                  </>
+                ) : (
+                  <path d="M11 8 L19 14 L11 20 Z" fill="white" />
+                )}
+              </svg>
             </motion.button>
           </div>
 
@@ -179,7 +221,7 @@ export function AboutSection() {
       {/* Hidden Audio Element */}
       <audio
         ref={audioRef}
-        src="/about_us.mp3"
+        src={getAudioPath()}
         onEnded={() => setIsPlaying(false)}
         onPause={() => setIsPlaying(false)}
         onPlay={() => setIsPlaying(true)}

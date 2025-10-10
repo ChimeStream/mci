@@ -2,6 +2,8 @@
 
 import React, { ReactNode, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/app/hooks/useLanguage';
+import { useAudioManager } from '@/app/hooks/useAudioManager';
 
 interface ServiceModalProps {
   isOpen: boolean;
@@ -10,10 +12,134 @@ interface ServiceModalProps {
   subtitle: string;
   children: ReactNode;
   showPlayButton?: boolean;
-  onPlayClick?: () => void;
+  serviceKey?: string;
 }
 
-export function ServiceModal({ isOpen, onClose, title, subtitle, children, showPlayButton = false, onPlayClick }: ServiceModalProps) {
+export function ServiceModal({ isOpen, onClose, title, subtitle, children, showPlayButton = false, serviceKey }: ServiceModalProps) {
+  const { language } = useLanguage();
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const { currentlyPlaying, setCurrentlyPlaying } = useAudioManager();
+  const AUDIO_ID = `service-modal-${serviceKey}`;
+
+  // Map language code to sound folder name
+  const getLanguageFolder = (lang: string) => {
+    const folderMap: { [key: string]: string } = {
+      'en': 'en',
+      'es': 'sp', // Spanish folder is named 'sp'
+      'ru': 'ru',
+      'ar': 'ar',
+    };
+    return folderMap[lang] || 'en';
+  };
+
+  // Map service keys to audio file names with language-specific handling
+  const getAudioFileName = (key: string, lang: string) => {
+    // Handle English with different file naming
+    if (lang === 'en') {
+      const englishMap: { [key: string]: string } = {
+        '5g': '5.5G', // Missing .mp3 extension
+        'platforms': 'Platforms.mp3',
+        'b2b': 'B2B & B2G.mp3',
+        'fintech': 'Fintech.mp3',
+        'kids': 'Kids.mp3',
+        'sim': 'Sim Card.mp3',
+      };
+      return englishMap[key] || null;
+    }
+
+    // Handle Arabic with typo in Fintech
+    if (lang === 'ar') {
+      const arabicMap: { [key: string]: string } = {
+        '5g': '5.5G.mp3',
+        'platforms': 'Platforms.mp3',
+        'b2b': 'B2B & B2G.mp3', // Fallback to English if missing
+        'fintech': 'Fintesh.mp3', // Typo in actual file
+        'kids': 'Kids.mp3',
+        'sim': 'Sim Card.mp3', // Fallback to English if missing
+      };
+      return arabicMap[key] || null;
+    }
+
+    // Handle Russian (missing some files)
+    if (lang === 'ru') {
+      const russianMap: { [key: string]: string } = {
+        '5g': '5.5G.mp3',
+        'platforms': 'Platforms.mp3',
+        'b2b': 'B2B & B2G.mp3', // Fallback to English if missing
+        'fintech': 'Fintech.mp3',
+        'kids': 'Kids.mp3',
+        'sim': 'Sim Card.mp3', // Fallback to English if missing
+      };
+      return russianMap[key] || null;
+    }
+
+    // Default for Spanish and other languages
+    const fileNameMap: { [key: string]: string } = {
+      '5g': '5.5G.mp3',
+      'platforms': 'Platforms.mp3',
+      'b2b': 'B2B & B2G.mp3',
+      'fintech': 'Fintech.mp3',
+      'kids': 'Kids.mp3',
+      'sim': 'Sim Card.mp3',
+    };
+    return fileNameMap[key] || null;
+  };
+
+  // Get language-specific audio path with fallback
+  const getAudioPath = () => {
+    if (!serviceKey) return null;
+    const fileName = getAudioFileName(serviceKey, language);
+    if (!fileName) return null;
+
+    // For missing files in specific languages, fallback to English
+    const missingFiles = {
+      ru: ['b2b', 'sim'],
+      ar: ['b2b', 'sim'],
+    };
+
+    if (missingFiles[language as keyof typeof missingFiles]?.includes(serviceKey)) {
+      const englishFileName = getAudioFileName(serviceKey, 'en');
+      return `/sound/en/${englishFileName}`;
+    }
+
+    const folder = getLanguageFolder(language);
+    return `/sound/${folder}/${fileName}`;
+  };
+
+  // Stop this audio if another one starts playing
+  useEffect(() => {
+    if (currentlyPlaying && currentlyPlaying !== AUDIO_ID && isPlaying) {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    }
+  }, [currentlyPlaying, isPlaying, AUDIO_ID]);
+
+  const handlePlayAudio = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+        setIsPlaying(false);
+        setCurrentlyPlaying(null);
+      } else {
+        audioRef.current.play();
+        setIsPlaying(true);
+        setCurrentlyPlaying(AUDIO_ID);
+      }
+    }
+  };
+
+  // Stop audio when modal closes
+  useEffect(() => {
+    if (!isOpen && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+      if (currentlyPlaying === AUDIO_ID) {
+        setCurrentlyPlaying(null);
+      }
+    }
+  }, [isOpen, AUDIO_ID, currentlyPlaying, setCurrentlyPlaying]);
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -85,9 +211,9 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children, showP
                     {/* Play Button (optional) */}
                     {showPlayButton && (
                       <button
-                        onClick={onPlayClick}
+                        onClick={handlePlayAudio}
                         className="w-12 h-12 flex items-center justify-center text-[#0095DA] hover:text-[#0095DA]/70 transition-colors"
-                        aria-label="Play video"
+                        aria-label={isPlaying ? "Pause audio" : "Play audio"}
                       >
                         <svg
                           width="50"
@@ -98,7 +224,14 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children, showP
                           strokeWidth="1.5"
                         >
                           <circle cx="25" cy="25" r="23" />
-                          <path d="M20 15 L35 25 L20 35 Z" fill="currentColor" stroke="none" />
+                          {isPlaying ? (
+                            <>
+                              <rect x="18" y="15" width="4" height="20" fill="currentColor" />
+                              <rect x="28" y="15" width="4" height="20" fill="currentColor" />
+                            </>
+                          ) : (
+                            <path d="M20 15 L35 25 L20 35 Z" fill="currentColor" stroke="none" />
+                          )}
                         </svg>
                       </button>
                     )}
@@ -157,6 +290,17 @@ export function ServiceModal({ isOpen, onClose, title, subtitle, children, showP
                   background: #007AB8;
                 }
               `}</style>
+
+              {/* Hidden Audio Element */}
+              {showPlayButton && getAudioPath() && (
+                <audio
+                  ref={audioRef}
+                  src={getAudioPath() || undefined}
+                  onEnded={() => setIsPlaying(false)}
+                  onPause={() => setIsPlaying(false)}
+                  onPlay={() => setIsPlaying(true)}
+                />
+              )}
             </motion.div>
           </div>
         </>
