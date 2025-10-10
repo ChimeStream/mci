@@ -23,15 +23,15 @@
     "sections": [
       {
         "title": "FINANCIAL SUPER-APP",
-        "description": "This platform offers users a wide range of services, from financial payments and bill settlements to registration for educational courses and accommodation rentals. It also provides a secure and integrated digital wallet for managing transactions, and users can receive a physical card linked to it for purchases at various stores. On average, the application is installed 208,000 times per month and has around 70,000 daily active users, who spend an average of approximately 168 seconds per day on the app."
+        "description": "تقدم هذه المنصة للمستخدمين مجموعة واسعة من الخدمات، بدءاً من المدفوعات المالية وتسوية الفواتير وصولاً إلى التسجيل في الدورات التعليمية وتأجير أماكن الإقامة. كما توفر محفظة رقمية آمنة ومتكاملة لإدارة المعاملات، ويمكن للمستخدمين الحصول على بطاقة فعلية مرتبطة بها لإجراء المشتريات في متاجر متعددة. يبلغ متوسط تثبيت التطبيق 208,000 مرة شهرياً ويضم نحو 70,000 مستخدم نشط يومياً، يقضون ما يقارب 168 ثانية يومياً داخل التطبيق."
       },
       {
         "title": "MCI CVC",
-        "description": "This fund is dedicated to investing in innovative and technology-driven projects and companies. Its mission is to identify and monitor emerging technologies while enabling their integration into the national value chain. Key investment areas include Artificial Intelligence, Internet of Things, Microelectronics, 5G communications, Industry 4.0, Smart Logistics, Communication Systems and Equipment, as well as Augmented and Virtual Reality."
+        "description": "يُخصَّص هذا الصندوق للاستثمار في المشاريع والشركات المبتكرة المعتمدة على التقنيات. تتمثل مهمته في تحديد التقنيات الناشئة ومراقبتها وتمكين دمجها في سلسلة القيمة الوطنية. تشمل مجالات الاستثمار الرئيسية الذكاء الاصطناعي، وإنترنت الأشياء، والميكروإلكترونيات، واتصالات 5G، وصناعة 4.0، واللوجستيات الذكية، وأنظمة ومعدات الاتصالات، إضافة إلى الواقع المعزز والافتراضي."
       },
       {
         "title": "SIM POS",
-        "description": "SIM-POS is a specialized and secure SIM card designed for mobile point-of-sale (mPOS) devices. It plays a key role in transmitting financial transaction data to payment service provider (PSP) networks. This SIM card provides a stable and dedicated connection to banking and payment servers without the need for public internet, thereby enhancing the speed, security, and reliability of transactions."
+        "description": "بطاقة SIM-POS هي شريحة SIM متخصصة وآمنة صُممت لأجهزة نقاط البيع المحمولة (mPOS). وتؤدي دوراً محورياً في نقل بيانات المعاملات المالية إلى شبكات مزودي خدمات الدفع (PSP). توفر هذه البطاقة اتصالاً مستقراً ومخصصاً بخوادم المصارف والدفع من دون الحاجة إلى الإنترنت العام، مما يعزز سرعة المعاملات وأمنها وموثوقيتها."
       }
     ]
   },
@@ -62,27 +62,27 @@
     "sections": [
       {
         "title": "E-LEARNING PLATFORM",
-        "description": "This application launched in April 2020 and, with features such as live streaming, voice chat, educational videos, and a digital magazine, has become the largest educational platform in the Middle East. The app has so far achieved 45 million unique installs, hosted over 3 million simultaneous users at the peak of the Omicron outbreak, and has up to 21 million daily active users. More than 202 billion messages and 37 billion documents have been exchanged through it, and over 10,000 educational contents have been provided for grades one through twelve."
+        "description": "أُطلق هذا التطبيق في أبريل 2020، وبفضل ميزات مثل البث المباشر، والدردشة الصوتية، والفيديوهات التعليمية، والمجلة الرقمية، أصبح أكبر منصة تعليمية في الشرق الأوسط. حقق التطبيق حتى الآن 45 مليون عملية تثبيت فريدة، واستضاف أكثر من 3 ملايين مستخدم متزامن عند ذروة تفشي متحور أوميكرون، ويصل عدد مستخدميه النشطين يومياً إلى 21 مليون مستخدم. تم تبادل أكثر من 202 مليار رسالة و37 مليار مستند عبر المنصة، وتم توفير أكثر من 10,000 محتوى تعليمي للصفوف من الأول حتى الثاني عشر."
       },
       {
         "title": "E-MARKETPLACE",
-        "description": "This online store was founded in 2006 and has gradually become one of the main players in the country's e-commerce sector. The platform offers a wide range of products, including digital devices, home and kitchen goods, clothing, and books, and leverages an extensive supplier network and advanced logistics system to provide fast and reliable services to customers. According to the latest statistics, the store receives over 5.5 million daily visitors and sells more than 14.5 million products across various categories."
+        "description": "أُسس هذا المتجر الإلكتروني في عام 2006 وأصبح تدريجياً أحد أبرز اللاعبين في قطاع التجارة الإلكترونية في البلاد. توفر المنصة مجموعة واسعة من المنتجات، بما في ذلك الأجهزة الرقمية، والأدوات المنزلية والمطبخية، والملابس، والكتب، وتستفيد من شبكة مورّدين واسعة ونظام لوجستي متطور لتقديم خدمات سريعة وموثوقة للعملاء. ووفقاً لأحدث الإحصاءات، يستقبل المتجر أكثر من 5.5 مليون زائر يومياً ويبيع ما يزيد على 14.5 مليون منتج عبر فئات متنوعة."
       },
       {
         "title": "REAL ESTATE PLATFORM",
-        "description": "This startup, aiming to simplify, accelerate, and reduce risks in real estate transactions, began its operations in 2020. Today, the platform provides nationwide coverage and offers a range of specialized services, including property evaluation and pricing, expert consulting, an intelligent buying and selling assistant, and advertisement posting for its users. This service has approximately 28.5 million daily active users and 46.4 million monthly active users, with over 366 million text messages sent daily."
+        "description": "بدأت هذه الشركة الناشئة نشاطها في عام 2020 بهدف تبسيط وتسريع وتقليل المخاطر في المعاملات العقارية. واليوم توفر المنصة تغطية على مستوى البلاد وتقدم مجموعة من الخدمات المتخصصة، بما في ذلك تقييم الممتلكات وتسعيرها، والاستشارات الخبيرة، ومساعداً ذكياً للبيع والشراء، ونشر الإعلانات للمستخدمين. تضم الخدمة نحو 28.5 مليون مستخدم نشط يومياً و46.4 مليون مستخدم نشط شهرياً، مع إرسال أكثر من 366 مليون رسالة نصية يومياً."
       },
       {
         "title": "MCI VOD",
-        "description": "This platform offers a new experience for watching movies online. Users can watch their desired films online by purchasing tickets either with cash or using their SIM card credit. For easy access, the link to watch the movie is sent via SMS to the subscriber's mobile number."
+        "description": "توفر هذه المنصة تجربة جديدة لمشاهدة الأفلام عبر الإنترنت. يمكن للمستخدمين مشاهدة أفلامهم المفضلة عبر الإنترنت من خلال شراء التذاكر نقداً أو باستخدام رصيد شريحة SIM الخاصة بهم. ولتسهيل الوصول، يُرسل رابط مشاهدة الفيلم عبر رسالة نصية قصيرة إلى رقم هاتف المشترك."
       },
       {
         "title": "MESSENGER SUPER APP",
-        "description": "This application launched in 2018 with two services: VOD and messaging. Rubika's main goal is to create a sweet and easy digital life experience for users in the virtual space. Over the years, it has aimed to get closer to this goal by expanding its services and improving their performance. Today, this super app offers messaging, VOD, Rubino, shopping, food delivery, mobile top-up, and cinema ticketing—all in a single application—striving to realize a complete digital lifestyle."
+        "description": "أُطلق هذا التطبيق في عام 2018 بخدمتين هما الفيديو حسب الطلب (VOD) والمراسلة. ويتمثل الهدف الرئيسي لـ Rubika في ابتكار تجربة رقمية ممتعة وسهلة للمستخدمين في الفضاء الافتراضي. وعلى مر السنوات اقتربت المنصة من هذا الهدف من خلال توسيع خدماتها وتحسين أدائها. واليوم توفر هذه السوبر آب خدمات المراسلة، وVOD، وRubino، والتسوق، وتوصيل الطعام، وشحن الرصيد، وحجز تذاكر السينما ضمن تطبيق واحد، في سعيها لتجسيد أسلوب حياة رقمي متكامل."
       },
       {
         "title": "HOME SERVICE PLATFORM",
-        "description": "This online service platform has been operating in Iran since 2017, aiming to simplify access to various home and workplace services for users. The platform brings together specialists and service providers in categories such as home appliance repair, cleaning, plumbing, automotive, and beauty, enabling users to order services online quickly and reliably."
+        "description": "تعمل هذه المنصة الخدمية عبر الإنترنت في إيران منذ عام 2017 بهدف تبسيط وصول المستخدمين إلى مختلف خدمات المنزل ومكان العمل. فهي تجمع المتخصصين ومقدمي الخدمات في مجالات مثل إصلاح الأجهزة المنزلية، والتنظيف، والسباكة، وخدمات السيارات، والجمال، مما يتيح للمستخدمين طلب الخدمات عبر الإنترنت بسرعة وبموثوقية."
       }
     ]
   },
@@ -116,31 +116,31 @@
     "sections": [
       {
         "title": "MCI ACADEMY",
-        "description": "Founded in 2020, this academy operates with the goal of bridging the gap between academic education and the labor market needs in the ICT sector. The academy offers specialized courses and bootcamps across seven schools, including Artificial Intelligence, Data Science, Telecommunications Technologies, Internet of Things, Security, Digital Business, and Personal Development."
+        "description": "تأسست هذه الأكاديمية في عام 2020 وتعمل بهدف ردم الفجوة بين التعليم الأكاديمي واحتياجات سوق العمل في قطاع الاتصالات وتقنية المعلومات. وتقدم دورات متخصصة ومعسكرات تدريبية عبر سبع مدارس تشمل الذكاء الاصطناعي، وعلوم البيانات، وتقنيات الاتصالات، وإنترنت الأشياء، والأمن، والأعمال الرقمية، والتطوير الشخصي."
       },
       {
         "title": "KIDS E-ACADEMY",
-        "description": "This service leverages modern educational technologies to provide interactive video content from elementary school to the university entrance exam. With comprehensive coverage of subjects, gifted student packages, and collaboration with top teachers, it paves the way for academic success."
+        "description": "تستفيد هذه الخدمة من التقنيات التعليمية الحديثة لتقديم محتوى فيديو تفاعلي من المرحلة الابتدائية وحتى امتحان القبول الجامعي. وبفضل تغطيتها الشاملة للمواد الدراسية، وحزم الطلاب الموهوبين، والتعاون مع أفضل المعلمين، تمهد الطريق أمام التفوق الأكاديمي."
       },
       {
         "title": "KIDS CODE ACADEMY",
-        "description": "This online platform, launched in March 2024, is designed to teach programming to children and teenagers aged 7 to 12. By combining education with interactive and creative games, it creates an engaging learning environment that requires no prior knowledge or guidance."
+        "description": "أُطلقت هذه المنصة الإلكترونية في مارس 2024 لتعليم البرمجة للأطفال واليافعين الذين تتراوح أعمارهم بين 7 و12 عاماً. ومن خلال دمج التعليم مع الألعاب التفاعلية والإبداعية، تخلق بيئة تعلم ممتعة لا تتطلب معرفة مسبقة أو إشرافاً مباشراً."
       },
       {
         "title": "KIDS TV",
-        "description": "This VOD service, designed specifically for children and teenagers, is offered through an application. With an engaging and user-friendly interface, the platform provides movies, series, and animations tailored to each age group, supported by age-based categorization and controlled access."
+        "description": "تُعد هذه خدمة فيديو حسب الطلب صُممت خصيصاً للأطفال واليافعين وتُقدم عبر تطبيق مخصص. وبواجهة جذابة وسهلة الاستخدام، توفر المنصة أفلاماً ومسلسلات ورسومات متحركة ملائمة لكل فئة عمرية، مع تصنيف بحسب العمر وضوابط وصول محكمة."
       },
       {
         "title": "KIDS CARE",
-        "description": "This application is a parental control program designed to safely manage mobile usage for children aged 2 to 14. With features such as app and game locking, screen time management, and providing age-appropriate entertainment content, it enables parents to securely monitor their children's digital activities."
+        "description": "يُعد هذا التطبيق برنامجاً للرقابة الأبوية صُمم لإدارة استخدام الهاتف المحمول للأطفال الذين تتراوح أعمارهم بين 2 و14 عاماً بأمان. ومن خلال خصائص مثل قفل التطبيقات والألعاب، وإدارة وقت الشاشة، وتوفير محتوى ترفيهي مناسب لكل عمر، يمكّن الآباء من متابعة الأنشطة الرقمية لأطفالهم بثقة."
       },
       {
         "title": "KIDS VOD",
-        "description": "This service is a tool for making informed choices about movies and animations, providing information on violence, messages, and social issues to help users select the best options for themselves and their families."
+        "description": "تُقدم هذه الخدمة أداة لاتخاذ قرارات واعية بشأن الأفلام والرسوم المتحركة، إذ توفر معلومات عن مستويات العنف والرسائل والقضايا الاجتماعية لمساعدة المستخدمين على اختيار أفضل الخيارات لأنفسهم ولعائلاتهم."
       },
       {
         "title": "KIDS TALENT",
-        "description": "The National Talent Discovery Event is part of MCI's event series and is held with the aim of educating and nurturing the next generation of talent in the field of digital technologies. This event is specifically designed for students in grades 7 to 12."
+        "description": "يُعد حدث اكتشاف المواهب الوطني جزءاً من سلسلة فعاليات MCI ويُقام بهدف تعليم ورعاية الجيل القادم من المواهب في مجال التقنيات الرقمية. وقد صُمم هذا الحدث خصيصاً للطلاب من الصف السابع حتى الصف الثاني عشر."
       }
     ]
   },
@@ -148,7 +148,7 @@
     "title": "B2B و B2G",
     "subtitle": "تمكين الشركات والحكومات الذكية",
     "description": "تقدم MCI حلولاً على مستوى المؤسسات تدعم الأعمال الذكية والعمليات الحكومية الحديثة. من البنية التحتية لإنترنت الأشياء والخدمات السحابية إلى الاتصال الآمن والتحليلات المدعومة بالذكاء الاصطناعي، تمكّن عروض B2B و B2G لدينا المؤسسات من تحسين العمليات وتعزيز الإنتاجية ودفع التحول الرقمي على نطاق واسع. نتشارك مع المؤسسات والحكومات لبناء مستقبل إيران الذكي.",
-    "intro": "With the aim of providing comprehensive and specialized services to businesses, MCI (Hamrah Aval) has launched its B2B services since 2017. These services are designed with a focus on the communication and digital needs of organizations.",
+    "intro": "بهدف تقديم خدمات شاملة ومتخصصة للشركات، أطلقت MCI (همراه أول) خدماتها الموجهة للأعمال منذ عام 2017. وقد صُممت هذه الخدمات مع التركيز على احتياجات الاتصالات والرقمنة لدى المؤسسات.",
     "features": [
       {
         "title": "Smart Logistics"
@@ -178,41 +178,65 @@
     "sections": [
       {
         "title": "SMART LOGISTICS",
-        "description": "The Smart Logistics service is a comprehensive, locally developed solution for real-time monitoring of the security status of containers and the country's transportation fleet, designed to enhance transparency, safety, and efficiency in the supply chain."
+        "description": "تُعد خدمة Smart Logistics حلاً متكاملاً طُوّر محلياً لمراقبة حالة أمان الحاويات وأسطول النقل في البلاد في الزمن الفعلي، وقد صُمم لرفع مستوى الشفافية والسلامة والكفاءة في سلسلة الإمداد."
       },
       {
         "title": "IOT",
-        "description": "As Iran's leading mobile operator, MCI has built a comprehensive IoT ecosystem to empower businesses and industries with smart connectivity solutions. The platform enables seamless integration of devices, sensors, and applications."
+        "description": "بوصفها المشغل المحمول الرائد في إيران، أنشأت MCI منظومة إنترنت أشياء شاملة لتمكين الشركات والصناعات بحلول اتصال ذكية. وتتيح المنصة دمج الأجهزة والمستشعرات والتطبيقات بسلاسة."
       },
       {
         "title": "CONNECTED CAR",
-        "description": "This service consists of three components: hardware, platform, and user application. Key features include real-time monitoring of vehicle status, fleet tracking, and the ability to make emergency calls for immediate assistance."
+        "description": "تتكون هذه الخدمة من ثلاثة مكونات: العتاد، والمنصة، وتطبيق المستخدم. وتشمل أبرز مزاياها المراقبة اللحظية لحالة المركبة، وتتبع الأسطول، وإجراء مكالمات الطوارئ للحصول على المساعدة الفورية."
       },
       {
         "title": "SMART AGRICULTURE",
-        "description": "With the introduction of its Smart Agriculture service powered by IoT, MCI has taken a major step toward the digital transformation of the country's agriculture industry. By connecting sensors, equipment, and environmental data to an integrated platform, this service enables intelligent monitoring."
+        "description": "مع إطلاق خدمة الزراعة الذكية المدعومة بإنترنت الأشياء، خطت MCI خطوة كبيرة نحو التحول الرقمي لقطاع الزراعة في البلاد. فمن خلال ربط المستشعرات والمعدات والبيانات البيئية على منصة متكاملة، تتيح الخدمة مراقبة ذكية."
       },
       {
         "title": "CLOUD SERVICES",
-        "description": "SASS is a solution aimed at managing sensitive organizational information and increasing employees' access to data. This service helps organizations store any file and access them at any time and from any location."
+        "description": "تُعد SASS حلاً يهدف إلى إدارة المعلومات الحساسة داخل المؤسسات وزيادة وصول الموظفين إلى البيانات. وتساعد هذه الخدمة المؤسسات على تخزين أي ملف والوصول إليه في أي وقت ومن أي مكان."
       },
       {
         "title": "AI SERVICES",
-        "description": "AI Platform is a powerful cloud service for artificial intelligence, where any machine learning model can be easily built, trained, and deployed. Among the AI-based services are the Intelligent Voice Assistant (IVA), HoloBox, AI Interview, and others."
+        "description": "تُعد AI Platform خدمة سحابية قوية للذكاء الاصطناعي يمكن من خلالها بناء أي نموذج تعلّم آلي وتدريبه ونشره بسهولة. وتشمل الخدمات المعتمدة على الذكاء الاصطناعي المساعد الصوتي الذكي (IVA)، وHoloBox، وAI Interview وغيرها."
       },
       {
         "title": "SMART UTILITY",
-        "description": "The Energy Management System provided by MCI includes smart meter-based consumption management, development of telecommunications infrastructure, creation and enhancement of meter-reading software, and delivery of intelligent services."
+        "description": "يشمل نظام إدارة الطاقة الذي تقدمه MCI إدارة الاستهلاك بالاعتماد على العدادات الذكية، وتطوير البنية التحتية للاتصالات، وإنشاء وتحسين برمجيات قراءة العدادات، وتقديم خدمات ذكية."
       },
       {
         "title": "CHAT BOT",
-        "description": "MCI, leveraging advanced Large Language Model (LLM) technology, has developed an intelligent system that enables natural and smart interactions through text and voice. This system is offered in three formats: Chatbot, Intelligent Virtual Assistant (IVA), and HoloBox."
+        "description": "باستفادة من تقنية نماذج اللغة الكبيرة (LLM) المتقدمة، طورت MCI نظاماً ذكياً يمكّن من تفاعلات طبيعية وذكية عبر النص والصوت. ويُطرح هذا النظام في ثلاثة أشكال: روبوت دردشة، ومساعد افتراضي ذكي (IVA)، وHoloBox."
       }
     ]
   },
   "sim": {
     "title": "بطاقة SIM",
     "subtitle": "اتصال مرن لكل احتياجاتك",
-    "description": "تقدم خدمات بطاقات SIM من MCI حلول اتصال مرنة وموثوقة ومتاحة مصممة لتلبية احتياجات المستخدمين المتنوعة. سواء للاستخدام الشخصي أو التجاري أو أجهزة إنترنت الأشياء، توفر عروض SIM لدينا تغطية على مستوى البلاد وخططاً تنافسية واتصالاً سلساً. مع التزامنا بالجودة وإمكانية الوصول، تضمن MCI بقاء الجميع متصلين أينما كانوا."
+    "description": "تقدم خدمات بطاقات SIM من MCI حلول اتصال مرنة وموثوقة ومتاحة مصممة لتلبية احتياجات المستخدمين المتنوعة. سواء للاستخدام الشخصي أو التجاري أو أجهزة إنترنت الأشياء، توفر عروض SIM لدينا تغطية على مستوى البلاد وخططاً تنافسية واتصالاً سلساً. مع التزامنا بالجودة وإمكانية الوصول، تضمن MCI بقاء الجميع متصلين أينما كانوا.",
+    "intro": "تقدّم MCI مجموعة متنوعة من شرائح SIM المصممة لتلائم احتياجات مختلف الأجيال. فمن مستخدمي البيانات المحترفين والباحثين عن الإنترنت عالي السرعة إلى العائلات وحتى الشركات، يمكن للجميع العثور على خيار ذكي يتوافق مع أسلوب حياتهم ومتطلباتهم.",
+    "typesTitle": "أنواع شرائح SIM من MCI:",
+    "types": [
+      {
+        "title": "مفوترة لاحقاً",
+        "description": "خيار مثالي للمستخدمين كثيفي الاستهلاك الذين يرغبون في اتصال متميز، وخدمات مجمعة، وفواتير شهرية متوقعة مع الاستفادة من أحدث سرعات الشبكة."
+      },
+      {
+        "title": "مدفوعة مسبقاً",
+        "description": "خطط مرنة بالدفع حسب الاستخدام تتيح للمشتركين التحكم في الإنفاق، وإعادة الشحن فوراً، والبقاء على اتصال من دون التزامات طويلة الأمد."
+      },
+      {
+        "title": "بيانات",
+        "description": "شرائح بيانات عالية السعة مصممة لأجهزة الحواسيب المحمولة والأجهزة اللوحية وأجهزة التوجيه وإنترنت الأشياء التي تحتاج إلى اتصال دائم، وآمن، وسريع بالإنترنت."
+      },
+      {
+        "title": "الشباب",
+        "description": "باقات موائمة للمستخدمين الشباب توفر توازناً مدروساً بين البيانات وإمكانية الوصول إلى وسائل التواصل الاجتماعي مع ضوابط أبوية تحافظ على تواصل العائلة."
+      },
+      {
+        "title": "السياحية",
+        "description": "خيارات شرائح قصيرة المدى تتميز بتفعيل سريع، وباقات تجوال سخية، ودعم متعدد اللغات للزوار المستكشفين لإيران."
+      }
+    ]
   }
 }

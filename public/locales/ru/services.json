@@ -23,15 +23,15 @@
     "sections": [
       {
         "title": "FINANCIAL SUPER-APP",
-        "description": "This platform offers users a wide range of services, from financial payments and bill settlements to registration for educational courses and accommodation rentals. It also provides a secure and integrated digital wallet for managing transactions, and users can receive a physical card linked to it for purchases at various stores. On average, the application is installed 208,000 times per month and has around 70,000 daily active users, who spend an average of approximately 168 seconds per day on the app."
+        "description": "Эта платформа предоставляет пользователям широкий спектр услуг — от финансовых платежей и оплаты счетов до регистрации на образовательные курсы и аренду жилья. Она также предлагает защищённый и интегрированный цифровой кошелёк для управления транзакциями, а пользователи могут получить связанную с ним физическую карту для покупок в различных магазинах. В среднем приложение устанавливают 208 000 раз в месяц; ежедневно им пользуются около 70 000 активных пользователей, которые проводят в нём примерно 168 секунд."
       },
       {
         "title": "MCI CVC",
-        "description": "This fund is dedicated to investing in innovative and technology-driven projects and companies. Its mission is to identify and monitor emerging technologies while enabling their integration into the national value chain. Key investment areas include Artificial Intelligence, Internet of Things, Microelectronics, 5G communications, Industry 4.0, Smart Logistics, Communication Systems and Equipment, as well as Augmented and Virtual Reality."
+        "description": "Этот фонд инвестирует в инновационные и технологически ориентированные проекты и компании. Его миссия — выявлять и отслеживать перспективные технологии, обеспечивая их интеграцию в национальную цепочку создания ценности. К ключевым направлениям относятся искусственный интеллект, интернет вещей, микроэлектроника, коммуникации 5G, Индустрия 4.0, умная логистика, коммуникационные системы и оборудование, а также дополненная и виртуальная реальность."
       },
       {
         "title": "SIM POS",
-        "description": "SIM-POS is a specialized and secure SIM card designed for mobile point-of-sale (mPOS) devices. It plays a key role in transmitting financial transaction data to payment service provider (PSP) networks. This SIM card provides a stable and dedicated connection to banking and payment servers without the need for public internet, thereby enhancing the speed, security, and reliability of transactions."
+        "description": "SIM-POS — специализированная и защищённая SIM-карта, разработанная для мобильных терминалов mPOS. Она играет ключевую роль в передаче данных финансовых транзакций в сети поставщиков платёжных услуг (PSP). Эта SIM-карта обеспечивает стабильное и выделенное соединение с банковскими и платёжными серверами без использования публичного интернета, повышая скорость, безопасность и надёжность операций."
       }
     ]
   },
@@ -62,27 +62,27 @@
     "sections": [
       {
         "title": "E-LEARNING PLATFORM",
-        "description": "This application launched in April 2020 and, with features such as live streaming, voice chat, educational videos, and a digital magazine, has become the largest educational platform in the Middle East. The app has so far achieved 45 million unique installs, hosted over 3 million simultaneous users at the peak of the Omicron outbreak, and has up to 21 million daily active users. More than 202 billion messages and 37 billion documents have been exchanged through it, and over 10,000 educational contents have been provided for grades one through twelve."
+        "description": "Это приложение, запущенное в апреле 2020 года, благодаря функциям прямых трансляций, голосового чата, учебных видео и цифрового журнала стало крупнейшей образовательной платформой на Ближнем Востоке. На сегодняшний день оно достигло 45 миллионов уникальных установок, выдержало свыше 3 миллионов одновременных пользователей в пик вспышки штамма «Омикрон» и насчитывает до 21 миллиона активных пользователей в день. Через платформу было отправлено более 202 миллиардов сообщений и 37 миллиардов документов, а учащимся с первого по двенадцатый классы доступно свыше 10 000 учебных материалов."
       },
       {
         "title": "E-MARKETPLACE",
-        "description": "This online store was founded in 2006 and has gradually become one of the main players in the country's e-commerce sector. The platform offers a wide range of products, including digital devices, home and kitchen goods, clothing, and books, and leverages an extensive supplier network and advanced logistics system to provide fast and reliable services to customers. According to the latest statistics, the store receives over 5.5 million daily visitors and sells more than 14.5 million products across various categories."
+        "description": "Этот интернет-магазин был основан в 2006 году и постепенно стал одним из ключевых игроков электронной коммерции страны. Платформа предлагает широкий ассортимент товаров — от цифровых устройств и товаров для дома и кухни до одежды и книг — и использует обширную сеть поставщиков и продвинутую логистику, чтобы обеспечивать клиентов быстрым и надёжным сервисом. По последним данным, магазин принимает более 5,5 миллиона посетителей в день и продаёт свыше 14,5 миллиона товаров в разных категориях."
       },
       {
         "title": "REAL ESTATE PLATFORM",
-        "description": "This startup, aiming to simplify, accelerate, and reduce risks in real estate transactions, began its operations in 2020. Today, the platform provides nationwide coverage and offers a range of specialized services, including property evaluation and pricing, expert consulting, an intelligent buying and selling assistant, and advertisement posting for its users. This service has approximately 28.5 million daily active users and 46.4 million monthly active users, with over 366 million text messages sent daily."
+        "description": "Этот стартап начал работу в 2020 году с целью упростить, ускорить и сделать менее рискованными сделки с недвижимостью. Сегодня платформа охватывает всю страну и предоставляет ряд специализированных услуг, включая оценку и ценообразование объектов, экспертные консультации, интеллектуального помощника для покупки и продажи, а также размещение объявлений для пользователей. Сервис насчитывает около 28,5 миллиона активных пользователей в день и 46,4 миллиона активных пользователей в месяц, при этом ежедневно через него отправляется более 366 миллионов текстовых сообщений."
       },
       {
         "title": "MCI VOD",
-        "description": "This platform offers a new experience for watching movies online. Users can watch their desired films online by purchasing tickets either with cash or using their SIM card credit. For easy access, the link to watch the movie is sent via SMS to the subscriber's mobile number."
+        "description": "Эта платформа предлагает новый опыт просмотра фильмов онлайн. Пользователи могут смотреть выбранные картины, приобретая билеты за наличные или используя баланс своей SIM-карты. Для удобного доступа ссылка на просмотр отправляется абоненту по SMS."
       },
       {
         "title": "MESSENGER SUPER APP",
-        "description": "This application launched in 2018 with two services: VOD and messaging. Rubika's main goal is to create a sweet and easy digital life experience for users in the virtual space. Over the years, it has aimed to get closer to this goal by expanding its services and improving their performance. Today, this super app offers messaging, VOD, Rubino, shopping, food delivery, mobile top-up, and cinema ticketing—all in a single application—striving to realize a complete digital lifestyle."
+        "description": "Это приложение было запущено в 2018 году с двумя сервисами — VOD и обменом сообщениями. Основная цель Rubika — создать для пользователей приятный и простой цифровой опыт. Со временем платформа приблизилась к этой цели, расширяя спектр услуг и повышая их качество. Сегодня это суперприложение объединяет мессенджер, VOD, Rubino, покупки, доставку еды, пополнение счёта и покупку билетов в кино в одном решении, формируя полноценный цифровой образ жизни."
       },
       {
         "title": "HOME SERVICE PLATFORM",
-        "description": "This online service platform has been operating in Iran since 2017, aiming to simplify access to various home and workplace services for users. The platform brings together specialists and service providers in categories such as home appliance repair, cleaning, plumbing, automotive, and beauty, enabling users to order services online quickly and reliably."
+        "description": "Эта онлайн-платформа работает в Иране с 2017 года и стремится упростить пользователям доступ к разнообразным услугам для дома и рабочего места. Она объединяет специалистов и поставщиков в категориях ремонта бытовой техники, уборки, сантехнических работ, автомобильного сервиса и индустрии красоты, позволяя заказывать услуги онлайн быстро и надёжно."
       }
     ]
   },
@@ -116,31 +116,31 @@
     "sections": [
       {
         "title": "MCI ACADEMY",
-        "description": "Founded in 2020, this academy operates with the goal of bridging the gap between academic education and the labor market needs in the ICT sector. The academy offers specialized courses and bootcamps across seven schools, including Artificial Intelligence, Data Science, Telecommunications Technologies, Internet of Things, Security, Digital Business, and Personal Development."
+        "description": "Академия основана в 2020 году и работает, чтобы сократить разрыв между академическим образованием и потребностями рынка труда в сфере ИКТ. Она предлагает специализированные курсы и буткемпы в семи школах, включая искусственный интеллект, науку о данных, телекоммуникационные технологии, интернет вещей, безопасность, цифровой бизнес и личностное развитие."
       },
       {
         "title": "KIDS E-ACADEMY",
-        "description": "This service leverages modern educational technologies to provide interactive video content from elementary school to the university entrance exam. With comprehensive coverage of subjects, gifted student packages, and collaboration with top teachers, it paves the way for academic success."
+        "description": "Этот сервис использует современные образовательные технологии, чтобы предоставлять интерактивные видеоматериалы — от начальной школы до вступительных экзаменов в университет. Благодаря полному охвату предметов, пакетам для одарённых учеников и сотрудничеству с ведущими преподавателями он открывает путь к учебному успеху."
       },
       {
         "title": "KIDS CODE ACADEMY",
-        "description": "This online platform, launched in March 2024, is designed to teach programming to children and teenagers aged 7 to 12. By combining education with interactive and creative games, it creates an engaging learning environment that requires no prior knowledge or guidance."
+        "description": "Эта онлайн-платформа, запущенная в марте 2024 года, предназначена для обучения программированию детей и подростков 7–12 лет. Сочетая обучение с интерактивными и творческими играми, она создаёт увлекательную образовательную среду, не требующую предварительных знаний или наставника."
       },
       {
         "title": "KIDS TV",
-        "description": "This VOD service, designed specifically for children and teenagers, is offered through an application. With an engaging and user-friendly interface, the platform provides movies, series, and animations tailored to each age group, supported by age-based categorization and controlled access."
+        "description": "Этот сервис VOD разработан специально для детей и подростков и доступен через отдельное приложение. Благодаря привлекательному и понятному интерфейсу платформа предлагает фильмы, сериалы и анимацию, подобранные для каждой возрастной группы, с возрастной классификацией и контролируемым доступом."
       },
       {
         "title": "KIDS CARE",
-        "description": "This application is a parental control program designed to safely manage mobile usage for children aged 2 to 14. With features such as app and game locking, screen time management, and providing age-appropriate entertainment content, it enables parents to securely monitor their children's digital activities."
+        "description": "Это приложение — программа родительского контроля, созданная для безопасного управления использованием мобильных устройств детьми от 2 до 14 лет. Функции блокировки приложений и игр, управления временем экранного времени и подбора развлекательного контента по возрасту помогают родителям надёжно контролировать цифровую активность детей."
       },
       {
         "title": "KIDS VOD",
-        "description": "This service is a tool for making informed choices about movies and animations, providing information on violence, messages, and social issues to help users select the best options for themselves and their families."
+        "description": "Этот сервис помогает принимать взвешенные решения при выборе фильмов и мультфильмов, предоставляя сведения об уровне насилия, ключевых идеях и социальных темах, чтобы пользователи могли подобрать лучшие варианты для себя и своих семей."
       },
       {
         "title": "KIDS TALENT",
-        "description": "The National Talent Discovery Event is part of MCI's event series and is held with the aim of educating and nurturing the next generation of talent in the field of digital technologies. This event is specifically designed for students in grades 7 to 12."
+        "description": "Национальный фестиваль по поиску талантов — часть серии мероприятий MCI, направленная на обучение и поддержку нового поколения специалистов в области цифровых технологий. Мероприятие предназначено для учеников седьмых–двенадцатых классов."
       }
     ]
   },
@@ -148,7 +148,7 @@
     "title": "B2B и B2G",
     "subtitle": "Развитие умного бизнеса и государства",
     "description": "MCI предоставляет корпоративные решения, которые поддерживают умный бизнес и современные государственные операции. От IoT-инфраструктуры и облачных сервисов до защищённого подключения и аналитики на основе ИИ, наши предложения B2B и B2G позволяют организациям оптимизировать операции, повышать производительность и осуществлять цифровую трансформацию в масштабе. Мы сотрудничаем с предприятиями и правительствами для построения умного будущего Ирана.",
-    "intro": "With the aim of providing comprehensive and specialized services to businesses, MCI (Hamrah Aval) has launched its B2B services since 2017. These services are designed with a focus on the communication and digital needs of organizations.",
+    "intro": "С целью предложить компаниям комплексные и специализированные услуги MCI (Hamrah Aval) запустила направление B2B в 2017 году. Эти решения ориентированы на коммуникационные и цифровые потребности организаций.",
     "features": [
       {
         "title": "Smart Logistics"
@@ -178,41 +178,65 @@
     "sections": [
       {
         "title": "SMART LOGISTICS",
-        "description": "The Smart Logistics service is a comprehensive, locally developed solution for real-time monitoring of the security status of containers and the country's transportation fleet, designed to enhance transparency, safety, and efficiency in the supply chain."
+        "description": "Сервис Smart Logistics — это комплексное, разработанное в стране решение для мониторинга в реальном времени состояния безопасности контейнеров и транспортного парка страны, созданное для повышения прозрачности, безопасности и эффективности цепочки поставок."
       },
       {
         "title": "IOT",
-        "description": "As Iran's leading mobile operator, MCI has built a comprehensive IoT ecosystem to empower businesses and industries with smart connectivity solutions. The platform enables seamless integration of devices, sensors, and applications."
+        "description": "Как ведущий мобильный оператор Ирана, MCI построила полноценную экосистему интернета вещей, чтобы предоставлять бизнесу и промышленности умные решения для подключения. Платформа обеспечивает бесшовную интеграцию устройств, датчиков и приложений."
       },
       {
         "title": "CONNECTED CAR",
-        "description": "This service consists of three components: hardware, platform, and user application. Key features include real-time monitoring of vehicle status, fleet tracking, and the ability to make emergency calls for immediate assistance."
+        "description": "Эта услуга состоит из трёх компонентов: оборудования, платформы и пользовательского приложения. Ключевые функции включают мониторинг состояния автомобиля в режиме реального времени, отслеживание автопарка и возможность совершать экстренные вызовы для оперативной помощи."
       },
       {
         "title": "SMART AGRICULTURE",
-        "description": "With the introduction of its Smart Agriculture service powered by IoT, MCI has taken a major step toward the digital transformation of the country's agriculture industry. By connecting sensors, equipment, and environmental data to an integrated platform, this service enables intelligent monitoring."
+        "description": "Запустив сервис умного сельского хозяйства на базе IoT, MCI сделала серьёзный шаг к цифровой трансформации аграрной отрасли страны. Объединяя датчики, оборудование и данные об окружающей среде в единой платформе, услуга обеспечивает интеллектуальный мониторинг."
       },
       {
         "title": "CLOUD SERVICES",
-        "description": "SASS is a solution aimed at managing sensitive organizational information and increasing employees' access to data. This service helps organizations store any file and access them at any time and from any location."
+        "description": "Решение SASS предназначено для управления конфиденциальной информацией организации и расширения доступа сотрудников к данным. Сервис помогает компаниям хранить любые файлы и получать к ним доступ в любое время и из любой точки."
       },
       {
         "title": "AI SERVICES",
-        "description": "AI Platform is a powerful cloud service for artificial intelligence, where any machine learning model can be easily built, trained, and deployed. Among the AI-based services are the Intelligent Voice Assistant (IVA), HoloBox, AI Interview, and others."
+        "description": "Платформа AI — мощный облачный сервис для задач искусственного интеллекта, где можно с лёгкостью создавать, обучать и развёртывать любые модели машинного обучения. Среди AI-сервисов — интеллектуальный голосовой ассистент (IVA), HoloBox, AI Interview и другие."
       },
       {
         "title": "SMART UTILITY",
-        "description": "The Energy Management System provided by MCI includes smart meter-based consumption management, development of telecommunications infrastructure, creation and enhancement of meter-reading software, and delivery of intelligent services."
+        "description": "Система управления энергией от MCI включает администрирование потребления на основе умных счётчиков, развитие телекоммуникационной инфраструктуры, создание и совершенствование программного обеспечения для снятия показаний, а также предоставление интеллектуальных услуг."
       },
       {
         "title": "CHAT BOT",
-        "description": "MCI, leveraging advanced Large Language Model (LLM) technology, has developed an intelligent system that enables natural and smart interactions through text and voice. This system is offered in three formats: Chatbot, Intelligent Virtual Assistant (IVA), and HoloBox."
+        "description": "Используя передовые технологии больших языковых моделей (LLM), MCI разработала интеллектуальную систему, которая обеспечивает естественные и интеллектуальные взаимодействия через текст и голос. Система доступна в трёх форматах: чат-бот, интеллектуальный виртуальный ассистент (IVA) и HoloBox."
       }
     ]
   },
   "sim": {
     "title": "SIM-карта",
     "subtitle": "Гибкая связь для любых задач",
-    "description": "Сервисы SIM-карт MCI предлагают гибкие, надёжные и доступные коммуникационные решения, адаптированные к разнообразным потребностям пользователей. Будь то для личного использования, бизнеса или IoT-устройств, наши SIM-предложения обеспечивают общенациональное покрытие, конкурентные тарифы и бесшовное подключение. С приверженностью к качеству и доступности MCI гарантирует, что каждый остаётся на связи, где бы он ни находился."
+    "description": "Сервисы SIM-карт MCI предлагают гибкие, надёжные и доступные коммуникационные решения, адаптированные к разнообразным потребностям пользователей. Будь то для личного использования, бизнеса или IoT-устройств, наши SIM-предложения обеспечивают общенациональное покрытие, конкурентные тарифы и бесшовное подключение. С приверженностью к качеству и доступности MCI гарантирует, что каждый остаётся на связи, где бы он ни находился.",
+    "intro": "MCI предлагает широкий ассортимент SIM-карт, разработанных с учётом потребностей разных поколений. От профессиональных пользователей данных и любителей высокоскоростного интернета до семей и предприятий — каждый найдёт решение, соответствующее его образу жизни и требованиям.",
+    "typesTitle": "Виды SIM-карт MCI:",
+    "types": [
+      {
+        "title": "Постоплатная",
+        "description": "Идеальна для активных пользователей, которым нужны премиальное подключение, пакетные сервисы и предсказуемая помесячная оплата с доступом к новейшим скоростям сети."
+      },
+      {
+        "title": "Предоплатная",
+        "description": "Гибкие планы с оплатой по мере использования позволяют контролировать расходы, пополнять баланс мгновенно и оставаться на связи без долгосрочных обязательств."
+      },
+      {
+        "title": "Для данных",
+        "description": "SIM-карты повышенной ёмкости для ноутбуков, планшетов, роутеров и устройств IoT, которым нужен постоянный, безопасный и быстрый доступ в интернет."
+      },
+      {
+        "title": "Для подростков",
+        "description": "Специальные пакеты для молодых пользователей с продуманным балансом трафика, доступом к соцсетям и родительскими контролями, которые помогают семьям оставаться на связи."
+      },
+      {
+        "title": "Туристическая",
+        "description": "Краткосрочные тарифы с быстрой активацией, щедрыми пакетами роуминга и многоязычной поддержкой для гостей, путешествующих по Ирану."
+      }
+    ]
   }
 }
