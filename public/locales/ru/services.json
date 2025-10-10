@@ -1,18 +1,24 @@
 {
-  "title": "KEY SERVICES",
+  "title": "ОСНОВНЫЕ УСЛУГИ",
   "5g": {
     "title": "5.5G",
-    "subtitle": "Future-ready connectivity",
-    "description": "With the introduction of 5.5G, MCI takes a major step toward the future of connectivity. This next-generation technology delivers speeds beyond 5G, ultra-low latency, and significantly higher capacity. With 5.5G, users can experience ultra-fast internet, advanced augmented and virtual reality, large-scale IoT applications, and smart city services—seamlessly and without limits. This evolution positions MCI as the pioneer of digital transformation in Iran, where connectivity becomes not only faster, but also smarter, more reliable, and truly immersive."
+    "subtitle": "Связь будущего уже сегодня",
+    "description": "С внедрением 5.5G компания MCI делает важный шаг в будущее подключения. Эта технология нового поколения обеспечивает скорость выше 5G, сверхнизкую задержку и значительно большую пропускную способность. С 5.5G пользователи могут испытать сверхбыстрый интернет, продвинутую дополненную и виртуальную реальность, масштабные IoT-приложения и услуги умных городов — бесшовно и без ограничений. Эта эволюция позиционирует MCI как пионера цифровой трансформации в Иране, где подключение становится не только быстрее, но и умнее, надежнее и по-настоящему иммерсивным."
   },
   "fintech": {
-    "title": "Fintech",
-    "subtitle": "Secure digital finance solutions",
-    "description": "MCI's fintech ecosystem transforms digital payments and financial services through innovation and security.",
+    "title": "Финтех",
+    "subtitle": "Безопасные цифровые финансовые решения",
+    "description": "Финтех-экосистема MCI трансформирует цифровые платежи и финансовые сервисы через инновации и безопасность. Наши комплексные решения обеспечивают бесшовные транзакции, цифровые кошельки и умные платёжные платформы, которые расширяют возможности бизнеса и частных лиц. Сочетая телекоммуникационную инфраструктуру с передовыми финансовыми технологиями, мы строим надёжную, доступную и инклюзивную цифровую экономику для всех иранцев.",
     "features": [
-      { "title": "Sim POS" },
-      { "title": "Financial super-app" },
-      { "title": "MCI CVC" }
+      {
+        "title": "Sim POS"
+      },
+      {
+        "title": "Financial super-app"
+      },
+      {
+        "title": "MCI CVC"
+      }
     ],
     "sections": [
       {
@@ -30,16 +36,28 @@
     ]
   },
   "platforms": {
-    "title": "Platforms",
-    "subtitle": "Education, entertainment, health, e-commerce",
-    "description": "MCI's digital platforms create an integrated ecosystem.",
+    "title": "Платформы",
+    "subtitle": "Образование, развлечения, здоровье, торговля",
+    "description": "Цифровые платформы MCI создают интегрированную экосистему, где образование, развлечения, здравоохранение и электронная коммерция объединяются в единый бесшовный опыт. От интерактивных образовательных сред и потокового развлечения до телемедицинских сервисов и онлайн-площадок, наши платформы созданы для обогащения повседневной жизни, расширения возможностей сообществ и открытия новых перспектив в цифровом ландшафте Ирана.",
     "features": [
-      { "title": "E-Learning platform" },
-      { "title": "MCI VOD" },
-      { "title": "Real Estate Platform" },
-      { "title": "Messenger super app" },
-      { "title": "E-marketplace" },
-      { "title": "Home services platform" }
+      {
+        "title": "E-Learning platform"
+      },
+      {
+        "title": "MCI VOD"
+      },
+      {
+        "title": "Real Estate Platform"
+      },
+      {
+        "title": "Messenger super app"
+      },
+      {
+        "title": "E-marketplace"
+      },
+      {
+        "title": "Home services platform"
+      }
     ],
     "sections": [
       {
@@ -69,17 +87,31 @@
     ]
   },
   "kids": {
-    "title": "Kids & Teen",
-    "subtitle": "Safe and empowering ecosystem",
-    "description": "MCI provides a safe digital environment for children and teenagers.",
+    "title": "Детям",
+    "subtitle": "Безопасная среда для развития",
+    "description": "MCI предоставляет безопасную, контролируемую и расширяющую возможности цифровую среду, специально разработанную для детей и подростков. С родительским контролем, контентом, соответствующим возрасту, образовательными ресурсами и творческими инструментами мы гарантируем, что юные пользователи могут исследовать, учиться и общаться в защищённом пространстве. Наша экосистема для детей формирует здоровые цифровые привычки, поощряя творчество, любознательность и рост следующего поколения.",
     "features": [
-      { "title": "MCI Academy" },
-      { "title": "Kids E-Academy" },
-      { "title": "Kids Code Academy" },
-      { "title": "Kids TV" },
-      { "title": "Kids Care" },
-      { "title": "Kids VOD" },
-      { "title": "Kids Talent" }
+      {
+        "title": "MCI Academy"
+      },
+      {
+        "title": "Kids E-Academy"
+      },
+      {
+        "title": "Kids Code Academy"
+      },
+      {
+        "title": "Kids TV"
+      },
+      {
+        "title": "Kids Care"
+      },
+      {
+        "title": "Kids VOD"
+      },
+      {
+        "title": "Kids Talent"
+      }
     ],
     "sections": [
       {
@@ -113,19 +145,35 @@
     ]
   },
   "b2b": {
-    "title": "B2B & B2G",
-    "subtitle": "Enabling smart enterprises and government",
-    "description": "MCI delivers enterprise-grade solutions that power smart businesses.",
+    "title": "B2B и B2G",
+    "subtitle": "Развитие умного бизнеса и государства",
+    "description": "MCI предоставляет корпоративные решения, которые поддерживают умный бизнес и современные государственные операции. От IoT-инфраструктуры и облачных сервисов до защищённого подключения и аналитики на основе ИИ, наши предложения B2B и B2G позволяют организациям оптимизировать операции, повышать производительность и осуществлять цифровую трансформацию в масштабе. Мы сотрудничаем с предприятиями и правительствами для построения умного будущего Ирана.",
     "intro": "With the aim of providing comprehensive and specialized services to businesses, MCI (Hamrah Aval) has launched its B2B services since 2017. These services are designed with a focus on the communication and digital needs of organizations.",
     "features": [
-      { "title": "Smart Logistics" },
-      { "title": "IOT" },
-      { "title": "Connected car" },
-      { "title": "Smart Agriculture" },
-      { "title": "Chat BOT" },
-      { "title": "Cloud Services" },
-      { "title": "AI Services" },
-      { "title": "Smart Utility" }
+      {
+        "title": "Smart Logistics"
+      },
+      {
+        "title": "IOT"
+      },
+      {
+        "title": "Connected car"
+      },
+      {
+        "title": "Smart Agriculture"
+      },
+      {
+        "title": "Chat BOT"
+      },
+      {
+        "title": "Cloud Services"
+      },
+      {
+        "title": "AI Services"
+      },
+      {
+        "title": "Smart Utility"
+      }
     ],
     "sections": [
       {
@@ -163,8 +211,8 @@
     ]
   },
   "sim": {
-    "title": "SIM Card",
-    "subtitle": "Flexible communication for all needs",
-    "description": "MCI's SIM card services offer flexible, reliable, and accessible communication solutions tailored to diverse user needs."
+    "title": "SIM-карта",
+    "subtitle": "Гибкая связь для любых задач",
+    "description": "Сервисы SIM-карт MCI предлагают гибкие, надёжные и доступные коммуникационные решения, адаптированные к разнообразным потребностям пользователей. Будь то для личного использования, бизнеса или IoT-устройств, наши SIM-предложения обеспечивают общенациональное покрытие, конкурентные тарифы и бесшовное подключение. С приверженностью к качеству и доступности MCI гарантирует, что каждый остаётся на связи, где бы он ни находился."
   }
 }
