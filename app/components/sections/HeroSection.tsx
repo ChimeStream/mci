@@ -56,9 +56,9 @@ export function HeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1200px] mx-auto gap-8">
+      <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1600px] mx-auto gap-8">
         {/* Left side: Text - Desktop & Mobile */}
-        <div className="flex flex-col justify-center w-full md:w-auto md:flex-shrink-0">
+        <div className="flex flex-col justify-center w-full md:max-w-[50%] md:flex-shrink-0">
           {/* Mobile Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -69,19 +69,29 @@ export function HeroSection() {
             <h1
               className="flex flex-col text-white font-black w-full"
               style={{
-                fontFamily: 'Lato, sans-serif',
+                fontFamily: 'Cairo, sans-serif',
                 fontSize: 'clamp(3rem, 10vw, 4.5rem)',
-                lineHeight: 1.05,
+                lineHeight: 1.2,
                 letterSpacing: '-0.02em',
                 textAlign: language === 'ar' ? 'right' : 'left',
               }}
               dir={language === 'ar' ? 'rtl' : 'ltr'}
             >
-              {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
-                <span key={i}>{word}</span>
-              ))}
-              <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
-              <span>{t.hero?.world || 'WORLD'}</span>
+              {language === 'ar' ? (
+                <>
+                  <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
+                  <span>
+                    <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
+                    <span> {t.hero?.world || 'عالم'}</span>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>{t.hero?.welcomeTo || 'WELCOME TO'}</span>
+                  <RotatingWord titles={titles} titleNumber={titleNumber} position="left" inline={false} />
+                  <span>{t.hero?.world || 'WORLD'}</span>
+                </>
+              )}
             </h1>
           </motion.div>
 
@@ -95,19 +105,29 @@ export function HeroSection() {
             <h1
               className="flex flex-col text-white font-black"
               style={{
-                fontFamily: 'Lato, sans-serif',
+                fontFamily: 'Cairo, sans-serif',
                 fontSize: 'clamp(3.5rem, 5vw, 6rem)',
-                lineHeight: 1.05,
+                lineHeight: 1.2,
                 letterSpacing: '-0.02em',
                 textAlign: language === 'ar' ? 'right' : 'left',
               }}
               dir={language === 'ar' ? 'rtl' : 'ltr'}
             >
-              {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
-                <span key={i}>{word}</span>
-              ))}
-              <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
-              <span>{t.hero?.world || 'WORLD'}</span>
+              {language === 'ar' ? (
+                <>
+                  <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
+                  <span>
+                    <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
+                    <span> {t.hero?.world || 'عالم'}</span>
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span>{t.hero?.welcomeTo || 'WELCOME TO'}</span>
+                  <RotatingWord titles={titles} titleNumber={titleNumber} position="left" inline={false} />
+                  <span>{t.hero?.world || 'WORLD'}</span>
+                </>
+              )}
             </h1>
           </motion.div>
         </div>
@@ -199,22 +219,23 @@ interface RotatingWordProps {
   titles: string[];
   titleNumber: number;
   position: 'left' | 'center' | 'right';
+  inline?: boolean;
 }
 
-function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
+function RotatingWord({ titles, titleNumber, position, inline = false }: RotatingWordProps) {
   const [containerWidth, setContainerWidth] = useState<number | null>(null);
   const measureRef = useRef<HTMLSpanElement>(null);
 
-  // Measure the widest word and set container width
+  // Measure the widest word and set container width (only for non-inline mode)
   useEffect(() => {
-    if (!measureRef.current) return;
+    if (inline || !measureRef.current) return;
 
     // Create temporary elements to measure each word
     const tempContainer = document.createElement('span');
     tempContainer.style.position = 'absolute';
     tempContainer.style.visibility = 'hidden';
     tempContainer.style.whiteSpace = 'nowrap';
-    tempContainer.style.fontFamily = 'Lato, sans-serif';
+    tempContainer.style.fontFamily = 'Cairo, sans-serif';
     tempContainer.style.fontWeight = '900'; // font-black
     tempContainer.style.fontSize = position === 'center'
       ? responsive.fontSize.heroDesktop
@@ -236,10 +257,15 @@ function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
 
     // Add small padding for safety
     setContainerWidth(maxWidth + 8);
-  }, [titles, position]);
+  }, [titles, position, inline]);
 
-  const containerStyle =
-    position === 'center'
+  const containerStyle = inline
+    ? {
+        position: 'relative' as const,
+        display: 'inline-block',
+        height: '1.2em',
+      }
+    : position === 'center'
       ? {
           width: containerWidth ? `${containerWidth}px` : 'auto',
           minWidth: containerWidth ? `${containerWidth}px` : 'clamp(300px, 50vw, 500px)',

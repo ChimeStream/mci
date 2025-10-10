@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Lato, Inter, Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/app/hooks/useLanguage";
 import { RTLWrapper } from "@/app/components/layout/RTLWrapper";
+import { ScrollToTop } from "@/app/components/ui/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -52,6 +53,7 @@ export default function RootLayout({
         <LanguageProvider>
           <RTLWrapper>
             {children}
+            <ScrollToTop />
           </RTLWrapper>
         </LanguageProvider>
       </body>
