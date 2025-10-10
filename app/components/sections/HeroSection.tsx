@@ -56,9 +56,9 @@ export function HeroSection() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1600px] mx-auto gap-8">
+      <div className="relative z-20 flex w-full h-full items-center justify-between max-w-[1600px] mx-auto gap-8 px-4 md:px-8 lg:px-12">
         {/* Left side: Text - Desktop & Mobile */}
-        <div className="flex flex-col justify-center w-full md:max-w-[50%] md:flex-shrink-0">
+        <div className="flex flex-col justify-center w-full md:max-w-[45%] md:flex-shrink-0 md:ml-8 lg:ml-12">
           {/* Mobile Heading */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -80,7 +80,7 @@ export function HeroSection() {
               {language === 'ar' ? (
                 <>
                   <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
-                  <span>
+                  <span className="inline-flex items-baseline">
                     <span>{t.hero?.world || 'عالم'} </span>
                     <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
                   </span>
@@ -116,7 +116,7 @@ export function HeroSection() {
               {language === 'ar' ? (
                 <>
                   <span>{t.hero?.welcomeTo || 'مرحباً بك في'}</span>
-                  <span>
+                  <span className="inline-flex items-baseline">
                     <span>{t.hero?.world || 'عالم'} </span>
                     <RotatingWord titles={titles} titleNumber={titleNumber} position="right" inline={false} />
                   </span>
@@ -264,17 +264,20 @@ function RotatingWord({ titles, titleNumber, position, inline = false }: Rotatin
         position: 'relative' as const,
         display: 'inline-block',
         height: '1.2em',
+        verticalAlign: 'baseline',
       }
     : position === 'center'
       ? {
           width: containerWidth ? `${containerWidth}px` : 'auto',
           minWidth: containerWidth ? `${containerWidth}px` : 'clamp(300px, 50vw, 500px)',
-          height: '1.2em'
+          height: '1.2em',
+          verticalAlign: 'baseline',
         }
       : {
           width: containerWidth ? `${containerWidth}px` : 'auto',
           minWidth: containerWidth ? `${containerWidth}px` : 'auto',
-          height: '1.2em'
+          height: '1.2em',
+          verticalAlign: 'baseline',
         };
 
   const wordStyle =
