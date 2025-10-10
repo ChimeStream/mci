@@ -347,7 +347,7 @@ export function HeroSection() {
 }
 
 /**
- * Rotating Word Animation Component
+ * Rotating Word Animation Component with Dynamic Width
  */
 interface RotatingWordProps {
   titles: string[];
@@ -356,10 +356,54 @@ interface RotatingWordProps {
 }
 
 function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
+  const [containerWidth, setContainerWidth] = useState<number | null>(null);
+  const measureRef = useRef<HTMLSpanElement>(null);
+
+  // Measure the widest word and set container width
+  useEffect(() => {
+    if (!measureRef.current) return;
+
+    // Create temporary elements to measure each word
+    const tempContainer = document.createElement('span');
+    tempContainer.style.position = 'absolute';
+    tempContainer.style.visibility = 'hidden';
+    tempContainer.style.whiteSpace = 'nowrap';
+    tempContainer.style.fontFamily = 'Lato, sans-serif';
+    tempContainer.style.fontWeight = '900'; // font-black
+    tempContainer.style.fontSize = position === 'center'
+      ? responsive.fontSize.heroDesktop
+      : 'clamp(3.5rem, 12vw, 5rem)';
+    tempContainer.style.letterSpacing = position === 'center' ? '-0.015em' : '-0.02em';
+
+    document.body.appendChild(tempContainer);
+
+    let maxWidth = 0;
+    titles.forEach(title => {
+      tempContainer.textContent = title.toUpperCase();
+      const width = tempContainer.getBoundingClientRect().width;
+      if (width > maxWidth) {
+        maxWidth = width;
+      }
+    });
+
+    document.body.removeChild(tempContainer);
+
+    // Add small padding for safety
+    setContainerWidth(maxWidth + 8);
+  }, [titles, position]);
+
   const containerStyle =
     position === 'center'
-      ? { minWidth: 'clamp(300px, 50vw, 500px)', height: '1.2em' }
-      : { height: '1.2em' };
+      ? {
+          width: containerWidth ? `${containerWidth}px` : 'auto',
+          minWidth: containerWidth ? `${containerWidth}px` : 'clamp(300px, 50vw, 500px)',
+          height: '1.2em'
+        }
+      : {
+          width: containerWidth ? `${containerWidth}px` : 'auto',
+          minWidth: containerWidth ? `${containerWidth}px` : 'auto',
+          height: '1.2em'
+        };
 
   const wordStyle =
     position === 'center'
@@ -367,7 +411,7 @@ function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
       : 'absolute left-0 top-0 whitespace-nowrap';
 
   return (
-    <span className="relative overflow-visible inline-block" style={containerStyle}>
+    <span ref={measureRef} className="relative overflow-visible inline-block" style={containerStyle}>
       {titles.map((title, index) => (
         <motion.span
           key={index}
