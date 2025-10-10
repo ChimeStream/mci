@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
+import { useBackgroundParallax } from '@/app/hooks/useScrollParallax';
 
 /**
  * About Section Component - Rebuilt to match Figma exactly
@@ -13,6 +14,7 @@ export function AboutSection() {
   const { t } = useLanguage();
   const audioRef = React.useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const { ref: parallaxRef, y: backgroundY } = useBackgroundParallax(0.5);
 
   const handlePlayAudio = () => {
     if (audioRef.current) {
@@ -55,14 +57,18 @@ export function AboutSection() {
 
   return (
     <section
+      ref={parallaxRef}
       id="about"
       className="relative w-full overflow-hidden md:min-h-screen md:snap-start md:snap-always"
       style={{
         backgroundColor: '#0B1750',
       }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* Background Pattern with Parallax */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ y: backgroundY }}
+      >
         <Image
           src="/about/pattern.svg"
           alt=""
@@ -71,7 +77,7 @@ export function AboutSection() {
           sizes="100vw"
           className="object-cover opacity-40 mix-blend-screen"
         />
-      </div>
+      </motion.div>
 
       {/* Padding Container */}
       <div className="relative z-10 w-full px-6 py-16 sm:px-8 sm:py-20 md:px-12 md:py-24 lg:px-16 lg:py-32">

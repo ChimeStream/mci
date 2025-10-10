@@ -11,6 +11,7 @@ import { FiveGContent } from '@/app/components/sections/service-content/FiveGCon
 import { SimCardContent } from '@/app/components/sections/service-content/SimCardContent';
 import { B2BContent } from '@/app/components/sections/service-content/B2BContent';
 import { effects, responsive } from '@/app/styles/design-tokens';
+import { useScrollParallax } from '@/app/hooks/useScrollParallax';
 
 interface Service {
   key: string;
@@ -65,6 +66,7 @@ const services: Service[] = [
 export function KeyServicesSection() {
   const { t } = useLanguage();
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const { ref: parallaxRef, y: cardY } = useScrollParallax({ offset: 80, speed: 0.6 });
 
   const closeModal = () => setSelectedService(null);
 
@@ -82,6 +84,7 @@ export function KeyServicesSection() {
 
   return (
     <div
+      ref={parallaxRef}
       id="services"
       className="relative w-full min-h-screen overflow-hidden"
       style={{
@@ -105,7 +108,7 @@ export function KeyServicesSection() {
             {t.services?.title || 'KEY SERVICES'}
           </motion.h2>
 
-          {/* Services Grid - 2 rows x 3 columns */}
+          {/* Services Grid - 2 rows x 3 columns with Parallax */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -114,6 +117,7 @@ export function KeyServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: effects.animation.slow, delay: 0.1 * index }}
+                style={{ y: cardY }}
               >
                 <ServiceCard
                   service={getTranslatedService(service)}

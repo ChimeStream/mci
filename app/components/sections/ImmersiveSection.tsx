@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { effects, responsive } from '@/app/styles/design-tokens';
+import { useBackgroundParallax } from '@/app/hooks/useScrollParallax';
 
 /**
  * Immersive Section Component
@@ -12,17 +13,22 @@ import { effects, responsive } from '@/app/styles/design-tokens';
  */
 export function ImmersiveSection() {
   const { t } = useLanguage();
+  const { ref: parallaxRef, y: patternY } = useBackgroundParallax(0.4);
 
   return (
     <section
+      ref={parallaxRef}
       id="immersive"
       className="relative flex w-full min-h-screen items-center justify-center overflow-hidden px-6 py-20 snap-start snap-always md:min-h-[1023px] md:px-10 md:py-24"
       style={{
         backgroundColor: '#FFFFFF',
       }}
     >
-      {/* Dot Pattern - On top of text */}
-      <div className="absolute inset-0 z-20 pointer-events-none">
+      {/* Dot Pattern with Parallax - On top of text */}
+      <motion.div
+        className="absolute inset-0 z-20 pointer-events-none"
+        style={{ y: patternY }}
+      >
         <Image
           src="/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png"
           alt=""
@@ -30,7 +36,7 @@ export function ImmersiveSection() {
           className="object-cover object-center"
           priority
         />
-      </div>
+      </motion.div>
 
       {/* Content Container - Centered */}
       <div className="relative z-10 flex w-full flex-col items-center justify-center">

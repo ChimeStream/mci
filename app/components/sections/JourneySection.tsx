@@ -7,6 +7,7 @@ import { colors, effects, responsive } from '@/app/styles/design-tokens';
 import { CircularTimeline } from '@/app/components/ui/CircularTimeline';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useBackgroundParallax } from '@/app/hooks/useScrollParallax';
 
 type JourneyMilestone = {
   year: string;
@@ -105,6 +106,7 @@ export function JourneySection() {
   const { t } = useLanguage();
   const [rotation, setRotation] = useState(0);
   const anglePerItem = 360 / journeyData.length;
+  const { ref: parallaxRef, y: patternY } = useBackgroundParallax(0.3);
 
   // Get translated milestone for a year
   const getTranslatedMilestone = (year: string, defaultText: string) => {
@@ -121,6 +123,7 @@ export function JourneySection() {
 
   return (
     <div
+      ref={parallaxRef}
       id="journey"
       className="relative w-full overflow-hidden px-6 py-16 md:min-h-screen md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
@@ -133,15 +136,16 @@ export function JourneySection() {
         <div className="absolute inset-0" style={{ backgroundColor: '#0B1750' }} />
 
         {/* Layer 2: White to Cyan Gradient (Rectangle 15) */}
-        <div
+        <motion.div
           className="absolute inset-0"
           style={{
             background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
+            y: patternY,
           }}
         />
 
         {/* Layer 3: Pattern with plus-lighter blend mode (mci-main-pattern 1) */}
-        <div
+        <motion.div
           className="absolute"
           style={{
             width: '3121px',
@@ -154,6 +158,7 @@ export function JourneySection() {
             backgroundRepeat: 'no-repeat',
             backgroundBlendMode: 'plus-lighter',
             opacity: 0.15,
+            y: patternY,
           }}
         />
       </div>

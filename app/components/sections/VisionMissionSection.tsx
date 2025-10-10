@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/app/hooks/useLanguage';
 import { effects, responsive } from '@/app/styles/design-tokens';
+import { useLayeredParallax } from '@/app/hooks/useScrollParallax';
 
 /**
  * Vision & Mission Section Component
@@ -12,6 +13,7 @@ import { effects, responsive } from '@/app/styles/design-tokens';
 export function VisionMissionSection() {
   const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { ref: parallaxRef, backgroundY, middleY } = useLayeredParallax();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -22,9 +24,9 @@ export function VisionMissionSection() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center snap-start snap-always">
-      {/* Background Video */}
-      <div className="absolute inset-0">
+    <section ref={parallaxRef} className="relative w-full min-h-screen overflow-hidden flex items-center justify-center snap-start snap-always">
+      {/* Background Video with Parallax */}
+      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
         {/* Desktop Video */}
         <video
           ref={videoRef}
@@ -48,29 +50,30 @@ export function VisionMissionSection() {
           <source src="/v-video.mp4" type="video/mp4" />
         </video>
 
-        {/* Pattern Overlay 1 */}
-        <div
-          className="pointer-events-none absolute left-[-210px] top-[-370px] h-[1940px] w-[2002px] opacity-30"
-          style={{
-            backgroundImage: `url('/pattern001.png')`,
-            backgroundSize: 'cover',
-            mixBlendMode: 'overlay',
-          }}
-        />
-
-        {/* Pattern Overlay 2 */}
-        <div
-          className="pointer-events-none absolute left-[-74px] top-[1024px] h-[994px] w-[1593px] opacity-20"
-          style={{
-            backgroundImage: `url('/ezgif-4880d1597b211d.png')`,
-            backgroundSize: 'cover',
-            mixBlendMode: 'overlay',
-          }}
-        />
-
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40" />
-      </div>
+      </motion.div>
+
+      {/* Pattern Overlays with Different Parallax Speeds */}
+      <motion.div
+        className="pointer-events-none absolute left-[-210px] top-[-370px] h-[1940px] w-[2002px] opacity-30"
+        style={{
+          backgroundImage: `url('/pattern001.png')`,
+          backgroundSize: 'cover',
+          mixBlendMode: 'overlay',
+          y: middleY,
+        }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute left-[-74px] top-[1024px] h-[994px] w-[1593px] opacity-20"
+        style={{
+          backgroundImage: `url('/ezgif-4880d1597b211d.png')`,
+          backgroundSize: 'cover',
+          mixBlendMode: 'overlay',
+          y: backgroundY,
+        }}
+      />
 
       {/* Content - Desktop */}
       <div className="relative z-10 hidden w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-[182px] md:block">
