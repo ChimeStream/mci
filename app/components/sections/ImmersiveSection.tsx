@@ -19,9 +19,10 @@ export function ImmersiveSection() {
     <section
       ref={parallaxRef}
       id="immersive"
-      className="relative w-full min-h-screen overflow-hidden px-6 pt-32 pb-10 md:px-10 md:pt-0 md:pb-24 md:flex md:items-center md:justify-center md:snap-start md:snap-always"
+      className="relative w-full overflow-hidden px-6 md:px-10 md:pt-0 md:pb-24 md:flex md:items-center md:justify-center md:snap-start md:snap-always md:min-h-screen"
       style={{
         backgroundColor: '#FFFFFF',
+        height: '855px',
       }}
     >
       {/* Dot Pattern with Parallax - On top of text */}
@@ -39,8 +40,21 @@ export function ImmersiveSection() {
         />
       </motion.div>
 
+      {/* Mobile-only Pattern Overlay - Specific positioning for mobile */}
+      <div className="md:hidden absolute w-full z-20 pointer-events-none" style={{ height: '698px', left: 0, top: '68px' }}>
+        <Image
+          src="/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png"
+          alt=""
+          fill
+          className="object-cover"
+          style={{
+            objectPosition: 'center center',
+          }}
+        />
+      </div>
+
       {/* Content Container - Centered */}
-      <div className="relative z-10 flex w-full flex-col items-center justify-center md:items-center">
+      <div className="relative z-10 flex w-full flex-col items-center pt-[123px] md:pt-0 md:justify-center md:items-center">
         <div className="w-full max-w-[1076px] mx-auto flex flex-col gap-8 md:gap-12 text-center md:text-left">
           {/* Giant IMMERSIVE Title */}
           <motion.h2
@@ -48,10 +62,14 @@ export function ImmersiveSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: effects.animation.slow }}
-            className="relative overflow-visible text-center font-black leading-[0.92] text-[#0288D1] md:text-left"
+            className="relative overflow-visible text-center font-black leading-[1.87] text-[#0288D1] md:text-left md:leading-[0.92]"
             style={{
               fontFamily: 'var(--font-cairo), var(--font-geist-sans), sans-serif',
-              fontSize: responsive.fontSize.displayLarge,
+              fontSize: 'clamp(63px, 16vw, 180px)',
+              background: 'linear-gradient(270deg, #0762B7 0%, #0095DA 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
             }}
           >
             {t.immersive?.title || 'IMMERSIVE'}
@@ -63,11 +81,11 @@ export function ImmersiveSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: effects.animation.slow, delay: 0.3 }}
-            className="text-[#051C3D] opacity-80"
+            className="text-[#808080] max-w-[330px] mx-auto text-justify md:max-w-full md:mx-0 md:text-[#051C3D] md:opacity-80 md:text-left"
             style={{
               fontFamily: 'var(--font-cairo), var(--font-geist-sans), sans-serif',
-              fontSize: responsive.fontSize.bodyMd,
-              lineHeight: 1.6,
+              fontSize: 'clamp(18px, 4vw, 18px)',
+              lineHeight: 'clamp(25px, 6vw, 1.6)',
             }}
           >
             {t.immersive?.description ||
