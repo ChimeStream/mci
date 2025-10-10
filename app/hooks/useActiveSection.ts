@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>('');
+  const [activeSection, setActiveSection] = useState<string>('welcome');
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]');
@@ -24,8 +24,37 @@ export function useActiveSection() {
 
     sections.forEach((section) => observer.observe(section));
 
+    // Handle hash changes from navigation clicks
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash) {
+        setActiveSection(hash);
+      }
+    };
+
+    // Handle clicks on navigation links
+    const handleNavClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a[href^="#"]');
+      if (link) {
+        const href = link.getAttribute('href');
+        if (href) {
+          const sectionId = href.replace('#', '');
+          setActiveSection(sectionId);
+        }
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    document.addEventListener('click', handleNavClick);
+
+    // Set initial active section
+    handleHashChange();
+
     return () => {
       sections.forEach((section) => observer.unobserve(section));
+      window.removeEventListener('hashchange', handleHashChange);
+      document.removeEventListener('click', handleNavClick);
     };
   }, []);
 

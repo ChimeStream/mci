@@ -12,7 +12,7 @@ import { colors, responsive } from '@/app/styles/design-tokens';
  * Full-screen hero with animated title rotation and VR person scroll animation
  */
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [enableScrollAnimation, setEnableScrollAnimation] = useState(false);
@@ -210,21 +210,23 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           style={{ filter: `blur(${textLogoBlur}px)` }}
-          className="flex w-full flex-col items-start text-left md:hidden"
+          className="flex w-full flex-col items-start md:hidden"
         >
           <h1
-            className="flex flex-col text-white font-black"
+            className="flex flex-col text-white font-black w-full"
             style={{
               fontFamily: 'Lato, sans-serif',
               fontSize: 'clamp(3.5rem, 12vw, 5rem)',
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
+              textAlign: language === 'ar' ? 'right' : 'left',
             }}
+            dir={language === 'ar' ? 'rtl' : 'ltr'}
           >
             {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word: string, i: number) => (
               <span key={i}>{word}</span>
             ))}
-            <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
+            <RotatingWord titles={titles} titleNumber={titleNumber} position={language === 'ar' ? 'right' : 'left'} />
             <span>{t.hero?.world || 'WORLD'}</span>
           </h1>
         </motion.div>
@@ -352,7 +354,7 @@ export function HeroSection() {
 interface RotatingWordProps {
   titles: string[];
   titleNumber: number;
-  position: 'left' | 'center';
+  position: 'left' | 'center' | 'right';
 }
 
 function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
@@ -408,6 +410,8 @@ function RotatingWord({ titles, titleNumber, position }: RotatingWordProps) {
   const wordStyle =
     position === 'center'
       ? 'absolute left-1/2 -translate-x-1/2 top-0 whitespace-nowrap'
+      : position === 'right'
+      ? 'absolute right-0 top-0 whitespace-nowrap'
       : 'absolute left-0 top-0 whitespace-nowrap';
 
   return (
