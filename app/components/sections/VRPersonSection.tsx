@@ -48,7 +48,7 @@ export function VRPersonSection() {
 
       {/* VR Person Image */}
       <motion.div
-        style={{ y, opacity }}
+        style={{ y, opacity, height: 'auto' }}
         initial={{ opacity: 0, y: isMobile ? 100 : 200 }}
         animate={{
           opacity: pageLoaded ? 1 : 0,
@@ -59,7 +59,6 @@ export function VRPersonSection() {
           ease: [0.22, 1, 0.36, 1],
         }}
         className="relative z-10 w-full max-w-[105%] sm:max-w-[90%] md:max-w-lg px-0 md:px-8 -mt-12 md:mt-0"
-        style={{ height: 'auto' }}
       >
         <Image
           src="/assets/images/vr-person.png"
