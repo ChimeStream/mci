@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { MCILogo } from '@/app/components/ui/MCILogo';
+import { useLanguage } from '@/app/hooks/useLanguage';
 import { colors, responsive } from '@/app/styles/design-tokens';
 
 /**
@@ -11,6 +12,7 @@ import { colors, responsive } from '@/app/styles/design-tokens';
  * Full-screen hero with animated title rotation and VR person scroll animation
  */
 export function HeroSection() {
+  const { t } = useLanguage();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [enableScrollAnimation, setEnableScrollAnimation] = useState(false);
@@ -19,7 +21,14 @@ export function HeroSection() {
   const [titleNumber, setTitleNumber] = useState(0);
   const [showMobileVRPerson, setShowMobileVRPerson] = useState(false);
 
-  const titles = ['connected', 'limitless', 'seamless', 'intelligent', 'dynamic'];
+  // Get translated rotating words
+  const titles = [
+    t.hero?.rotatingWords?.word1 || 'connected',
+    t.hero?.rotatingWords?.word2 || 'limitless',
+    t.hero?.rotatingWords?.word3 || 'seamless',
+    t.hero?.rotatingWords?.word4 || 'intelligent',
+    t.hero?.rotatingWords?.word5 || 'dynamic',
+  ];
 
   // Mobile VR Person fade-in trigger on first interaction
   useEffect(() => {
@@ -212,10 +221,11 @@ export function HeroSection() {
               letterSpacing: '-0.02em',
             }}
           >
-            <span>WELCOME</span>
-            <span>TO</span>
+            {(t.hero?.welcomeTo || 'WELCOME TO').split(' ').map((word, i) => (
+              <span key={i}>{word}</span>
+            ))}
             <RotatingWord titles={titles} titleNumber={titleNumber} position="left" />
-            <span>WORLD</span>
+            <span>{t.hero?.world || 'WORLD'}</span>
           </h1>
         </motion.div>
 
@@ -281,10 +291,10 @@ export function HeroSection() {
                 letterSpacing: '-0.015em',
               }}
             >
-              <span>WELCOME TO</span>
+              <span>{t.hero?.welcomeTo || 'WELCOME TO'}</span>
               <span className="mt-2 flex flex-wrap items-center justify-center gap-4">
                 <RotatingWord titles={titles} titleNumber={titleNumber} position="center" />
-                <span>WORLD</span>
+                <span>{t.hero?.world || 'WORLD'}</span>
               </span>
             </h1>
           </motion.div>

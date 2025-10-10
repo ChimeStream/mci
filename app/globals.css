@@ -133,6 +133,53 @@ section {
   direction: rtl;
 }
 
+/* Arabic font support - Use Cairo for better Arabic rendering */
+[dir="rtl"] body {
+  font-family: var(--font-cairo), var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Fix text alignment for RTL */
+[dir="rtl"] .text-left {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left !important;
+}
+
+[dir="rtl"] .md\:text-left {
+  text-align: right !important;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center !important;
+}
+
+/* RTL flex direction fixes */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* RTL margin and padding fixes */
+[dir="rtl"] .ml-auto {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0 !important;
+  margin-left: auto !important;
+}
+
+/* RTL items alignment */
+[dir="rtl"] .items-start {
+  align-items: flex-end !important;
+}
+
+[dir="rtl"] .items-end {
+  align-items: flex-start !important;
+}
+
 /* Disable text selection for decorative elements */
 .select-none {
   user-select: none;

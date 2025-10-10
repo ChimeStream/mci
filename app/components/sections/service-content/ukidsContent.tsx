@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/app/hooks/useLanguage';
 
-export function KidsContent() {
+export function ukidsContent() {
   const { t } = useLanguage();
 
   return (

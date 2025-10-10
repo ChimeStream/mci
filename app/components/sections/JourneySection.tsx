@@ -106,6 +106,11 @@ export function JourneySection() {
   const [rotation, setRotation] = useState(0);
   const anglePerItem = 360 / journeyData.length;
 
+  // Get translated milestone for a year
+  const getTranslatedMilestone = (year: string, defaultText: string) => {
+    return t.journey?.milestones?.[year] || defaultText;
+  };
+
   const handleNext = () => {
     setRotation((prev) => prev - anglePerItem);
   };
@@ -178,7 +183,10 @@ export function JourneySection() {
           <div className="relative hidden w-full md:block">
             <div className="h-[520px] lg:h-[640px] xl:h-[700px]">
               <CircularTimeline
-                items={journeyData}
+                items={journeyData.map(item => ({
+                  ...item,
+                  event: getTranslatedMilestone(item.year, item.event)
+                }))}
                 radius={520}
                 rotation={rotation}
                 onRotationChange={setRotation}
@@ -193,7 +201,12 @@ export function JourneySection() {
 
           {/* Timeline Carousel - Mobile */}
           <div className="md:hidden">
-            <MobileJourneyCarousel items={journeyData} />
+            <MobileJourneyCarousel
+              items={journeyData.map(item => ({
+                ...item,
+                event: getTranslatedMilestone(item.year, item.event)
+              }))}
+            />
           </div>
         </div>
       </div>

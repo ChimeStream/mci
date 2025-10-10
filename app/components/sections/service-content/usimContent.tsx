@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/app/hooks/useLanguage';
 
-export function SimCardContent() {
+export function usimContent() {
   const { t } = useLanguage();
 
   return (

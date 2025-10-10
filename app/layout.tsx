@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lato, Inter, Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/app/hooks/useLanguage";
+import { RTLWrapper } from "@/app/components/layout/RTLWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +29,7 @@ const inter = Inter({
 
 const cairo = Cairo({
   variable: "--font-cairo",
-  subsets: ["latin"],
+  subsets: ["latin", "arabic"],
   weight: ["400", "600", "700", "900"],
   display: "swap",
 });
@@ -49,7 +50,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${lato.variable} ${inter.variable} ${cairo.variable} antialiased`}
       >
         <LanguageProvider>
-          {children}
+          <RTLWrapper>
+            {children}
+          </RTLWrapper>
         </LanguageProvider>
       </body>
     </html>

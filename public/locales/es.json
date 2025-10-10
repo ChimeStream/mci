@@ -1,13 +1,20 @@
 {
   "nav": {
-    "welcome": "Bienvenido",
+    "welcome": "Inicio",
     "about": "Nosotros",
-    "journey": "Nuestra Historia",
+    "journey": "Trayectoria",
     "services": "Servicios"
   },
   "hero": {
-    "title": "BIENVENIDO A",
-    "subtitle": "¡TU FUTURO DIGITAL!"
+    "welcomeTo": "BIENVENIDO AL",
+    "world": "MUNDO",
+    "rotatingWords": {
+      "word1": "conectado",
+      "word2": "ilimitado",
+      "word3": "fluido",
+      "word4": "inteligente",
+      "word5": "dinámico"
+    }
   },
   "about": {
     "title": "QUIÉNES SOMOS",
@@ -30,37 +37,64 @@
     "description": "Revolucionar las comunicaciones y trascender fronteras"
   },
   "immersive": {
-    "title": "EXPERIENCIA INMERSIVA",
+    "title": "INMERSIVO",
     "description": "Nuestro futuro se construye sobre experiencias inmersivas: un viaje que difumina los límites entre lo físico y lo digital, permitiéndote vivir en un ecosistema inteligente, rico e interconectado. La inmersión significa estar completamente presente en el momento, donde nuestros clientes no solo consumen servicios, sino que realmente viven la experiencia. Es un viaje compartido donde nadie está solo, y cada persona se convierte en parte de una experiencia colectiva y humana. Este enfoque eleva a MCI más allá de ser un operador tradicional, transformándolo en una plataforma de experiencias inteligentes, un lugar donde educación, entretenimiento, salud, negocios y comunicación convergen en un único viaje inmersivo."
   },
   "journey": {
-    "title": "NUESTRA TRAYECTORIA"
+    "title": "NUESTRA TRAYECTORIA",
+    "milestones": {
+      "1993": "Lanzamiento del Proyecto de Comunicaciones Móviles",
+      "1994": "Fundación de la Compañía de Comunicaciones Móviles de Irán",
+      "1996": "Superamos los 60.000 suscriptores",
+      "2000": "Superamos 1,4 millones de suscriptores cubriendo 733 ciudades",
+      "2002": "Introducción del servicio de SMS",
+      "2006": "Superamos los 10 millones de suscriptores",
+      "2007": "Selección de la marca Hamrah Aval (Nadie Está Solo)",
+      "2010": "Lanzamiento del servicio de Internet GPRS y tecnología EDGE",
+      "2012": "Finalización del proceso de privatización",
+      "2014": "Introducción de tecnología 3G y lanzamiento de servicios móviles de tercera generación",
+      "2015": "Despliegue de tecnología LTE/4G y provisión de servicios de Internet de alta velocidad",
+      "2019": "Introducción del servicio VoLTE para mejorar la calidad de las llamadas de voz en red 4G",
+      "2021": "Superamos los 70 millones de suscriptores convirtiéndonos en el mayor operador de Medio Oriente",
+      "2022": "Inicio de pruebas 5G y lanzamiento de los primeros sitios 5G del país",
+      "2023": "Superamos los 100 millones de suscriptores",
+      "2025": "Renovación de marca de MCI basada en el concepto INMERSIVO"
+    }
   },
   "services": {
     "title": "SERVICIOS PRINCIPALES",
     "5g": {
       "title": "5.5G",
-      "subtitle": "Conectividad del mañana, hoy"
+      "subtitle": "Conectividad del mañana, hoy",
+      "description": "Con la introducción de 5.5G, MCI da un gran paso hacia el futuro de la conectividad. Esta tecnología de próxima generación ofrece velocidades superiores a 5G, latencia ultrabaja y una capacidad significativamente mayor. Con 5.5G, los usuarios pueden experimentar internet ultrarrápido, realidad aumentada y virtual avanzada, aplicaciones de IoT a gran escala y servicios de ciudades inteligentes, todo sin límites y de manera fluida. Esta evolución posiciona a MCI como pionero de la transformación digital en Irán, donde la conectividad no solo es más rápida, sino también más inteligente, confiable y verdaderamente inmersiva."
     },
     "fintech": {
       "title": "Fintech",
-      "subtitle": "Finanzas digitales seguras e inteligentes"
+      "subtitle": "Finanzas digitales seguras e inteligentes",
+      "description": "El ecosistema fintech de MCI transforma los pagos digitales y servicios financieros mediante innovación y seguridad. Nuestras soluciones integrales permiten transacciones fluidas, billeteras digitales y plataformas de pago inteligentes que empoderan a empresas e individuos. Al combinar infraestructura de telecomunicaciones con tecnología financiera avanzada, construimos una economía digital confiable, accesible e inclusiva para todos los iraníes."
     },
     "platforms": {
       "title": "Plataformas",
-      "subtitle": "Educación, entretenimiento, salud y comercio"
+      "subtitle": "Educación, entretenimiento, salud y comercio",
+      "description": "Las plataformas digitales de MCI crean un ecosistema integrado donde educación, entretenimiento, salud y comercio electrónico convergen en una experiencia fluida. Desde entornos de aprendizaje interactivos y entretenimiento en streaming hasta servicios de telemedicina y mercados en línea, nuestras plataformas están diseñadas para enriquecer la vida diaria, empoderar comunidades y desbloquear nuevas posibilidades en el panorama digital de Irán."
     },
     "kids": {
-      "title": "Niños y Jóvenes",
-      "subtitle": "Un ecosistema seguro que los empodera"
+      "title": "Jóvenes",
+      "subtitle": "Un ecosistema seguro que los empodera",
+      "description": "MCI proporciona un entorno digital seguro, supervisado y empoderador diseñado específicamente para niños y adolescentes. Con controles parentales, contenido apropiado para cada edad, recursos educativos y herramientas creativas, aseguramos que los usuarios jóvenes puedan explorar, aprender y conectarse en un espacio protegido. Nuestro ecosistema enfocado en niños fomenta hábitos digitales saludables mientras estimula la creatividad, curiosidad y crecimiento en la próxima generación."
     },
     "b2b": {
       "title": "B2B y B2G",
-      "subtitle": "Potenciando empresas y gobiernos inteligentes"
+      "subtitle": "Potenciando empresas y gobiernos inteligentes",
+      "description": "MCI ofrece soluciones de nivel empresarial que impulsan negocios inteligentes y operaciones gubernamentales modernas. Desde infraestructura de IoT y servicios en la nube hasta conectividad segura y análisis impulsados por IA, nuestras ofertas B2B y B2G permiten a las organizaciones optimizar operaciones, mejorar la productividad e impulsar la transformación digital a escala. Nos asociamos con empresas y gobiernos para construir el futuro inteligente de Irán."
     },
     "sim": {
       "title": "Tarjeta SIM",
-      "subtitle": "Comunicación flexible para cada necesidad"
+      "subtitle": "Comunicación flexible para cada necesidad",
+      "description": "Los servicios de tarjetas SIM de MCI ofrecen soluciones de comunicación flexibles, confiables y accesibles adaptadas a diversas necesidades de usuarios. Ya sea para uso personal, empresarial o dispositivos IoT, nuestras ofertas de SIM proporcionan cobertura nacional, planes competitivos y conectividad fluida. Con un compromiso con la calidad y accesibilidad, MCI asegura que todos permanezcan conectados sin importar dónde estén."
     }
+  },
+  "footer": {
+    "copyright": "Copyright © 2025 MCI. Todos los derechos reservados."
   }
 }

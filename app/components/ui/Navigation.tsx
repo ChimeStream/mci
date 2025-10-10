@@ -117,14 +117,8 @@ export function Navigation() {
                   WebkitBackdropFilter: 'blur(60px) saturate(180%)',
                 }}
               >
-                <div className="w-full h-full flex items-center justify-center">
-                  <Image
-                    src="/a6418c247489ae4093402da9807b220411f0b962.png"
-                    alt="Language"
-                    width={20}
-                    height={12}
-                    className="object-contain"
-                  />
+                <div className="w-full h-full flex items-center justify-center text-xl">
+                  {language === 'en' ? '🇬🇧' : language === 'es' ? '🇪🇸' : language === 'ru' ? '🇷🇺' : '🇸🇦'}
                 </div>
               </div>
             </button>

@@ -73,6 +73,13 @@ export function KeyServicesSection() {
     console.log('Play video for:', selectedService);
   };
 
+  // Get translated service data
+  const getTranslatedService = (service: Service) => ({
+    ...service,
+    title: t.services?.[service.key]?.title || service.title,
+    subtitle: t.services?.[service.key]?.subtitle || service.subtitle,
+  });
+
   return (
     <div
       id="services"
@@ -109,7 +116,7 @@ export function KeyServicesSection() {
                 transition={{ duration: effects.animation.slow, delay: 0.1 * index }}
               >
                 <ServiceCard
-                  service={service}
+                  service={getTranslatedService(service)}
                   onClick={() => setSelectedService(service.key)}
                 />
               </motion.div>
@@ -119,12 +126,15 @@ export function KeyServicesSection() {
       </div>
 
       {/* Modal */}
-      {selectedService && (
+      {selectedService && (() => {
+        const service = services.find(s => s.key === selectedService);
+        const translatedService = service ? getTranslatedService(service) : null;
+        return (
         <ServiceModal
           isOpen={true}
           onClose={closeModal}
-          title={services.find(s => s.key === selectedService)?.title || ''}
-          subtitle={services.find(s => s.key === selectedService)?.subtitle || ''}
+          title={translatedService?.title || ''}
+          subtitle={translatedService?.subtitle || ''}
           showPlayButton={selectedService === 'fintech' || selectedService === 'platforms' || selectedService === 'kids' || selectedService === 'sim' || selectedService === 'b2b'}
           onPlayClick={handlePlayClick}
         >
@@ -146,7 +156,8 @@ export function KeyServicesSection() {
             </p>
           )}
         </ServiceModal>
-      )}
+        );
+      })()}
     </div>
   );
 }

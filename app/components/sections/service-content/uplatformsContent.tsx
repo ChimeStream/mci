@@ -3,7 +3,7 @@
 import React from 'react';
 import { useLanguage } from '@/app/hooks/useLanguage';
 
-export function PlatformsContent() {
+export function uplatformsContent() {
   const { t } = useLanguage();
 
   return (

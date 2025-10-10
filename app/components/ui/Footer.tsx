@@ -2,12 +2,15 @@
 
 import React from 'react';
 import { MCILogo } from '@/app/components/ui/MCILogo';
+import { useLanguage } from '@/app/hooks/useLanguage';
 
 /**
  * Footer Component
  * Displays the MCI logo and copyright text at the bottom of the page
  */
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer
       id="footer"
@@ -27,7 +30,7 @@ export function Footer() {
           color: '#808080',
         }}
       >
-        Copyright © 2025 MCI. All rights reserved.
+        {t.footer?.copyright || 'Copyright © 2025 MCI. All rights reserved.'}
       </p>
     </footer>
   );
