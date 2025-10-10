@@ -127,20 +127,19 @@ export function JourneySection() {
       id="journey"
       className="relative w-full min-h-screen overflow-hidden px-6 pt-10 pb-16 md:px-10 md:py-24 md:snap-start md:snap-always"
       style={{
-        backgroundColor: '#0095DA',
+        backgroundColor: '#0B1750',
       }}
     >
       {/* Background Layers - Matching Figma structure */}
       <div className="absolute inset-0 z-0">
-        {/* Layer 1: Base color matches Key Services */}
-        <div className="absolute inset-0" style={{ backgroundColor: '#0095DA' }} />
+        {/* Layer 1: Dark Navy Base (Rectangle 2) */}
+        <div className="absolute inset-0" style={{ backgroundColor: '#0B1750' }} />
 
         {/* Layer 2: White to Cyan Gradient (Rectangle 15) */}
         <motion.div
-          className="absolute inset-x-0 top-[-200px] bottom-[-200px]"
+          className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 70%, #0095DA 100%)',
-            y: patternY,
+            background: 'linear-gradient(180deg, #FFFFFF 0%, #0095DA 100%)',
           }}
         />
 
