@@ -26,10 +26,10 @@ export function VisionMissionSection() {
   return (
     <section
       ref={parallaxRef}
-      className="relative w-full overflow-hidden pt-20 pb-16 md:min-h-screen md:pt-0 md:pb-0 md:flex md:items-center md:justify-center md:snap-start md:snap-always"
+      className="relative w-full overflow-hidden h-screen flex items-center justify-center md:min-h-screen md:h-auto md:pt-0 md:pb-0 md:snap-start md:snap-always"
     >
       {/* Background Video with Parallax */}
-      <motion.div className="absolute inset-x-0 top-[-200px] bottom-[-200px]" style={{ y: backgroundY }}>
+      <motion.div className="absolute inset-0 md:inset-x-0 md:top-[-200px] md:bottom-[-200px]" style={{ y: backgroundY }}>
         {/* Desktop Video */}
         <video
           ref={videoRef}
@@ -57,9 +57,9 @@ export function VisionMissionSection() {
         <div className="absolute inset-0 bg-black/40" />
       </motion.div>
 
-      {/* Pattern Overlays with Different Parallax Speeds */}
+      {/* Pattern Overlays with Different Parallax Speeds - Desktop Only */}
       <motion.div
-        className="pointer-events-none absolute left-[-210px] top-[-370px] h-[1940px] w-[2002px] opacity-30"
+        className="pointer-events-none absolute left-[-210px] top-[-370px] h-[1940px] w-[2002px] opacity-30 hidden md:block"
         style={{
           backgroundImage: `url('/1b8428e905ccc5c51f305d9af193851f394c7dcc.png')`,
           backgroundSize: 'cover',
@@ -69,7 +69,7 @@ export function VisionMissionSection() {
       />
 
       <motion.div
-        className="pointer-events-none absolute left-[-74px] top-[1024px] h-[994px] w-[1593px] opacity-20"
+        className="pointer-events-none absolute left-[-74px] top-[1024px] h-[994px] w-[1593px] opacity-20 hidden md:block"
         style={{
           backgroundImage: `url('/d4d3676e8840ec2d53584bd9ba4b3e22ee221215.png')`,
           backgroundSize: 'cover',
@@ -144,7 +144,7 @@ export function VisionMissionSection() {
       </div>
 
       {/* Content - Mobile (Responsive) */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] items-center px-6 md:hidden">
+      <div className="absolute inset-0 z-10 mx-auto flex w-full max-w-[1440px] items-center justify-center px-6 md:hidden">
         <div className="w-full space-y-10">
           {/* Vision */}
           <motion.div
